@@ -1,0 +1,298 @@
+品質記録情報
+2022年5月28日 16:14:44
+
+------ ビルド開始(RX631_MCR_ver1.0, DefaultBuild) ------
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\ccrx.exe src\E2dataFlash.c src\hwsetup.c src\control.c src\main.c src\memorrytrace.c src\microSD.c src\setup.c src\mtu.c -isa=rxv1 -fpu -dbl_size=8 -lang=c -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1 -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\i_src -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\AD_12 -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\SCI -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\CMT -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\MTU -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\IO -include=..\..\..\Documents\RX631_MCR-master\IGC-P8080_v1\SYSTEM -include=IGC-P8080_v1 -include=IGC-P8080_v1\i_src -include=IGC-P8080_v1\AD_12 -include=IGC-P8080_v1\SCI -include=IGC-P8080_v1\CMT -include=IGC-P8080_v1\MTU -include=IGC-P8080_v1\IO -include=IGC-P8080_v1\SYSTEM -include=inc -include=RX631_mcr_ver3.0\IWDT -include=RX631_mcr_ver3.0 -include=RX631_mcr_ver3.0\i_src -include=RX631_mcr_ver3.0\AD_12 -include=RX631_mcr_ver3.0\SCI -include=RX631_mcr_ver3.0\CMT -include=RX631_mcr_ver3.0\MTU -include=RX631_mcr_ver3.0\IO -include=RX631_mcr_ver3.0\SYSTEM -include=..\RX631_mcr_ver2.3 -include=..\RX631_mcr_ver2.3\i_src -include=..\RX631_mcr_ver2.3\AD_12 -include=..\RX631_mcr_ver2.3\SCI -include=..\RX631_mcr_ver2.3\CMT -include=..\RX631_mcr_ver2.3\MTU -include=..\RX631_mcr_ver2.3\IO -include=..\RX631_mcr_ver2.3\SYSTEM -include=..\RX631_mcr_ver2.2 -include=..\RX631_mcr_ver2.2\i_src -include=..\RX631_mcr_ver2.2\AD_12 -include=..\RX631_mcr_ver2.2\SCI -include=..\RX631_mcr_ver2.2\CMT -include=..\RX631_mcr_ver2.2\MTU -include=..\RX631_mcr_ver2.2\IO -include=..\RX631_mcr_ver2.2\SYSTEM -include=..\RX631_mcr_ver2\AD_10 -include=..\RX631_mcr_ver2 -include=..\RX631_mcr_ver2\i_src -include=..\RX631_mcr_ver2\AD_12 -include=..\RX631_mcr_ver2\SCI -include=..\RX631_mcr_ver2\CMT -include=..\RX631_mcr_ver2\MTU -include=..\RX631_mcr_ver2\IO -include=..\RX631_mcr_ver2\SYSTEM -include=. -include=DefaultBuild -include=header -include=mcu "-include=SmartManual Docs" "-include=SmartManual Docs\RX631" -output=obj -obj_path=DefaultBuild -debug -g_line -nologo -MAKEUD=DefaultBuild -exec_time=C:\Users\kawauchikentarou\AppData\Local\Temp\CSPlusBuildTool_b757b71c5d264e4693114fde1215fb4cidtst50p.2r2
+src\control.c(163):W0520940:Missing return statement at end of non-void function "stableSpeedDistance"
+src\control.c(320):W0520550:Variable "maxpwm" was set but never used
+src\control.c(380):W0520177:Variable "angle" was declared but never referenced
+src\control.c(437):W0520940:Missing return statement at end of non-void function "getReturnAngle"
+src\main.c(44):W0520177:Variable "j" was declared but never referenced
+src\main.c(44):W0520550:Variable "angleCenter" was set but never used
+src\main.c(46):W0520550:Variable "ui" was set but never used
+src\setup.c(814):W0520167:Argument of type "short *" is incompatible with parameter of type "char *"
+src\setup.c(68):W0520177:Variable "j" was declared but never referenced
+src\setup.c(68):W0520177:Variable "k" was declared but never referenced
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V3.04.00\Bin\rlink.exe -MAKEUD=DefaultBuild\RX631_MCR_ver1.0.lk.ud -subcommand=DefaultBuild\RX631_MCR_ver1.0.clnk
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 48 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+W0561100:Cannot find "PIntPRG" specified in option "start"
+W0561016:The evaluation version of CC-RX V3 is valid for the remaining 48 days. After that, link size limit (128 Kbyte) will be applied. Please consider purchasing the product.
+Renesas Optimizing Linker Completed
+------ ビルド終了(エラー:0個, 警告:13個)(RX631_MCR_ver1.0, DefaultBuild) ------
+
+--- CommandFile 1 ---
+DefaultBuild\RX631_MCR_ver1.0.clnk :
+-library=DefaultBuild\RX631_MCR_ver1.0.lib
+-input=DefaultBuild\dbsct.obj
+-input=DefaultBuild\lowsrc.obj
+-input=DefaultBuild\resetprg.obj
+-input=DefaultBuild\sbrk.obj
+-input=DefaultBuild\E2dataFlash.obj
+-input=DefaultBuild\hwsetup.obj
+-input=DefaultBuild\AQM0802A.obj
+-input=DefaultBuild\control.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\ICM20648.obj
+-input=DefaultBuild\memorrytrace.obj
+-input=DefaultBuild\microSD.obj
+-input=DefaultBuild\sci.obj
+-input=DefaultBuild\setup.obj
+-input=DefaultBuild\mtu.obj
+-input=DefaultBuild\ADconverter.obj
+-input=DefaultBuild\io.obj
+-input=DefaultBuild\R_PG_Clock.obj
+-input=DefaultBuild\R_PG_IO_PORT.obj
+-input=DefaultBuild\R_PG_IO_PORT_P0.obj
+-input=DefaultBuild\R_PG_IO_PORT_P1.obj
+-input=DefaultBuild\R_PG_IO_PORT_P2.obj
+-input=DefaultBuild\R_PG_IO_PORT_P3.obj
+-input=DefaultBuild\R_PG_IO_PORT_P4.obj
+-input=DefaultBuild\R_PG_IO_PORT_P5.obj
+-input=DefaultBuild\R_PG_IO_PORT_PA.obj
+-input=DefaultBuild\R_PG_IO_PORT_PB.obj
+-input=DefaultBuild\R_PG_IO_PORT_PC.obj
+-input=DefaultBuild\R_PG_IO_PORT_PD.obj
+-input=DefaultBuild\R_PG_IO_PORT_PE.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C0.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C1.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C2.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C3.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C4.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0.obj
+-input=DefaultBuild\R_PG_Timer_CMT_U0.obj
+-input=DefaultBuild\R_PG_Timer_CMT_U1.obj
+-input=DefaultBuild\R_PG_SCI_C2.obj
+-input=DefaultBuild\R_PG_SCI_C5.obj
+-input=DefaultBuild\R_PG_SCI_C12.obj
+-input=DefaultBuild\R_PG_ADC_12_S12AD0.obj
+-input=DefaultBuild\Interrupt_INTC.obj
+-input=DefaultBuild\Interrupt_CMT.obj
+-input=DefaultBuild\Interrupt_ADC_12.obj
+-library=C:\Renesas\PDG2\lib\RX63N\RX63N_library_100_little.lib
+-noprelink
+-output=DefaultBuild\RX631_MCR_ver1.0.abs
+-list=DefaultBuild\RX631_MCR_ver1.0.map
+-show=symbol,total_size
+-nooptimize
+-start=B_1,R_1,B_2,R_2,B,R,SU,SI/04,PResetPRG/0FFE00000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/0FFE00100,FIXEDVECT/0FFFFFFD0
+-rom=D=R,D_1=R_1,D_2=R_2
+-nologo
+-end
+-input=DefaultBuild\RX631_MCR_ver1.0.abs
+-output=DefaultBuild\RX631_MCR_ver1.0.mot
+-form=stype
+-exit
+
+
+--- SHA1 hash value of output files ---
+C:\Users\kawauchikentarou\Downloads\RX631_MCR-master\RX631_MCR-master\DefaultBuild\RX631_MCR_ver1.0.abs: a1219f07cf1d0634e6277da4c331e34f050200fb
+C:\Users\kawauchikentarou\Downloads\RX631_MCR-master\RX631_MCR-master\DefaultBuild\RX631_MCR_ver1.0.mot: ae66cc5e02044ed6e7b8edf8656865eb737026d5
+
+
+--- システム情報 ---
+*OS バージョン
+ Microsoft Windows 10 Home (-, 10.0.19043, WOW64)
+*言語
+ 日本語 (日本)
+*.NET Framework バージョン
+ Microsoft .NET Framework 4 [.NET 4.6 or later] (4.0.30319.42000)
+
+--- アプリケーション情報 ---
+*製品名
+ CS+ for CC
+*パッケージ・バージョン
+ V8.07.00  [01 Dec 2021]
+*バージョン
+ V9.07.00.06 [15 Nov 2021]
+*アセンブリ・バージョン
+ 3.12.10.1
+*拠点情報
+ Japan
+*製品ライセンス
+ 
+*実行場所
+ C:\Program Files (x86)\Renesas Electronics\CS+\CC
+*メモリ使用量
+ *プライベート・ワーキング・セット
+  318 MB
+ *GDIオブジェクト数
+  2282
+ *USERオブジェクト数
+  1301
+ *開いているファイル
+  14 editors, 14 files, 104 KB
+
+--- ビルド・ツール・プラグイン情報 ---
+RH850ビルド・ツールCC-RH用プラグイン
+ *バージョン
+  V8.02.00.00 [25 Mar 2019]
+ *アセンブリ・バージョン
+  1.1.10.12
+ *DLL ファイル名
+  BuildToolCCRH.dll
+RL78ビルド・ツールCC-RL用プラグイン
+ *バージョン
+  V8.05.00.00 [08 Oct 2020]
+ *アセンブリ・バージョン
+  1.0.0.0
+ *DLL ファイル名
+  BuildToolCCRL.dll
+RXビルド・ツールCC-RX用プラグイン
+ *バージョン
+  V8.02.00.00 [25 Mar 2019]
+ *アセンブリ・バージョン
+  3.12.10.1
+ *DLL ファイル名
+  BuildToolCCRX.dll
+RH850ビルド・ツールGHS CCRH850用プラグイン
+ *バージョン
+  V1.05.00.00 [08 Oct 2020]
+ *アセンブリ・バージョン
+  1.0.0.0
+ *DLL ファイル名
+  BuildToolGHSCCRH850.dll
+
+--- デバッグ・ツール・プラグイン情報 ---
+デバッガ・コレクション・プラグイン
+ *バージョン
+  V8.07.00.05 [01 Dec 2021]
+ *アセンブリ・バージョン
+  2.12.10.1
+ *DLL ファイル名
+  DebugToolCollection.dll
+
+--- その他のプラグイン情報 ---
+RH850用コード生成
+ *バージョン
+  V1.02.02.05 [25 May 2018]
+ *アセンブリ・バージョン
+  1.0.0.0
+ *DLL ファイル名
+  CodeGeneratorRH850.dll
+コード生成プラグイン
+ *バージョン
+  V4.08.05.01 [14 Aug 2020]
+ *アセンブリ・バージョン
+  3.0.0.0
+ *DLL ファイル名
+  CodePart.dll
+コード生成／端子図プラグイン
+ *バージョン
+  V2.10.07.02 [08 Nov 2021]
+ *アセンブリ・バージョン
+  1.0.0.0
+ *DLL ファイル名
+  CodePart2.dll
+デバッグ・コンソール・プラグイン
+ *バージョン
+  V7.00.00.01 [06 Apr 2018]
+ *アセンブリ・バージョン
+  7.0.0.0
+ *DLL ファイル名
+  DebugConsole.dll
+Quick and Effective tool solution - QE
+ *バージョン
+  V9.06.00.04 [25 May 2021]
+ *アセンブリ・バージョン
+  1.15.10.16
+ *DLL ファイル名
+  InCarTools.dll
+端子配置プラグイン
+ *バージョン
+  V1.54.01.01 [31 Jul 2014]
+ *アセンブリ・バージョン
+  1.6.10.23
+ *DLL ファイル名
+  PinConfig.dll
+プログラム解析プラグイン
+ *バージョン
+  V4.12.00.01 [14 Apr 2021]
+ *アセンブリ・バージョン
+  3.12.11.9
+ *DLL ファイル名
+  ProgramAnalyzer.dll
+IronPythonコンソール・プラグイン
+ *バージョン
+  V1.43.00.02 [29 Oct 2021]
+ *アセンブリ・バージョン
+  1.6.10.23
+ *DLL ファイル名
+  PythonConsole.dll
+エディタ・パネル
+ *バージョン
+  V1.17.00.01 [15 Oct 2020]
+ *アセンブリ・バージョン
+  1.1.0.0
+ *DLL ファイル名
+  SEditor.dll
+スタック見積もりツール
+ *バージョン
+  V1.05.00.02 [30 Jul 2014]
+ *アセンブリ・バージョン
+  1.30.11.15
+ *DLL ファイル名
+  Stk.dll
+アップデート・マネージャ・プラグイン
+ *バージョン
+  V2.03.00.02 [29 Oct 2018]
+ *アセンブリ・バージョン
+  1.13.6.20
+ *DLL ファイル名
+  Update.dll
+
+デバッグ・ツール共通インタフェース
+ *バージョン
+  V8.07.00.05 [01 Dec 2021]
+ *アセンブリ・バージョン
+  3.12.10.1
+ *DLL ファイル名
+  CommonDebuggerInterface.dll
+デバイス情報共通インタフェース
+ *バージョン
+  V9.07.00.01 [14 Oct 2021]
+ *アセンブリ・バージョン
+  3.0.0.0
+ *DLL ファイル名
+  DeviceInformation.dll
+
+--- メイン・プロジェクト情報 ---
+C:\Users\kawauchikentarou\Downloads\RX631_MCR-master\RX631_MCR-master\RX631_MCR_ver1.0.mtpj
+マイクロコントローラ情報
+ *R5F5631FDxFP
+  *ファイル名: バージョン
+   RX_Productlist.xml: V3.080000
+   R5F5631FDxFP_common.xml: V3.08.00
+   -: -
+   -: -
+   RX63N.ddi: 1.80A
+  
+
+ビルド・ツール情報
+ *CC-RX
+   * プラグイン(*.dll)のバージョン
+     V8.07.00.03 [11 Nov 2021]
+   * コンパイラ・パッケージのバージョン
+     V3.04.00
+  
+
+デバッグ・ツール情報
+ *RX シミュレータ
+  Debugger Library V8.07.00.05 [01 Dec 2021]
+  
+
+その他のツール情報
+ *なし
+
+ *なし
+
+ *なし
+
+ *なし
+
+ *プログラム解析
+  *バージョン
+   V4.12.00.01 [14 Apr 2021]
+
+ *なし
+
+
