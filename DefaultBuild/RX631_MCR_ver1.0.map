@@ -1,0 +1,3140 @@
+Renesas Optimizing Linker (W3.03.00 )             14-Aug-2022 16:23:00
+
+*** Options ***
+
+-subcommand=DefaultBuild\RX631_MCR_ver1.0.clnk
+-library=DefaultBuild\RX631_MCR_ver1.0.lib
+-input=DefaultBuild\dbsct.obj
+-input=DefaultBuild\lowsrc.obj
+-input=DefaultBuild\resetprg.obj
+-input=DefaultBuild\sbrk.obj
+-input=DefaultBuild\E2dataFlash.obj
+-input=DefaultBuild\hwsetup.obj
+-input=DefaultBuild\AQM0802A.obj
+-input=DefaultBuild\control.obj
+-input=DefaultBuild\main.obj
+-input=DefaultBuild\ICM20648.obj
+-input=DefaultBuild\memorrytrace.obj
+-input=DefaultBuild\microSD.obj
+-input=DefaultBuild\sci.obj
+-input=DefaultBuild\setup.obj
+-input=DefaultBuild\mtu.obj
+-input=DefaultBuild\ADconverter.obj
+-input=DefaultBuild\io.obj
+-input=DefaultBuild\R_PG_Clock.obj
+-input=DefaultBuild\R_PG_IO_PORT.obj
+-input=DefaultBuild\R_PG_IO_PORT_P0.obj
+-input=DefaultBuild\R_PG_IO_PORT_P1.obj
+-input=DefaultBuild\R_PG_IO_PORT_P2.obj
+-input=DefaultBuild\R_PG_IO_PORT_P3.obj
+-input=DefaultBuild\R_PG_IO_PORT_P4.obj
+-input=DefaultBuild\R_PG_IO_PORT_P5.obj
+-input=DefaultBuild\R_PG_IO_PORT_PA.obj
+-input=DefaultBuild\R_PG_IO_PORT_PB.obj
+-input=DefaultBuild\R_PG_IO_PORT_PC.obj
+-input=DefaultBuild\R_PG_IO_PORT_PD.obj
+-input=DefaultBuild\R_PG_IO_PORT_PE.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C0.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C1.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C2.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C3.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0_C4.obj
+-input=DefaultBuild\R_PG_Timer_MTU_U0.obj
+-input=DefaultBuild\R_PG_Timer_CMT_U0.obj
+-input=DefaultBuild\R_PG_Timer_CMT_U1.obj
+-input=DefaultBuild\R_PG_SCI_C2.obj
+-input=DefaultBuild\R_PG_SCI_C5.obj
+-input=DefaultBuild\R_PG_SCI_C9.obj
+-input=DefaultBuild\R_PG_ADC_12_S12AD0.obj
+-input=DefaultBuild\Interrupt_INTC.obj
+-input=DefaultBuild\Interrupt_CMT.obj
+-input=DefaultBuild\Interrupt_ADC_12.obj
+-input=DefaultBuild\R_PG_SCI_C12.obj
+-library=C:\Renesas\PDG2\lib\RX63N\RX63N_library_100_little.lib
+-noprelink
+-output=DefaultBuild\RX631_MCR_ver1.0.abs
+-list=DefaultBuild\RX631_MCR_ver1.0.map
+-show=symbol,total_size
+-nooptimize
+-start=B_1,R_1,B_2,R_2,B,R,SU,SI/04,PResetPRG/0FFE00000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/0FFE00100,FIXEDVECT/0FFFFFFD0
+-rom=D=R,D_1=R_1,D_2=R_2
+-nologo
+-end
+
+*** Error information ***
+
+W0561100:Cannot find "PIntPRG" specified in option "start"
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+B_1
+                                  00000004  000011c4      11c1   1
+R_1
+                                  000011c5  00001235        71   1
+B_2
+                                  00001236  00001b27       8f2   2
+R_2
+                                  00001b28  00001b3f        18   2
+B
+                                  00001b40  000034d7      1998   4
+R
+                                  000034d8  0000389f       3c8   4
+SU
+                                  000038a0  0000399f       100   4
+SI
+                                  000039a0  00003c9f       300   4
+PResetPRG
+                                  ffe00000  ffe0003c        3d   1
+C_1
+                                  ffe00100  ffe00211       112   1
+C_2
+                                  ffe00212  ffe0041b       20a   2
+C
+                                  ffe0041c  ffe00573       158   4
+C$DSEC
+                                  ffe00574  ffe00597        24   4
+C$BSEC
+                                  ffe00598  ffe005af        18   4
+C$INIT
+                                  ffe005b0  ffe005b0         0   1
+C$VTBL
+                                  ffe005b0  ffe005b0         0   1
+C$VECT
+                                  ffe005b0  ffe009af       400   4
+D_1
+                                  ffe009b0  ffe00a20        71   1
+D_2
+                                  ffe00a22  ffe00a39        18   2
+D
+                                  ffe00a3c  ffe00e03       3c8   4
+P
+                                  ffe00e04  ffe1647f     1567c   1
+W_1
+                                  ffe16480  ffe164a3        24   1
+W_2
+                                  ffe164a4  ffe165c3       120   2
+W
+                                  ffe165c4  ffe165c4         0   4
+L
+                                  ffe165c4  ffe17330       d6d   4
+$ADDR_C_FFFFFF80
+                                  ffffff80  ffffff83         4   1
+$ADDR_C_FFFFFFA0
+                                  ffffffa0  ffffffaf        10   1
+FIXEDVECT
+                                  ffffffd0  ffffffff        30   4
+
+*** Total Section Size ***
+
+RAMDATA SECTION:  00003c9c Byte(s)
+ROMDATA SECTION:  00001bf6 Byte(s)
+PROGRAM SECTION:  000156b9 Byte(s)
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=B_1
+FILE=DefaultBuild\lowsrc.obj
+                                  00000004  00000009         6
+  _flmod
+                                  00000004         3   data ,g         * 
+  _sml_buf
+                                  00000007         3   data ,g         * 
+FILE=DefaultBuild\AQM0802A.obj
+                                  0000000a  00000023        1a
+  _buffLcdData
+                                  0000000a         8   data ,l         * 
+  _buffLcdData2
+                                  00000012        12   data ,l         * 
+FILE=DefaultBuild\control.obj
+                                  00000024  00000037        14
+  _modeSlope
+                                  00000024         1   data ,g         * 
+  _modeAngle
+                                  00000025         1   data ,g         * 
+  _modePushcart
+                                  00000026         1   data ,g         * 
+  _msdset
+                                  00000027         1   data ,g         * 
+  _ServoPwm
+                                  00000028         1   data ,g         * 
+  _DevBefore
+                                  00000029         1   data ,g         * 
+  _ServoPwm2
+                                  0000002a         1   data ,g         * 
+  _AngleBefore3
+                                  0000002b         1   data ,g         * 
+  _motorPwm
+                                  0000002c         1   data ,g         * 
+  _AccelefBefore
+                                  0000002d         1   data ,g         * 
+  _demo
+                                  0000002e         1   data ,g         * 
+  _kp_buff
+                                  0000002f         1   data ,g         * 
+  _ki_buff
+                                  00000030         1   data ,g         * 
+  _kd_buff
+                                  00000031         1   data ,g         * 
+  _kp2_buff
+                                  00000032         1   data ,g         * 
+  _ki2_buff
+                                  00000033         1   data ,g         * 
+  _kd2_buff
+                                  00000034         1   data ,g         * 
+  _kp3_buff
+                                  00000035         1   data ,g         * 
+  _ki3_buff
+                                  00000036         1   data ,g         * 
+  _kd3_buff
+                                  00000037         1   data ,g         * 
+FILE=DefaultBuild\main.obj
+                                  00000038  0000003b         4
+  _modeCurve
+                                  00000038         1   data ,g         * 
+  _modeError
+                                  00000039         1   data ,g         * 
+  _modeAutoMotor
+                                  0000003a         1   data ,g         * 
+  _Timer10
+                                  0000003b         1   data ,l         * 
+FILE=DefaultBuild\ICM20648.obj
+                                  0000003c  0000003f         4
+  _who_am_i
+                                  0000003c         1   data ,g         * 
+  _ret
+                                  0000003d         1   data ,g         * 
+  _imuflag
+                                  0000003e         1   data ,g         * 
+  _caribration
+                                  0000003f         1   data ,g         * 
+FILE=DefaultBuild\memorrytrace.obj
+                                  00000040  00000a03       9c4
+  _comp_char
+                                  00000040       3e8   data ,g         * 
+  _flag
+                                  00000428       3e8   data ,g         * 
+  _cntmpattern
+                                  00000810       1f4   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  00000a04  00000e84       481
+  _msdlibBuff
+                                  00000a04       280   data ,l         * 
+  _msdlibError
+                                  00000c84         1   data ,g         * 
+  _msdBuff
+                                  00000c85       200   data ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  00000e85  0000118a       306
+  _modeSCI1
+                                  00000e85         1   data ,g         * 
+  _txtCommand
+                                  00000e86        80   data ,g         * 
+  _txtData
+                                  00000f06        80   data ,g         * 
+  _SCI1_Req_mode
+                                  00000f86         1   data ,g         * 
+  _SCI1_RW_mode
+                                  00000f87         1   data ,g         * 
+  _SCI1_Slaveaddr
+                                  00000f88         1   data ,g         * 
+  _SCI1_NumData
+                                  00000f89         1   data ,g         * 
+  _SCI1_DataBuff
+                                  00000f8a        ff   data ,g         * 
+  _SCI12_Slaveaddr
+                                  00001089         1   data ,g         * 
+  _SCI12_NumData
+                                  0000108a         1   data ,g         * 
+  _SCI1_NumData2
+                                  0000108b         1   data ,g         * 
+  _SCI12_DataBuff
+                                  0000108c        ff   data ,g         * 
+FILE=DefaultBuild\setup.obj
+                                  0000118b  00001196         c
+  _start
+                                  0000118b         1   data ,g         * 
+  _setting_1meter
+                                  0000118c         1   data ,g         * 
+  _setting_2meter
+                                  0000118d         1   data ,g         * 
+  _setting_3meter
+                                  0000118e         1   data ,g         * 
+  _str
+                                  0000118f         8   data ,g         * 
+FILE=DefaultBuild\mtu.obj
+                                  00001197  0000119b         5
+  _accele_fR
+                                  00001197         1   data ,g         * 
+  _accele_fL
+                                  00001198         1   data ,g         * 
+  _accele_rR
+                                  00001199         1   data ,g         * 
+  _accele_rL
+                                  0000119a         1   data ,g         * 
+  _sPwm
+                                  0000119b         1   data ,g         * 
+FILE=DefaultBuild\ADconverter.obj
+                                  0000119c  0000119c         1
+  _ADTimer10
+                                  0000119c         1   data ,l         * 
+FILE=DefaultBuild\io.obj
+                                  0000119d  000011a5         9
+  _dpsw_d
+                                  0000119d         4   data ,l         * 
+  _tasw_d
+                                  000011a1         5   data ,l         * 
+FILE=globals_ADC_12
+                                  000011a6  000011a6         1
+  _rpdl_adcsr_store
+                                  000011a6         1   data ,g         * 
+FILE=globals_CMT
+                                  000011a7  000011aa         4
+  _rpdl_CMT_one_shot
+                                  000011a7         4   data ,g         * 
+FILE=globals_INTC
+                                  000011ab  000011ac         2
+  _rpdl_INTC_brk_command
+                                  000011ab         1   data ,g         * 
+  _rpdl_INTC_brk_data8
+                                  000011ac         1   data ,g         * 
+FILE=globals_MTU2
+                                  000011ad  000011ad         1
+  _rpdl_MTU2_tmdr_copy
+                                  000011ad         1   data ,g         * 
+FILE=globals_SPI
+                                  000011ae  000011b7         a
+  _rpdl_SPI_method
+                                  000011ae         2   data ,g         * 
+  _rpdl_SPI_tx_frame_counter
+                                  000011b0         2   data ,g         * 
+  _rpdl_SPI_frame_total
+                                  000011b2         2   data ,g         * 
+  _rpdl_SPI_rx_frame_counter
+                                  000011b4         2   data ,g         * 
+  _rpdl_SPI_spcr_copy
+                                  000011b6         2   data ,g         * 
+FILE=globals_TPU
+                                  000011b8  000011bd         6
+  _rpdl_TPU_tgra_dmac_channel
+                                  000011b8         6   data ,g         * 
+FILE=globals_ADC_10
+                                  000011be  000011bf         2
+  _rpdl_adcsr0_copy
+                                  000011be         1   data ,g         * 
+  _rpdl_adcr0_copy
+                                  000011bf         1   data ,g         * 
+FILE=globals_CGC
+                                  000011c0  000011c4         5
+  _rpdl_CGC_bckcr_copy
+                                  000011c0         5   data ,g         * 
+
+SECTION=R_1
+FILE=DefaultBuild\control.obj
+                                  000011c5  000011c6         2
+  _modeLCD
+                                  000011c5         1   data ,g         * 
+  _IMUSet
+                                  000011c6         1   data ,g         * 
+FILE=DefaultBuild\main.obj
+                                  000011c7  000011c7         1
+  _pattern
+                                  000011c7         1   data ,g         * 
+FILE=DefaultBuild\memorrytrace.obj
+                                  000011c8  000011c9         2
+  _mpattern
+                                  000011c8         1   data ,g         * 
+  _memory_mode
+                                  000011c9         1   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  000011ca  000011ca         1
+  _interrupt_msd_send_data
+                                  000011ca         1   data ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  000011cb  000011cf         5
+  _revErr
+                                  000011cb         1   data ,g         * 
+  _cmmandMode
+                                  000011cc         1   data ,g         * 
+  _stopWord
+                                  000011cd         1   data ,g         * 
+  _command
+                                  000011ce         1   data ,g         * 
+  _SCI12_Req_mode
+                                  000011cf         1   data ,g         * 
+FILE=DefaultBuild\setup.obj
+                                  000011d0  000011e4        15
+  _pushLR
+                                  000011d0         1   data ,g         * 
+  _pushUD
+                                  000011d1         1   data ,g         * 
+  _push
+                                  000011d2         1   data ,g         * 
+  _push1
+                                  000011d3         1   data ,g         * 
+  _pattern_sensor
+                                  000011d4         1   data ,g         * 
+  _pattern_parameter
+                                  000011d5         1   data ,g         * 
+  _pattern_parameter2
+                                  000011d6         1   data ,g         * 
+  _pattern_parameter3
+                                  000011d7         1   data ,g         * 
+  _pattern_parameter4
+                                  000011d8         1   data ,g         * 
+  _pattern_gain
+                                  000011d9         1   data ,g         * 
+  _pattern_gain2
+                                  000011da         1   data ,g         * 
+  _pattern_gain3
+                                  000011db         1   data ,g         * 
+  _pattern_speedseting
+                                  000011dc         1   data ,g         * 
+  _pattern_msd
+                                  000011dd         1   data ,g         * 
+  _pattern_flash
+                                  000011de         1   data ,g         * 
+  _pattern_scanf
+                                  000011df         1   data ,g         * 
+  _motor_test
+                                  000011e0         1   data ,g         * 
+  _servo_test
+                                  000011e1         1   data ,g         * 
+  _servo_test2
+                                  000011e2         1   data ,g         * 
+  _fixSpeed
+                                  000011e3         1   data ,g         * 
+  _motorTestPwm
+                                  000011e4         1   data ,g         * 
+FILE=xfiles
+                                  000011e5  00001234        50
+  _ebuf
+                                  000011e5        50   data ,l         * 
+FILE=xstate
+                                  00001235  00001235         1
+  __Mbcurmax
+                                  00001235         1   data ,g         * 
+
+SECTION=B_2
+FILE=DefaultBuild\E2dataFlash.obj
+                                  00001236  00001291        5c
+  _cnt_flash
+                                  00001236         2   data ,g         * 
+  _flashDataBuff
+                                  00001238        5a   data ,g         * 
+FILE=DefaultBuild\control.obj
+                                  00001292  000012d1        40
+  _stopping_meter
+                                  00001292         2   data ,g         * 
+  _speed_straight
+                                  00001294         2   data ,g         * 
+  _speed_curve_brake
+                                  00001296         2   data ,g         * 
+  _speed_curve_r600
+                                  00001298         2   data ,g         * 
+  _speed_curve_r450
+                                  0000129a         2   data ,g         * 
+  _speed_curve_straight
+                                  0000129c         2   data ,g         * 
+  _speed_crossline
+                                  0000129e         2   data ,g         * 
+  _speed_ckank_trace
+                                  000012a0         2   data ,g         * 
+  _speed_rightclank_curve
+                                  000012a2         2   data ,g         * 
+  _speed_rightclank_escape
+                                  000012a4         2   data ,g         * 
+  _speed_leftclank_curve
+                                  000012a6         2   data ,g         * 
+  _speed_leftclank_escape
+                                  000012a8         2   data ,g         * 
+  _speed_halfine
+                                  000012aa         2   data ,g         * 
+  _speed_rightchange_trace
+                                  000012ac         2   data ,g         * 
+  _speed_rightchange_curve
+                                  000012ae         2   data ,g         * 
+  _speed_rightchange_escape
+                                  000012b0         2   data ,g         * 
+  _speed_leftchange_trace
+                                  000012b2         2   data ,g         * 
+  _speed_leftchange_curve
+                                  000012b4         2   data ,g         * 
+  _speed_leftchange_escape
+                                  000012b6         2   data ,g         * 
+  _speed_slope_brake
+                                  000012b8         2   data ,g         * 
+  _speed_slope_trace
+                                  000012ba         2   data ,g         * 
+  _angle_rightclank
+                                  000012bc         2   data ,g         * 
+  _angle_leftclank
+                                  000012be         2   data ,g         * 
+  _angle_rightchange
+                                  000012c0         2   data ,g         * 
+  _angle_leftchange
+                                  000012c2         2   data ,g         * 
+  _cntGyro
+                                  000012c4         2   data ,g         * 
+  _SensorBefore
+                                  000012c6         2   data ,g         * 
+  _SetAngle
+                                  000012c8         2   data ,g         * 
+  _SetAngleBefore
+                                  000012ca         2   data ,g         * 
+  _AngleBefore2
+                                  000012cc         2   data ,g         * 
+  _targetSpeed
+                                  000012ce         2   data ,g         * 
+  _EncoderBefore
+                                  000012d0         2   data ,g         * 
+FILE=DefaultBuild\main.obj
+                                  000012d2  000012d9         8
+  _cntOut1
+                                  000012d2         2   data ,g         * 
+  _cntOut2
+                                  000012d4         2   data ,g         * 
+  _cntOut3
+                                  000012d6         2   data ,g         * 
+  _cntOut4
+                                  000012d8         2   data ,g         * 
+FILE=DefaultBuild\ICM20648.obj
+                                  000012da  000012e5         c
+  _xa
+                                  000012da         2   data ,g         * 
+  _ya
+                                  000012dc         2   data ,g         * 
+  _za
+                                  000012de         2   data ,g         * 
+  _xg
+                                  000012e0         2   data ,g         * 
+  _yg
+                                  000012e2         2   data ,g         * 
+  _zg
+                                  000012e4         2   data ,g         * 
+FILE=DefaultBuild\memorrytrace.obj
+                                  000012e6  00001acb       7e6
+  _comp_short
+                                  000012e6       7d0   data ,g         * 
+  _cntp
+                                  00001ab6        14   data ,g         * 
+  _cntmpattern2
+                                  00001aca         2   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  00001acc  00001ad3         8
+  _msdlibMode
+                                  00001acc         2   data ,l         * 
+  _msdlibCnt
+                                  00001ace         2   data ,g         * 
+  _msdBuffaddress
+                                  00001ad0         2   data ,g         * 
+  _msdTimer
+                                  00001ad2         2   data ,g         * 
+FILE=DefaultBuild\setup.obj
+                                  00001ad4  00001add         a
+  _cntSetup1
+                                  00001ad4         2   data ,g         * 
+  _cntSetup2
+                                  00001ad6         2   data ,g         * 
+  _cntSetup3
+                                  00001ad8         2   data ,g         * 
+  _cntSwitchUD
+                                  00001ada         2   data ,g         * 
+  _cntSwitchLR
+                                  00001adc         2   data ,g         * 
+FILE=DefaultBuild\mtu.obj
+                                  00001ade  00001ae3         6
+  _cnt_Encoder
+                                  00001ade         2   data ,l         * 
+  _encbuff
+                                  00001ae0         2   data ,l         * 
+  _Encoder
+                                  00001ae2         2   data ,g         * 
+FILE=DefaultBuild\ADconverter.obj
+                                  00001ae4  00001b11        2e
+  _result
+                                  00001ae4        1c   data ,l         * 
+  _Angle
+                                  00001b00         2   data ,g         * 
+  _sensorR
+                                  00001b02         2   data ,g         * 
+  _sensorL
+                                  00001b04         2   data ,g         * 
+  _sensorG
+                                  00001b06         2   data ,g         * 
+  _sensorC
+                                  00001b08         2   data ,g         * 
+  _sensorLL
+                                  00001b0a         2   data ,g         * 
+  _sensorRR
+                                  00001b0c         2   data ,g         * 
+  _VoltageC
+                                  00001b0e         2   data ,g         * 
+  _Angle0
+                                  00001b10         2   data ,g         * 
+FILE=globals_SPI
+                                  00001b12  00001b1d         c
+  _rpdl_SPI_sequence_count
+                                  00001b12         4   data ,g         * 
+  _rpdl_SPI_tx_sequence_counter
+                                  00001b16         4   data ,g         * 
+  _rpdl_SPI_rx_sequence_counter
+                                  00001b1a         4   data ,g         * 
+FILE=globals_CGC
+                                  00001b1e  00001b27         a
+  _rpdl_CGC_sckcr2_copy
+                                  00001b1e         a   data ,g         * 
+
+SECTION=R_2
+FILE=DefaultBuild\control.obj
+                                  00001b28  00001b29         2
+  _cntStable
+                                  00001b28         2   data ,g         * 
+FILE=DefaultBuild\ICM20648.obj
+                                  00001b2a  00001b2f         6
+  _offset
+                                  00001b2a         6   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  00001b30  00001b31         2
+  _msdFlag
+                                  00001b30         2   data ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  00001b32  00001b33         2
+  _cntByte
+                                  00001b32         2   data ,g         * 
+FILE=DefaultBuild\setup.obj
+                                  00001b34  00001b35         2
+  _cnttest
+                                  00001b34         2   data ,g         * 
+FILE=DefaultBuild\ADconverter.obj
+                                  00001b36  00001b37         2
+  _sensorG_th
+                                  00001b36         2   data ,g         * 
+FILE=utilities_common
+                                  00001b38  00001b3f         8
+  _rpdl_RWP_PRCR_enable_counter
+                                  00001b38         6   data ,l         * 
+  _rpdl_MPC_PWPR_enable_counter
+                                  00001b3e         2   data ,l         * 
+
+SECTION=B
+FILE=DefaultBuild\lowsrc.obj
+                                  00001b40  00001b4b         c
+  __Files
+                                  00001b40         c   data ,g         * 
+FILE=DefaultBuild\sbrk.obj
+                                  00001b4c  00001f4b       400
+  _heap_area
+                                  00001b4c       400   data ,l         * 
+FILE=DefaultBuild\E2dataFlash.obj
+                                  00001f4c  00001f53         8
+  _beforeAddr
+                                  00001f4c         4   data ,g         * 
+  _nowAddr
+                                  00001f50         4   data ,g         * 
+FILE=DefaultBuild\AQM0802A.obj
+                                  00001f54  00001f5f         c
+  _lcdBuffPosition
+                                  00001f54         4   data ,l         * 
+  _lcdNowLocate
+                                  00001f58         4   data ,l         * 
+  _lcdRefreshFlag
+                                  00001f5c         4   data ,l         * 
+FILE=DefaultBuild\control.obj
+                                  00001f60  00001f93        34
+  _TurningAngleEnc
+                                  00001f60         8   data ,g         * 
+  _PichAngleAD
+                                  00001f68         8   data ,g         * 
+  _gyVoltageBefore
+                                  00001f70         8   data ,g         * 
+  _Int
+                                  00001f78         8   data ,g         * 
+  _Int2
+                                  00001f80         8   data ,g         * 
+  _targetSpeedBefore
+                                  00001f88         4   data ,g         * 
+  _Int3
+                                  00001f8c         8   data ,g         * 
+FILE=DefaultBuild\main.obj
+                                  00001f94  00001f9b         8
+  _cnt1
+                                  00001f94         4   data ,g         * 
+  _correct_angle
+                                  00001f98         4   data ,g         * 
+FILE=DefaultBuild\ICM20648.obj
+                                  00001f9c  00001fb3        18
+  _TurningAngleIMU
+                                  00001f9c         8   data ,g         * 
+  _RollAngleIMU
+                                  00001fa4         8   data ,g         * 
+  _PichAngleIMU
+                                  00001fac         8   data ,g         * 
+FILE=DefaultBuild\memorrytrace.obj
+                                  00001fb4  00002f53       fa0
+  _comp_uint
+                                  00001fb4       fa0   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  00002f54  00002fd3        80
+  _msdlibWrite
+                                  00002f54         4   data ,l         * 
+  _msdSize
+                                  00002f58         4   data ,l         * 
+  _msdStartaddress
+                                  00002f5c         4   data ,g         * 
+  _msdEndaddress
+                                  00002f60         4   data ,g         * 
+  _msdWorkaddress
+                                  00002f64         4   data ,g         * 
+  _msdWorkaddress2
+                                  00002f68         4   data ,g         * 
+  _msdBuffPointa
+                                  00002f6c         4   data ,g         * 
+  _msdaddrBuff
+                                  00002f70        64   data ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  00002fd4  00002fdf         c
+  _SCI1_DataArry
+                                  00002fd4         4   data ,g         * 
+  _SCI12_DataArry
+                                  00002fd8         4   data ,g         * 
+  _SCI1_DataArry2
+                                  00002fdc         4   data ,g         * 
+FILE=DefaultBuild\mtu.obj
+                                  00002fe0  00002feb         c
+  _EncoderTotal
+                                  00002fe0         4   data ,g         * 
+  _enc1
+                                  00002fe4         4   data ,g         * 
+  _enc_slope
+                                  00002fe8         4   data ,g         * 
+FILE=DefaultBuild\ADconverter.obj
+                                  00002fec  00003013        28
+  _senR
+                                  00002fec         4   data ,l         * 
+  _senL
+                                  00002ff0         4   data ,l         * 
+  _senG
+                                  00002ff4         4   data ,l         * 
+  _senC
+                                  00002ff8         4   data ,l         * 
+  _senLL
+                                  00002ffc         4   data ,l         * 
+  _senRR
+                                  00003000         4   data ,l         * 
+  _VolC
+                                  00003004         4   data ,l         * 
+  _pot
+                                  00003008         4   data ,l         * 
+  _Voltage
+                                  0000300c         8   data ,g         * 
+FILE=globals_ADC_12
+                                  00003014  00003017         4
+  _rpdl_ADC_12_callback_func
+                                  00003014         4   data ,g         * 
+FILE=globals_CMT
+                                  00003018  00003027        10
+  _rpdl_CMT_callback_func
+                                  00003018        10   data ,g         * 
+FILE=globals_INTC
+                                  00003028  0000302b         4
+  _rpdl_INTC_saved_isp
+                                  00003028         4   data ,g         * 
+FILE=globals_MTU2
+                                  0000302c  000030eb        c0
+  _rpdl_MTU2_func1_callback_func
+                                  0000302c        18   data ,g         * 
+  _rpdl_MTU2_func2_callback_func
+                                  00003044        18   data ,g         * 
+  _rpdl_MTU2_func3_callback_func
+                                  0000305c        18   data ,g         * 
+  _rpdl_MTU2_func4_callback_func
+                                  00003074        18   data ,g         * 
+  _rpdl_MTU2_TGRE_callback_func
+                                  0000308c        18   data ,g         * 
+  _rpdl_MTU2_TGRF_callback_func
+                                  000030a4        18   data ,g         * 
+  _rpdl_MTU2_Overflow_callback_func
+                                  000030bc        18   data ,g         * 
+  _rpdl_MTU2_Underflow_callback_func
+                                  000030d4        18   data ,g         * 
+FILE=globals_SCI
+                                  000030ec  0000335b       270
+  _sci_global
+                                  000030ec       270   data ,g         * 
+FILE=globals_SPI
+                                  0000335c  0000336b        10
+  _rpdl_SPI_tx_ptr
+                                  0000335c         8   data ,g         * 
+  _rpdl_SPI_rx_ptr
+                                  00003364         8   data ,g         * 
+FILE=_errno
+                                  0000336c  0000336f         4
+  __errno
+                                  0000336c         4   data ,g         * 
+FILE=globals_ADC_10
+                                  00003370  00003373         4
+  _rpdl_ADC_10_callback_func
+                                  00003370         4   data ,g         * 
+FILE=globals_CGC
+                                  00003374  000034d7       164
+  _rpdl_CGC_f_iclk
+                                  00003374         8   data ,g         * 
+  _rpdl_CGC_f_pclka
+                                  0000337c         8   data ,g         * 
+  _rpdl_CGC_f_pclkb
+                                  00003384         8   data ,g         * 
+  _rpdl_CGC_f_fclk
+                                  0000338c         8   data ,g         * 
+  _rpdl_CGC_f_bclk
+                                  00003394         8   data ,g         * 
+  _rpdl_CGC_f_ieclk
+                                  0000339c         8   data ,g         * 
+  _rpdl_CGC_f_uclk
+                                  000033a4         8   data ,g         * 
+  _rpdl_CGC_f_iclk_storage
+                                  000033ac        28   data ,g         * 
+  _rpdl_CGC_f_pclka_storage
+                                  000033d4        28   data ,g         * 
+  _rpdl_CGC_f_pclkb_storage
+                                  000033fc        28   data ,g         * 
+  _rpdl_CGC_f_fclk_storage
+                                  00003424        28   data ,g         * 
+  _rpdl_CGC_f_bclk_storage
+                                  0000344c        28   data ,g         * 
+  _rpdl_CGC_f_ieclk_storage
+                                  00003474        28   data ,g         * 
+  _rpdl_CGC_f_uclk_storage
+                                  0000349c        28   data ,g         * 
+  _rpdl_CGC_sckcr_copy
+                                  000034c4        14   data ,g         * 
+
+SECTION=R
+FILE=DefaultBuild\lowsrc.obj
+                                  000034d8  000034eb        14
+  _env_list
+                                  000034d8        10   data ,g         * 
+  _environ
+                                  000034e8         4   data ,g         * 
+FILE=DefaultBuild\sbrk.obj
+                                  000034ec  000034ef         4
+  _brk
+                                  000034ec         4   data ,l         * 
+FILE=DefaultBuild\AQM0802A.obj
+                                  000034f0  000034f3         4
+  _lcdMode2
+                                  000034f0         4   data ,l         * 
+FILE=DefaultBuild\control.obj
+                                  000034f4  000034fb         8
+  _stableSpeed
+                                  000034f4         4   data ,g         * 
+  _encStable
+                                  000034f8         4   data ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  000034fc  000034ff         4
+  _cnt_log
+                                  000034fc         4   data ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  00003500  00003503         4
+  _txt
+                                  00003500         4   data ,g         * 
+FILE=xfiles
+                                  00003504  000035db        d8
+  __Stdin
+                                  00003504        48   data ,g         * 
+  __Stdout
+                                  0000354c        48   data ,g         * 
+  __Stderr
+                                  00003594        48   data ,g         * 
+FILE=globals_INTC
+                                  000035dc  00003653        78
+  _rpdl_INTC_callback_func
+                                  000035dc        58   data ,g         * 
+  _rpdl_INTC_group_callback_func
+                                  00003634        20   data ,g         * 
+FILE=globals_SPI
+                                  00003654  00003663        10
+  _rpdl_SPI_event_callback_func
+                                  00003654         8   data ,g         * 
+  _rpdl_SPI_error_callback_func
+                                  0000365c         8   data ,g         * 
+FILE=globals_TPU
+                                  00003664  000036f3        90
+  _rpdl_TPU_TGRA_callback_func
+                                  00003664        18   data ,g         * 
+  _rpdl_TPU_TGRB_callback_func
+                                  0000367c        18   data ,g         * 
+  _rpdl_TPU_TGRC_callback_func
+                                  00003694        18   data ,g         * 
+  _rpdl_TPU_TGRD_callback_func
+                                  000036ac        18   data ,g         * 
+  _rpdl_TPU_Overflow_callback_func
+                                  000036c4        18   data ,g         * 
+  _rpdl_TPU_Underflow_callback_func
+                                  000036dc        18   data ,g         * 
+FILE=xprintf
+                                  000036f4  000036f7         4
+  _stderr
+                                  000036f4         4   data ,g         * 
+FILE=globals_CGC
+                                  000036f8  0000372f        38
+  _rpdl_CGC_f_source_clock
+                                  000036f8        30   data ,g         * 
+  _rpdl_cgc_set_done
+                                  00003728         4   data ,g         * 
+  _rpdl_cgc_pclkb_fchk_en
+                                  0000372c         4   data ,g         * 
+FILE=xctype
+                                  00003730  00003737         8
+  __Ctype
+                                  00003730         4   data ,g         * 
+  __Tls_setup__Ctype
+                                  00003734         4   data ,g         * 
+FILE=malloc
+                                  00003738  0000373f         8
+  __Aldata
+                                  00003738         8   data ,g         * 
+FILE=xstate
+                                  00003740  00003787        48
+  __Tls_setup__Mbcurmax
+                                  00003740         4   data ,g         * 
+  __Mbstate
+                                  00003744        40   data ,g         * 
+  __Tls_setup__Mbstate
+                                  00003784         4   data ,g         * 
+FILE=localeco
+                                  00003788  000037db        54
+  __Locale
+                                  00003788        50   data ,g         * 
+  __Tls_setup__Locale
+                                  000037d8         4   data ,g         * 
+FILE=xwcstate
+                                  000037dc  0000381f        44
+  __Wcstate
+                                  000037dc        40   data ,g         * 
+  __Tls_setup__Wcstate
+                                  0000381c         4   data ,g         * 
+FILE=xvalues
+                                  00003820  0000389f        80
+  __Denorm
+                                  00003820        10   data ,g         * 
+  __Eps
+                                  00003830        10   data ,g         * 
+  __Hugeval
+                                  00003840        10   data ,g         * 
+  __Inf
+                                  00003850        10   data ,g         * 
+  __Nan
+                                  00003860        10   data ,g         * 
+  __Snan
+                                  00003870        10   data ,g         * 
+  __Rteps
+                                  00003880        10   data ,g         * 
+  __Xbig
+                                  00003890         8   data ,g         * 
+  __Zero
+                                  00003898         8   data ,g         * 
+
+SECTION=SU
+FILE=DefaultBuild\resetprg.obj
+                                  000038a0  0000399f       100
+
+SECTION=SI
+FILE=DefaultBuild\resetprg.obj
+                                  000039a0  00003c9f       300
+
+SECTION=PResetPRG
+FILE=DefaultBuild\resetprg.obj
+                                  ffe00000  ffe0003c        3d
+  _PowerON_Reset_PC
+                                  ffe00000        3d   entry,g         * 
+
+SECTION=C_1
+FILE=globals_MTU2
+                                  ffe00100  ffe00104         5
+  _rpdl_MTU2_TSTR_mask
+                                  ffe00100         5   data ,g         * 
+FILE=globals_SCI
+                                  ffe00105  ffe00108         4
+  _rpdl_SCI_div_value
+                                  ffe00105         4   data ,g         * 
+FILE=globals_TPU
+                                  ffe00109  ffe0010e         6
+  _rpdl_TPU_gcr_mask
+                                  ffe00109         6   data ,g         * 
+FILE=xprintf
+                                  ffe0010f  ffe00118         a
+  _fchar$1
+                                  ffe0010f         a   data ,l         * 
+FILE=globals_ADC_10
+                                  ffe00119  ffe0011c         4
+  _rpdl_ADC_10_div_value
+                                  ffe00119         4   data ,g         * 
+FILE=globals_CGC
+                                  ffe0011d  ffe00149        2d
+  _rpdl_CGC_PLL_divider_values
+                                  ffe0011d         3   data ,g         * 
+  _rpdl_CGC_PLL_multiplier_values
+                                  ffe00120         8   data ,g         * 
+  _rpdl_CGC_SCKCR_divider_values
+                                  ffe00128         7   data ,g         * 
+  _rpdl_CGC_IEBCK_divider_values
+                                  ffe0012f         d   data ,g         * 
+  _rpdl_CGC_UCK_divider_values
+                                  ffe0013c         4   data ,g         * 
+  _rpdl_CGC_SCKCR_offsets
+                                  ffe00140         5   data ,g         * 
+  _rpdl_CGC_source_f_lookup
+                                  ffe00145         5   data ,g         * 
+FILE=xputtxt
+                                  ffe0014a  ffe001ee        a5
+  _spaces
+                                  ffe0014a        21   data ,l         * 
+  _zeroes
+                                  ffe0016b        21   data ,l         * 
+  _asterisk
+                                  ffe0018c        21   data ,l         * 
+  _plus
+                                  ffe001ad        21   data ,l         * 
+  _minus
+                                  ffe001ce        21   data ,l         * 
+FILE=xlitob
+                                  ffe001ef  ffe00210        22
+  _ldigs
+                                  ffe001ef        11   data ,l         * 
+  _udigs
+                                  ffe00200        11   data ,l         * 
+FILE=localeco
+                                  ffe00211  ffe00211         1
+  _null
+                                  ffe00211         1   data ,l         * 
+
+SECTION=C_2
+FILE=globals_CMT
+                                  ffe00212  ffe00219         8
+  _rpdl_CMT_div_value
+                                  ffe00212         8   data ,g         * 
+FILE=xctype
+                                  ffe0021a  ffe0041b       202
+  _ctyp_tab
+                                  ffe0021a       202   data ,l         * 
+
+SECTION=C
+FILE=DefaultBuild\dbsct.obj
+                                  ffe0041c  ffe0044f        34
+  __CTBL
+                                  ffe0041c        34   data ,g         * 
+FILE=_nfiles
+                                  ffe00450  ffe00453         4
+  __nfiles
+                                  ffe00450         4   data ,g         * 
+FILE=pi4dtable
+                                  ffe00454  ffe0046b        18
+  ___pi4d_tbl
+                                  ffe00454        18   data ,g         * 
+FILE=xfoprep
+                                  ffe0046c  ffe004b3        48
+  _init$1
+                                  ffe0046c        48   data ,l         * 
+FILE=xprintf
+                                  ffe004b4  ffe004cb        18
+  _fbit$2
+                                  ffe004b4        18   data ,l         * 
+FILE=xfopen
+                                  ffe004cc  ffe004db        10
+  _rwacc$1
+                                  ffe004cc        10   data ,l         * 
+FILE=floatval
+                                  ffe004dc  ffe00503        28
+  __FLT_MAX_VAL
+                                  ffe004dc         0   none ,g         * 
+  __FLT_MIN_VAL
+                                  ffe004e0         0   none ,g         * 
+  __DBL_MAX_VAL
+                                  ffe004e4         0   none ,g         * 
+  __DBL_MIN_VAL
+                                  ffe004ec         0   none ,g         * 
+  __LDBL_MAX_VAL
+                                  ffe004f4         0   none ,g         * 
+  __LDBL_MIN_VAL
+                                  ffe004fc         0   none ,g         * 
+FILE=_const
+                                  ffe00504  ffe00527        24
+  __IFNAND
+                                  ffe00504         0   none ,g         * 
+  __IFINFD
+                                  ffe0050c         0   none ,g         * 
+  __NIFINFD
+                                  ffe00514         0   none ,g         * 
+  __IFNANS
+                                  ffe0051c         0   none ,g         * 
+  __IFINFS
+                                  ffe00520         0   none ,g         * 
+  __NIFINFS
+                                  ffe00524         0   none ,g         * 
+FILE=xldtob
+                                  ffe00528  ffe0056f        48
+  _pows
+                                  ffe00528        48   data ,l         * 
+FILE=_sbrk_si
+                                  ffe00570  ffe00573         4
+  __sbrk_size
+                                  ffe00570         4   data ,g         * 
+
+SECTION=C$DSEC
+FILE=DefaultBuild\dbsct.obj
+                                  ffe00574  ffe00597        24
+  __DTBL
+                                  ffe00574        24   data ,g         * 
+
+SECTION=C$BSEC
+FILE=DefaultBuild\dbsct.obj
+                                  ffe00598  ffe005af        18
+  __BTBL
+                                  ffe00598        18   data ,g         * 
+
+SECTION=C$VECT
+FILE=DefaultBuild\dbsct.obj
+                                  ffe005b0  ffe009af       400
+
+SECTION=D_1
+FILE=DefaultBuild\control.obj
+                                  ffe009b0  ffe009b1         2
+FILE=DefaultBuild\main.obj
+                                  ffe009b2  ffe009b2         1
+FILE=DefaultBuild\memorrytrace.obj
+                                  ffe009b3  ffe009b4         2
+FILE=DefaultBuild\microSD.obj
+                                  ffe009b5  ffe009b5         1
+FILE=DefaultBuild\sci.obj
+                                  ffe009b6  ffe009ba         5
+FILE=DefaultBuild\setup.obj
+                                  ffe009bb  ffe009cf        15
+FILE=xfiles
+                                  ffe009d0  ffe00a1f        50
+FILE=xstate
+                                  ffe00a20  ffe00a20         1
+
+SECTION=D_2
+FILE=DefaultBuild\control.obj
+                                  ffe00a22  ffe00a23         2
+FILE=DefaultBuild\ICM20648.obj
+                                  ffe00a24  ffe00a29         6
+FILE=DefaultBuild\microSD.obj
+                                  ffe00a2a  ffe00a2b         2
+FILE=DefaultBuild\sci.obj
+                                  ffe00a2c  ffe00a2d         2
+FILE=DefaultBuild\setup.obj
+                                  ffe00a2e  ffe00a2f         2
+FILE=DefaultBuild\ADconverter.obj
+                                  ffe00a30  ffe00a31         2
+FILE=utilities_common
+                                  ffe00a32  ffe00a39         8
+
+SECTION=D
+FILE=DefaultBuild\lowsrc.obj
+                                  ffe00a3c  ffe00a4f        14
+FILE=DefaultBuild\sbrk.obj
+                                  ffe00a50  ffe00a53         4
+FILE=DefaultBuild\AQM0802A.obj
+                                  ffe00a54  ffe00a57         4
+FILE=DefaultBuild\control.obj
+                                  ffe00a58  ffe00a5f         8
+FILE=DefaultBuild\microSD.obj
+                                  ffe00a60  ffe00a63         4
+FILE=DefaultBuild\sci.obj
+                                  ffe00a64  ffe00a67         4
+FILE=xfiles
+                                  ffe00a68  ffe00b3f        d8
+FILE=globals_INTC
+                                  ffe00b40  ffe00bb7        78
+FILE=globals_SPI
+                                  ffe00bb8  ffe00bc7        10
+FILE=globals_TPU
+                                  ffe00bc8  ffe00c57        90
+FILE=xprintf
+                                  ffe00c58  ffe00c5b         4
+FILE=globals_CGC
+                                  ffe00c5c  ffe00c93        38
+FILE=xctype
+                                  ffe00c94  ffe00c9b         8
+FILE=malloc
+                                  ffe00c9c  ffe00ca3         8
+FILE=xstate
+                                  ffe00ca4  ffe00ceb        48
+FILE=localeco
+                                  ffe00cec  ffe00d3f        54
+FILE=xwcstate
+                                  ffe00d40  ffe00d83        44
+FILE=xvalues
+                                  ffe00d84  ffe00e03        80
+
+SECTION=P
+FILE=DefaultBuild\lowsrc.obj
+                                  ffe00e04  ffe00f8a       187
+  __INIT_IOLIB
+                                  ffe00e04        84   func ,g         * 
+  __CLOSEALL
+                                  ffe00e88        2a   func ,g         * 
+  _open
+                                  ffe00eb2        67   func ,g         * 
+  _close
+                                  ffe00f19         3   func ,g         * 
+  _write
+                                  ffe00f1c        37   func ,g         * 
+  _read
+                                  ffe00f53        34   func ,g         * 
+  _lseek
+                                  ffe00f87         4   func ,g         * 
+FILE=DefaultBuild\sbrk.obj
+                                  ffe00f8b  ffe00fab        21
+  _sbrk
+                                  ffe00f8b        21   func ,g         * 
+FILE=DefaultBuild\E2dataFlash.obj
+                                  ffe00fac  ffe01ed3       f28
+  _wait_flash
+                                  ffe00fac        26   func ,g         * 
+  _FirmWareCopy
+                                  ffe00fd2        39   func ,g         * 
+  _fcuCommandByte
+                                  ffe0100b         3   func ,g         * 
+  _fcuCommandWord
+                                  ffe0100e         3   func ,g         * 
+  _checkFRDY
+                                  ffe01011        4f   func ,g         * 
+  _checkErrorFlash
+                                  ffe01060        d9   func ,g         * 
+  _initFlash
+                                  ffe01139        9f   func ,g         * 
+  _changeFlashPE
+                                  ffe011d8        4d   func ,g         * 
+  _changeFlashRead
+                                  ffe01225        2f   func ,g         * 
+  _checkBlank
+                                  ffe01254       1c9   func ,g         * 
+  _eraseE2DataFlash
+                                  ffe0141d        79   func ,g         * 
+  _checkWriteAddr
+                                  ffe01496        83   func ,g         * 
+  _writeFlash
+                                  ffe01519        d6   func ,g         * 
+  _readFlashAddr
+                                  ffe015ef        28   func ,g         * 
+  _readFlashArray
+                                  ffe01617        3a   func ,g         * 
+  _readFlashArray2
+                                  ffe01651        6b   func ,g         * 
+  _readbeforeAddr
+                                  ffe016bc        64   func ,g         * 
+  _writeFlashData
+                                  ffe01720        54   func ,g         * 
+  _readFlashSetup
+                                  ffe01774       587   func ,g         * 
+  _writeFlashBeforeStart
+                                  ffe01cfb       1d9   func ,g         * 
+FILE=DefaultBuild\hwsetup.obj
+                                  ffe01ed4  ffe01f68        95
+  _HardwareSetup
+                                  ffe01ed4        95   func ,g         * 
+FILE=DefaultBuild\AQM0802A.obj
+                                  ffe01f69  ffe021c3       25b
+  _lcdPut
+                                  ffe01f69        17   func ,g         * 
+  _lcdCMD
+                                  ffe01f80        17   func ,g         * 
+  _waitLcd
+                                  ffe01f97        26   func ,g         * 
+  _intiLcd
+                                  ffe01fbd        6e   func ,g         * 
+  _lcdLocate
+                                  ffe0202b        2e   func ,l         * 
+  _lcdShowProcess
+                                  ffe02059        84   func ,g         * 
+  _lcdPrintf
+                                  ffe020dd        5e   func ,g         * 
+  _lcdPosition
+                                  ffe0213b        17   func ,g         * 
+  _lcdRowPrintf
+                                  ffe02152        72   func ,g         * 
+FILE=DefaultBuild\control.obj
+                                  ffe021c4  ffe028c5       702
+  _checkCrossLine
+                                  ffe021c4         a   func ,g         * 
+  _checkRightLine
+                                  ffe021ce         a   func ,g         * 
+  _checkLeftLine
+                                  ffe021d8         a   func ,g         * 
+  _checkSlope
+                                  ffe021e2        3e   func ,g         * 
+  _encMM
+                                  ffe02220        1e   func ,g         * 
+  _stableSpeedDistance
+                                  ffe0223e        3f   func ,g         * 
+  _servoControlTrace
+                                  ffe0227d        ff   func ,g         * 
+  _servoControlAngle
+                                  ffe0237c       105   func ,g         * 
+  _diff
+                                  ffe02481        a1   func ,g         * 
+  _motorControl
+                                  ffe02522        b4   func ,g         * 
+  _getLinePositionNow
+                                  ffe025d6        fe   func ,g         * 
+  _getLinePositionAfter
+                                  ffe026d4       1c0   func ,g         * 
+  _getReturnAngle
+                                  ffe02894        32   func ,g         * 
+FILE=DefaultBuild\main.obj
+                                  ffe028c6  ffe03a48      1183
+  _main
+                                  ffe028c6       dfd   func ,g         * 
+  _Timer
+                                  ffe036c3       30f   func ,g         * 
+  _initParameter
+                                  ffe039d2        77   func ,g         * 
+FILE=DefaultBuild\ICM20648.obj
+                                  ffe03a49  ffe03d3a       2f2
+  _readByte
+                                  ffe03a49        34   func ,g         * 
+  _writeByte
+                                  ffe03a7d        35   func ,g         * 
+  _readArry
+                                  ffe03ab2        33   func ,g         * 
+  _initIMU
+                                  ffe03ae5        58   func ,g         * 
+  _caribrateIMU
+                                  ffe03b3d        b5   func ,g         * 
+  _readGyroData
+                                  ffe03bf2        3a   func ,g         * 
+  _readAccelData
+                                  ffe03c2c        3a   func ,g         * 
+  _getTurningAngleIMU
+                                  ffe03c66        47   func ,g         * 
+  _getRollAngleIMU
+                                  ffe03cad        47   func ,g         * 
+  _getPichAngleIMU
+                                  ffe03cf4        47   func ,g         * 
+FILE=DefaultBuild\memorrytrace.obj
+                                  ffe03d3b  ffe04013       2d9
+  _msdgetData
+                                  ffe03d3b       1cd   func ,g         * 
+  _serchPattern
+                                  ffe03f08        cd   func ,g         * 
+  _logmeter
+                                  ffe03fd5        3f   func ,g         * 
+FILE=DefaultBuild\microSD.obj
+                                  ffe04014  ffe051c3      11b0
+  _msd_write
+                                  ffe04014        12   func ,g         * 
+  _msd_read
+                                  ffe04026        1c   func ,g         * 
+  _msd_CMD
+                                  ffe04042        61   func ,g         * 
+  _initMicroSD
+                                  ffe040a3       38b   func ,g         * 
+  _getMicroSD_CSD
+                                  ffe0442e        7f   func ,g         * 
+  _readMicroSD
+                                  ffe044ad       122   func ,g         * 
+  _writeMicroSD
+                                  ffe045cf       15c   func ,g         * 
+  _eraseMicroSD
+                                  ffe0472b       1ca   func ,g         * 
+  _setMicroSDdata
+                                  ffe048f5        52   func ,g         * 
+  _microSDProcessStart
+                                  ffe04947        70   func ,g         * 
+  _microSDProcessEnd
+                                  ffe049b7        20   func ,g         * 
+  _microSDProcess
+                                  ffe049d7        b1   func ,g         * 
+  _checkMicroSDProcess
+                                  ffe04a88         9   func ,g         * 
+  _msd_send_data
+                                  ffe04a91        3a   func ,g         * 
+  _init_log
+                                  ffe04acb        f6   func ,g         * 
+  _msdEndLog
+                                  ffe04bc1        72   func ,g         * 
+  _sendLog
+                                  ffe04c33        c9   func ,g         * 
+  _msd_sendToPC
+                                  ffe04cfc       430   func ,g         * 
+  _send_Char
+                                  ffe0512c         e   func ,g         * 
+  _send_ShortToChar
+                                  ffe0513a        14   func ,g         * 
+  _send_uIntToChar
+                                  ffe0514e        1e   func ,g         * 
+  _CharToShort
+                                  ffe0516c        21   func ,g         * 
+  _CharTouInt
+                                  ffe0518d        37   func ,g         * 
+FILE=DefaultBuild\sci.obj
+                                  ffe051c4  ffe0541b       258
+  _initSCI1
+                                  ffe051c4        ff   func ,g         * 
+  _initSCI6
+                                  ffe052c3       101   func ,g         * 
+  _charput
+                                  ffe053c4        10   func ,g         * 
+  _charget
+                                  ffe053d4         8   func ,g         * 
+  _Excep_SCI6_RXI6
+                                  ffe053dc        40   func ,g         * 
+FILE=DefaultBuild\setup.obj
+                                  ffe0541c  ffe065ed      11d2
+  _setup
+                                  ffe0541c       eed   func ,g         * 
+  _data_select
+                                  ffe06309        4a   func ,g         * 
+  _data_tuningUD
+                                  ffe06353        83   func ,g         * 
+  _data_tuningLR
+                                  ffe063d6        83   func ,g         * 
+  _fixSpeedSetting
+                                  ffe06459       195   func ,g         * 
+FILE=DefaultBuild\mtu.obj
+                                  ffe065ee  ffe0677f       192
+  _getEncoder
+                                  ffe065ee        4f   func ,g         * 
+  _motorPwmOut
+                                  ffe0663d        e3   func ,g         * 
+  _servoPwmOut
+                                  ffe06720        60   func ,g         * 
+FILE=DefaultBuild\ADconverter.obj
+                                  ffe06780  ffe0694b       1cc
+  _ADconverter
+                                  ffe06780       11a   func ,g         * 
+  _getVoltage
+                                  ffe0689a        43   func ,g         * 
+  _getServoAngle
+                                  ffe068dd        14   func ,g         * 
+  _getAnalogSensor
+                                  ffe068f1        14   func ,g         * 
+  _sensor_inp
+                                  ffe06905        37   func ,g         * 
+  _startbar_get
+                                  ffe0693c        10   func ,g         * 
+FILE=DefaultBuild\io.obj
+                                  ffe0694c  ffe06a86       13b
+  _initIO
+                                  ffe0694c        56   func ,g         * 
+  _ledOut
+                                  ffe069a2        2b   func ,g         * 
+  _getSwitch
+                                  ffe069cd        4f   func ,g         * 
+  _dipswGet
+                                  ffe06a1c        30   func ,g         * 
+  _taswGet
+                                  ffe06a4c        3b   func ,g         * 
+FILE=DefaultBuild\R_PG_Clock.obj
+                                  ffe06a87  ffe06d6c       2e6
+  _R_PG_Clock_Set
+                                  ffe06a87        d8   func ,g         * 
+  _R_PG_Clock_WaitSet
+                                  ffe06b5f       101   func ,g         * 
+  _R_PG_Clock_Start_LOCO
+                                  ffe06c60         b   func ,g         * 
+  _R_PG_Clock_Stop_LOCO
+                                  ffe06c6b         b   func ,g         * 
+  _R_PG_Clock_Start_MAIN
+                                  ffe06c76         c   func ,g         * 
+  _R_PG_Clock_Stop_MAIN
+                                  ffe06c82         c   func ,g         * 
+  _R_PG_Clock_Enable_MAIN_ForcedOscillation
+                                  ffe06c8e         c   func ,g         * 
+  _R_PG_Clock_Disable_MAIN_ForcedOscillation
+                                  ffe06c9a         c   func ,g         * 
+  _R_PG_Clock_Start_PLL
+                                  ffe06ca6         a   func ,g         * 
+  _R_PG_Clock_Stop_PLL
+                                  ffe06cb0         a   func ,g         * 
+  _R_PG_Clock_GetSelectedClockSource
+                                  ffe06cba        1d   func ,g         * 
+  _R_PG_Clock_GetClocksStatus
+                                  ffe06cd7        5e   func ,g         * 
+  _R_PG_Clock_GetHOCOPowerStatus
+                                  ffe06d35        1d   func ,g         * 
+  _R_PG_Clock_GetFlag_MAIN_StopDetection
+                                  ffe06d52        1b   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT.obj
+                                  ffe06d6d  ffe06d70         4
+  _R_PG_IO_PORT_SetPortNotAvailable
+                                  ffe06d6d         4   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P0.obj
+                                  ffe06d71  ffe06dce        5e
+  _R_PG_IO_PORT_Set_P0
+                                  ffe06d71         f   func ,g         * 
+  _R_PG_IO_PORT_Set_P05
+                                  ffe06d80         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P0
+                                  ffe06d8f         c   func ,g         * 
+  _R_PG_IO_PORT_Read_P05
+                                  ffe06d9b         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P07
+                                  ffe06daa         f   func ,g         * 
+  _R_PG_IO_PORT_Write_P0
+                                  ffe06db9         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P05
+                                  ffe06dc1         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P1.obj
+                                  ffe06dcf  ffe06ece       100
+  _R_PG_IO_PORT_Set_P1
+                                  ffe06dcf        3a   func ,g         * 
+  _R_PG_IO_PORT_Set_P12
+                                  ffe06e09         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P13
+                                  ffe06e17         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P17
+                                  ffe06e25         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P1
+                                  ffe06e34         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P12
+                                  ffe06e41         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P13
+                                  ffe06e50         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P14
+                                  ffe06e5f        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P15
+                                  ffe06e6f        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P16
+                                  ffe06e7f        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P17
+                                  ffe06e8f        10   func ,g         * 
+  _R_PG_IO_PORT_Write_P1
+                                  ffe06e9f         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P12
+                                  ffe06ea7         d   func ,g         * 
+  _R_PG_IO_PORT_Write_P13
+                                  ffe06eb4         d   func ,g         * 
+  _R_PG_IO_PORT_Write_P17
+                                  ffe06ec1         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P2.obj
+                                  ffe06ecf  ffe06fec       11e
+  _R_PG_IO_PORT_Set_P2
+                                  ffe06ecf        3a   func ,g         * 
+  _R_PG_IO_PORT_Set_P22
+                                  ffe06f09         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P23
+                                  ffe06f17         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P27
+                                  ffe06f25         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P2
+                                  ffe06f34         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P20
+                                  ffe06f41         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P21
+                                  ffe06f50         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P22
+                                  ffe06f5f         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P23
+                                  ffe06f6e         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P24
+                                  ffe06f7d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P25
+                                  ffe06f8d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P26
+                                  ffe06f9d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P27
+                                  ffe06fad        10   func ,g         * 
+  _R_PG_IO_PORT_Write_P2
+                                  ffe06fbd         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P22
+                                  ffe06fc5         d   func ,g         * 
+  _R_PG_IO_PORT_Write_P23
+                                  ffe06fd2         d   func ,g         * 
+  _R_PG_IO_PORT_Write_P27
+                                  ffe06fdf         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P3.obj
+                                  ffe06fed  ffe070a4        b8
+  _R_PG_IO_PORT_Set_P3
+                                  ffe06fed         d   func ,g         * 
+  _R_PG_IO_PORT_Set_P31
+                                  ffe06ffa         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P3
+                                  ffe07007         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P30
+                                  ffe07014         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P31
+                                  ffe07023         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P32
+                                  ffe07032         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P33
+                                  ffe07041         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P34
+                                  ffe07050        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P35
+                                  ffe07060        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P36
+                                  ffe07070        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P37
+                                  ffe07080        10   func ,g         * 
+  _R_PG_IO_PORT_Write_P3
+                                  ffe07090         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P31
+                                  ffe07098         d   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P4.obj
+                                  ffe070a5  ffe0715e        ba
+  _R_PG_IO_PORT_Set_P4
+                                  ffe070a5         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P41
+                                  ffe070b3         e   func ,g         * 
+  _R_PG_IO_PORT_Read_P4
+                                  ffe070c1         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P40
+                                  ffe070ce         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P41
+                                  ffe070dd         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P42
+                                  ffe070ec         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P43
+                                  ffe070fb         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P44
+                                  ffe0710a        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P45
+                                  ffe0711a        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P46
+                                  ffe0712a        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P47
+                                  ffe0713a        10   func ,g         * 
+  _R_PG_IO_PORT_Write_P4
+                                  ffe0714a         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P41
+                                  ffe07152         d   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_P5.obj
+                                  ffe0715f  ffe0725f       101
+  _R_PG_IO_PORT_Set_P5
+                                  ffe0715f        3b   func ,g         * 
+  _R_PG_IO_PORT_Set_P53
+                                  ffe0719a         e   func ,g         * 
+  _R_PG_IO_PORT_Set_P54
+                                  ffe071a8         f   func ,g         * 
+  _R_PG_IO_PORT_Set_P55
+                                  ffe071b7         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P5
+                                  ffe071c6         d   func ,g         * 
+  _R_PG_IO_PORT_Read_P50
+                                  ffe071d3         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P51
+                                  ffe071e2         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P52
+                                  ffe071f1         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P53
+                                  ffe07200         f   func ,g         * 
+  _R_PG_IO_PORT_Read_P54
+                                  ffe0720f        10   func ,g         * 
+  _R_PG_IO_PORT_Read_P55
+                                  ffe0721f        10   func ,g         * 
+  _R_PG_IO_PORT_Write_P5
+                                  ffe0722f         8   func ,g         * 
+  _R_PG_IO_PORT_Write_P53
+                                  ffe07237         d   func ,g         * 
+  _R_PG_IO_PORT_Write_P54
+                                  ffe07244         e   func ,g         * 
+  _R_PG_IO_PORT_Write_P55
+                                  ffe07252         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_PA.obj
+                                  ffe07260  ffe073b0       151
+  _R_PG_IO_PORT_Set_PA
+                                  ffe07260        4e   func ,g         * 
+  _R_PG_IO_PORT_Set_PA3
+                                  ffe072ae         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PA5
+                                  ffe072bc         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PA6
+                                  ffe072cb         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PA7
+                                  ffe072da         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PA
+                                  ffe072e9         d   func ,g         * 
+  _R_PG_IO_PORT_Read_PA0
+                                  ffe072f6         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PA1
+                                  ffe07305         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PA2
+                                  ffe07314         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PA3
+                                  ffe07323         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PA4
+                                  ffe07332        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PA5
+                                  ffe07342        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PA6
+                                  ffe07352        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PA7
+                                  ffe07362        10   func ,g         * 
+  _R_PG_IO_PORT_Write_PA
+                                  ffe07372         8   func ,g         * 
+  _R_PG_IO_PORT_Write_PA3
+                                  ffe0737a         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PA5
+                                  ffe07387         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PA6
+                                  ffe07395         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PA7
+                                  ffe073a3         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_PB.obj
+                                  ffe073b1  ffe0752c       17c
+  _R_PG_IO_PORT_Set_PB
+                                  ffe073b1        5e   func ,g         * 
+  _R_PG_IO_PORT_Set_PB0
+                                  ffe0740f         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PB2
+                                  ffe0741d         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PB4
+                                  ffe0742b         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PB6
+                                  ffe0743a         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PB7
+                                  ffe07449         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PB
+                                  ffe07458         d   func ,g         * 
+  _R_PG_IO_PORT_Read_PB0
+                                  ffe07465         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PB1
+                                  ffe07474         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PB2
+                                  ffe07483         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PB3
+                                  ffe07492         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PB4
+                                  ffe074a1        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PB5
+                                  ffe074b1        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PB6
+                                  ffe074c1        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PB7
+                                  ffe074d1        10   func ,g         * 
+  _R_PG_IO_PORT_Write_PB
+                                  ffe074e1         8   func ,g         * 
+  _R_PG_IO_PORT_Write_PB0
+                                  ffe074e9         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PB2
+                                  ffe074f6         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PB4
+                                  ffe07503         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PB6
+                                  ffe07511         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PB7
+                                  ffe0751f         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_PC.obj
+                                  ffe0752d  ffe076a8       17c
+  _R_PG_IO_PORT_Set_PC
+                                  ffe0752d        5e   func ,g         * 
+  _R_PG_IO_PORT_Set_PC2
+                                  ffe0758b         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PC3
+                                  ffe07599         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PC4
+                                  ffe075a7         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PC5
+                                  ffe075b6         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PC6
+                                  ffe075c5         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PC
+                                  ffe075d4         d   func ,g         * 
+  _R_PG_IO_PORT_Read_PC0
+                                  ffe075e1         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PC1
+                                  ffe075f0         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PC2
+                                  ffe075ff         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PC3
+                                  ffe0760e         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PC4
+                                  ffe0761d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PC5
+                                  ffe0762d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PC6
+                                  ffe0763d        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PC7
+                                  ffe0764d        10   func ,g         * 
+  _R_PG_IO_PORT_Write_PC
+                                  ffe0765d         8   func ,g         * 
+  _R_PG_IO_PORT_Write_PC2
+                                  ffe07665         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PC3
+                                  ffe07672         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PC4
+                                  ffe0767f         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PC5
+                                  ffe0768d         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PC6
+                                  ffe0769b         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_PD.obj
+                                  ffe076a9  ffe077fb       153
+  _R_PG_IO_PORT_Set_PD
+                                  ffe076a9        4e   func ,g         * 
+  _R_PG_IO_PORT_Set_PD4
+                                  ffe076f7         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PD5
+                                  ffe07706         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PD6
+                                  ffe07715         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PD7
+                                  ffe07724         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PD
+                                  ffe07733         d   func ,g         * 
+  _R_PG_IO_PORT_Read_PD0
+                                  ffe07740         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PD1
+                                  ffe0774f         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PD2
+                                  ffe0775e         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PD3
+                                  ffe0776d         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PD4
+                                  ffe0777c        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PD5
+                                  ffe0778c        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PD6
+                                  ffe0779c        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PD7
+                                  ffe077ac        10   func ,g         * 
+  _R_PG_IO_PORT_Write_PD
+                                  ffe077bc         8   func ,g         * 
+  _R_PG_IO_PORT_Write_PD4
+                                  ffe077c4         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PD5
+                                  ffe077d2         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PD6
+                                  ffe077e0         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PD7
+                                  ffe077ee         e   func ,g         * 
+FILE=DefaultBuild\R_PG_IO_PORT_PE.obj
+                                  ffe077fc  ffe0794b       150
+  _R_PG_IO_PORT_Set_PE
+                                  ffe077fc        4d   func ,g         * 
+  _R_PG_IO_PORT_Set_PE3
+                                  ffe07849         e   func ,g         * 
+  _R_PG_IO_PORT_Set_PE4
+                                  ffe07857         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PE6
+                                  ffe07866         f   func ,g         * 
+  _R_PG_IO_PORT_Set_PE7
+                                  ffe07875         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PE
+                                  ffe07884         d   func ,g         * 
+  _R_PG_IO_PORT_Read_PE0
+                                  ffe07891         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PE1
+                                  ffe078a0         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PE2
+                                  ffe078af         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PE3
+                                  ffe078be         f   func ,g         * 
+  _R_PG_IO_PORT_Read_PE4
+                                  ffe078cd        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PE5
+                                  ffe078dd        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PE6
+                                  ffe078ed        10   func ,g         * 
+  _R_PG_IO_PORT_Read_PE7
+                                  ffe078fd        10   func ,g         * 
+  _R_PG_IO_PORT_Write_PE
+                                  ffe0790d         8   func ,g         * 
+  _R_PG_IO_PORT_Write_PE3
+                                  ffe07915         d   func ,g         * 
+  _R_PG_IO_PORT_Write_PE4
+                                  ffe07922         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PE6
+                                  ffe07930         e   func ,g         * 
+  _R_PG_IO_PORT_Write_PE7
+                                  ffe0793e         e   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0_C0.obj
+                                  ffe0794c  ffe07bfc       2b1
+  _R_PG_Timer_Set_MTU_U0_C0
+                                  ffe0794c        43   func ,g         * 
+  _R_PG_Timer_StartCount_MTU_U0_C0
+                                  ffe0798f        29   func ,g         * 
+  _R_PG_Timer_HaltCount_MTU_U0_C0
+                                  ffe079b8        29   func ,g         * 
+  _R_PG_Timer_GetCounterValue_MTU_U0_C0
+                                  ffe079e1        22   func ,g         * 
+  _R_PG_Timer_SetCounterValue_MTU_U0_C0
+                                  ffe07a03        2a   func ,g         * 
+  _R_PG_Timer_GetTGR_MTU_U0_C0
+                                  ffe07a2d        47   func ,g         * 
+  _R_PG_Timer_SetTGR_A_MTU_U0_C0
+                                  ffe07a74        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_B_MTU_U0_C0
+                                  ffe07a9e        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_C_MTU_U0_C0
+                                  ffe07ac8        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_D_MTU_U0_C0
+                                  ffe07af2        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_E_MTU_U0_C0
+                                  ffe07b1c        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_F_MTU_U0_C0
+                                  ffe07b46        2a   func ,g         * 
+  _R_PG_Timer_GetRequestFlag_MTU_U0_C0
+                                  ffe07b70        8d   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0_C1.obj
+                                  ffe07bfd  ffe07dcb       1cf
+  _R_PG_Timer_Set_MTU_U0_C1
+                                  ffe07bfd        34   func ,g         * 
+  _R_PG_Timer_StartCount_MTU_U0_C1
+                                  ffe07c31        2b   func ,g         * 
+  _R_PG_Timer_HaltCount_MTU_U0_C1
+                                  ffe07c5c        2b   func ,g         * 
+  _R_PG_Timer_GetCounterValue_MTU_U0_C1
+                                  ffe07c87        23   func ,g         * 
+  _R_PG_Timer_SetCounterValue_MTU_U0_C1
+                                  ffe07caa        2a   func ,g         * 
+  _R_PG_Timer_GetTGR_MTU_U0_C1
+                                  ffe07cd4        29   func ,g         * 
+  _R_PG_Timer_SetTGR_A_MTU_U0_C1
+                                  ffe07cfd        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_B_MTU_U0_C1
+                                  ffe07d27        2a   func ,g         * 
+  _R_PG_Timer_GetRequestFlag_MTU_U0_C1
+                                  ffe07d51        7b   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0_C2.obj
+                                  ffe07dcc  ffe07f9b       1d0
+  _R_PG_Timer_Set_MTU_U0_C2
+                                  ffe07dcc        35   func ,g         * 
+  _R_PG_Timer_StartCount_MTU_U0_C2
+                                  ffe07e01        2b   func ,g         * 
+  _R_PG_Timer_HaltCount_MTU_U0_C2
+                                  ffe07e2c        2b   func ,g         * 
+  _R_PG_Timer_GetCounterValue_MTU_U0_C2
+                                  ffe07e57        23   func ,g         * 
+  _R_PG_Timer_SetCounterValue_MTU_U0_C2
+                                  ffe07e7a        2a   func ,g         * 
+  _R_PG_Timer_GetTGR_MTU_U0_C2
+                                  ffe07ea4        29   func ,g         * 
+  _R_PG_Timer_SetTGR_A_MTU_U0_C2
+                                  ffe07ecd        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_B_MTU_U0_C2
+                                  ffe07ef7        2a   func ,g         * 
+  _R_PG_Timer_GetRequestFlag_MTU_U0_C2
+                                  ffe07f21        7b   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0_C3.obj
+                                  ffe07f9c  ffe081e4       249
+  _R_PG_Timer_Set_MTU_U0_C3
+                                  ffe07f9c        41   func ,g         * 
+  _R_PG_Timer_StartCount_MTU_U0_C3
+                                  ffe07fdd        2b   func ,g         * 
+  _R_PG_Timer_HaltCount_MTU_U0_C3
+                                  ffe08008        2b   func ,g         * 
+  _R_PG_Timer_GetCounterValue_MTU_U0_C3
+                                  ffe08033        23   func ,g         * 
+  _R_PG_Timer_SetCounterValue_MTU_U0_C3
+                                  ffe08056        2a   func ,g         * 
+  _R_PG_Timer_GetTGR_MTU_U0_C3
+                                  ffe08080        39   func ,g         * 
+  _R_PG_Timer_SetTGR_A_MTU_U0_C3
+                                  ffe080b9        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_B_MTU_U0_C3
+                                  ffe080e3        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_C_MTU_U0_C3
+                                  ffe0810d        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_D_MTU_U0_C3
+                                  ffe08137        2a   func ,g         * 
+  _R_PG_Timer_GetRequestFlag_MTU_U0_C3
+                                  ffe08161        84   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0_C4.obj
+                                  ffe081e5  ffe0842d       249
+  _R_PG_Timer_Set_MTU_U0_C4
+                                  ffe081e5        41   func ,g         * 
+  _R_PG_Timer_StartCount_MTU_U0_C4
+                                  ffe08226        2b   func ,g         * 
+  _R_PG_Timer_HaltCount_MTU_U0_C4
+                                  ffe08251        2b   func ,g         * 
+  _R_PG_Timer_GetCounterValue_MTU_U0_C4
+                                  ffe0827c        23   func ,g         * 
+  _R_PG_Timer_SetCounterValue_MTU_U0_C4
+                                  ffe0829f        2a   func ,g         * 
+  _R_PG_Timer_GetTGR_MTU_U0_C4
+                                  ffe082c9        39   func ,g         * 
+  _R_PG_Timer_SetTGR_A_MTU_U0_C4
+                                  ffe08302        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_B_MTU_U0_C4
+                                  ffe0832c        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_C_MTU_U0_C4
+                                  ffe08356        2a   func ,g         * 
+  _R_PG_Timer_SetTGR_D_MTU_U0_C4
+                                  ffe08380        2a   func ,g         * 
+  _R_PG_Timer_GetRequestFlag_MTU_U0_C4
+                                  ffe083aa        84   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_MTU_U0.obj
+                                  ffe0842e  ffe08480        53
+  _R_PG_Timer_SynchronouslyStartCount_MTU_U0
+                                  ffe0842e        4d   func ,g         * 
+  _R_PG_Timer_StopModule_MTU_U0
+                                  ffe0847b         6   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_CMT_U0.obj
+                                  ffe08481  ffe084f3        73
+  _R_PG_Timer_Set_CMT_U0_C0
+                                  ffe08481        22   func ,g         * 
+  _R_PG_Timer_StartCount_CMT_U0_C0
+                                  ffe084a3         c   func ,g         * 
+  _R_PG_Timer_HaltCount_CMT_U0_C0
+                                  ffe084af         c   func ,g         * 
+  _R_PG_Timer_GetCounterValue_CMT_U0_C0
+                                  ffe084bb         f   func ,g         * 
+  _R_PG_Timer_SetCounterValue_CMT_U0_C0
+                                  ffe084ca        12   func ,g         * 
+  _R_PG_Timer_SetConstantRegister_CMT_U0_C0
+                                  ffe084dc        12   func ,g         * 
+  _R_PG_Timer_StopModule_CMT_U0
+                                  ffe084ee         6   func ,g         * 
+FILE=DefaultBuild\R_PG_Timer_CMT_U1.obj
+                                  ffe084f4  ffe08567        74
+  _R_PG_Timer_Set_CMT_U1_C2
+                                  ffe084f4        22   func ,g         * 
+  _R_PG_Timer_StartCount_CMT_U1_C2
+                                  ffe08516         c   func ,g         * 
+  _R_PG_Timer_HaltCount_CMT_U1_C2
+                                  ffe08522         c   func ,g         * 
+  _R_PG_Timer_GetCounterValue_CMT_U1_C2
+                                  ffe0852e        10   func ,g         * 
+  _R_PG_Timer_SetCounterValue_CMT_U1_C2
+                                  ffe0853e        12   func ,g         * 
+  _R_PG_Timer_SetConstantRegister_CMT_U1_C2
+                                  ffe08550        12   func ,g         * 
+  _R_PG_Timer_StopModule_CMT_U1
+                                  ffe08562         6   func ,g         * 
+FILE=DefaultBuild\R_PG_SCI_C2.obj
+                                  ffe08568  ffe08662        fb
+  _R_PG_SCI_Set_C2
+                                  ffe08568        29   func ,g         * 
+  _R_PG_SCI_SPIMode_Transfer_C2
+                                  ffe08591        27   func ,g         * 
+  _R_PG_SCI_GetSentDataCount_C2
+                                  ffe085b8        1f   func ,g         * 
+  _R_PG_SCI_StopCommunication_C2
+                                  ffe085d7         8   func ,g         * 
+  _R_PG_SCI_GetReceivedDataCount_C2
+                                  ffe085df        1f   func ,g         * 
+  _R_PG_SCI_SPIMode_GetErrorFlag_C2
+                                  ffe085fe        2b   func ,g         * 
+  _R_PG_SCI_ClearReceptionErrorFlag_C2
+                                  ffe08629         9   func ,g         * 
+  _R_PG_SCI_GetTransmitStatus_C2
+                                  ffe08632        2b   func ,g         * 
+  _R_PG_SCI_StopModule_C2
+                                  ffe0865d         6   func ,g         * 
+FILE=DefaultBuild\R_PG_SCI_C5.obj
+                                  ffe08663  ffe0875d        fb
+  _R_PG_SCI_Set_C5
+                                  ffe08663        29   func ,g         * 
+  _R_PG_SCI_SPIMode_Transfer_C5
+                                  ffe0868c        27   func ,g         * 
+  _R_PG_SCI_GetSentDataCount_C5
+                                  ffe086b3        1f   func ,g         * 
+  _R_PG_SCI_StopCommunication_C5
+                                  ffe086d2         8   func ,g         * 
+  _R_PG_SCI_GetReceivedDataCount_C5
+                                  ffe086da        1f   func ,g         * 
+  _R_PG_SCI_SPIMode_GetErrorFlag_C5
+                                  ffe086f9        2b   func ,g         * 
+  _R_PG_SCI_ClearReceptionErrorFlag_C5
+                                  ffe08724         9   func ,g         * 
+  _R_PG_SCI_GetTransmitStatus_C5
+                                  ffe0872d        2b   func ,g         * 
+  _R_PG_SCI_StopModule_C5
+                                  ffe08758         6   func ,g         * 
+FILE=DefaultBuild\R_PG_SCI_C9.obj
+                                  ffe0875e  ffe08891       134
+  _R_PG_SCI_Set_C9
+                                  ffe0875e        28   func ,g         * 
+  _R_PG_SCI_I2CMode_Send_C9
+                                  ffe08786        25   func ,g         * 
+  _R_PG_SCI_I2CMode_SendWithoutStop_C9
+                                  ffe087ab        26   func ,g         * 
+  _R_PG_SCI_I2CMode_GenerateStopCondition_C9
+                                  ffe087d1         9   func ,g         * 
+  _R_PG_SCI_GetSentDataCount_C9
+                                  ffe087da        1f   func ,g         * 
+  _R_PG_SCI_I2CMode_Receive_C9
+                                  ffe087f9        25   func ,g         * 
+  _R_PG_SCI_I2CMode_RestartReceive_C9
+                                  ffe0881e        26   func ,g         * 
+  _R_PG_SCI_GetReceivedDataCount_C9
+                                  ffe08844        1f   func ,g         * 
+  _R_PG_SCI_I2CMode_GetEvent_C9
+                                  ffe08863        29   func ,g         * 
+  _R_PG_SCI_StopModule_C9
+                                  ffe0888c         6   func ,g         * 
+FILE=DefaultBuild\R_PG_ADC_12_S12AD0.obj
+                                  ffe08892  ffe088e6        55
+  _R_PG_ADC_12_Set_S12AD0
+                                  ffe08892        37   func ,g         * 
+  _R_PG_ADC_12_StartConversionSW_S12AD0
+                                  ffe088c9         6   func ,g         * 
+  _R_PG_ADC_12_StopConversion_S12AD0
+                                  ffe088cf         6   func ,g         * 
+  _R_PG_ADC_12_GetResult_S12AD0
+                                  ffe088d5         c   func ,g         * 
+  _R_PG_ADC_12_StopModule_S12AD0
+                                  ffe088e1         6   func ,g         * 
+FILE=DefaultBuild\Interrupt_INTC.obj
+                                  ffe088e7  ffe09033       74d
+  _Interrupt_IRQ0
+                                  ffe088e7        1c   func ,g         * 
+  _Interrupt_IRQ1
+                                  ffe08903        1c   func ,g         * 
+  _Interrupt_IRQ2
+                                  ffe0891f        1c   func ,g         * 
+  _Interrupt_IRQ3
+                                  ffe0893b        1c   func ,g         * 
+  _Interrupt_IRQ4
+                                  ffe08957        1c   func ,g         * 
+  _Interrupt_IRQ5
+                                  ffe08973        1c   func ,g         * 
+  _Interrupt_IRQ6
+                                  ffe0898f        1c   func ,g         * 
+  _Interrupt_IRQ7
+                                  ffe089ab        1c   func ,g         * 
+  _Interrupt_IRQ8
+                                  ffe089c7        1c   func ,g         * 
+  _Interrupt_IRQ9
+                                  ffe089e3        1c   func ,g         * 
+  _Interrupt_IRQ10
+                                  ffe089ff        1c   func ,g         * 
+  _Interrupt_IRQ11
+                                  ffe08a1b        1c   func ,g         * 
+  _Interrupt_IRQ12
+                                  ffe08a37        1c   func ,g         * 
+  _Interrupt_IRQ13
+                                  ffe08a53        1c   func ,g         * 
+  _Interrupt_IRQ14
+                                  ffe08a6f        1c   func ,g         * 
+  _Interrupt_IRQ15
+                                  ffe08a8b        1c   func ,g         * 
+  _Interrupt_Group_0
+                                  ffe08aa7        1c   func ,g         * 
+  _Interrupt_Group_1
+                                  ffe08ac3        74   func ,g         * 
+  _Interrupt_Group_2
+                                  ffe08b37        74   func ,g         * 
+  _Interrupt_Group_3
+                                  ffe08bab        8d   func ,g         * 
+  _Interrupt_Group_4
+                                  ffe08c38        8e   func ,g         * 
+  _Interrupt_Group_5
+                                  ffe08cc6        25   func ,g         * 
+  _Interrupt_Group_6
+                                  ffe08ceb        25   func ,g         * 
+  _Interrupt_Group_12
+                                  ffe08d10       164   func ,g         * 
+  _Interrupt_SWINT
+                                  ffe08e74        1c   func ,g         * 
+  _Interrupt_BRK
+                                  ffe08e90       117   func ,g         * 
+  _Excep_PrivilegedInst
+                                  ffe08fa7        1c   func ,g         * 
+  _Excep_Access
+                                  ffe08fc3        1c   func ,g         * 
+  _Excep_UndefinedInst
+                                  ffe08fdf        1c   func ,g         * 
+  _Excep_FloatingPoint
+                                  ffe08ffb        1c   func ,g         * 
+  _Interrupt_NMI
+                                  ffe09017        1c   func ,g         * 
+  _Dummy
+                                  ffe09033         1   func ,g         * 
+FILE=DefaultBuild\Interrupt_CMT.obj
+                                  ffe09034  ffe09127        f4
+  _Interrupt_CMT0
+                                  ffe09034        3d   func ,g         * 
+  _Interrupt_CMT1
+                                  ffe09071        3d   func ,g         * 
+  _Interrupt_CMT2
+                                  ffe090ae        3d   func ,g         * 
+  _Interrupt_CMT3
+                                  ffe090eb        3d   func ,g         * 
+FILE=DefaultBuild\Interrupt_ADC_12.obj
+                                  ffe09128  ffe09143        1c
+  _Interrupt_ADC_12_0
+                                  ffe09128        1c   func ,g         * 
+FILE=DefaultBuild\R_PG_SCI_C12.obj
+                                  ffe09144  ffe09277       134
+  _R_PG_SCI_Set_C12
+                                  ffe09144        28   func ,g         * 
+  _R_PG_SCI_I2CMode_Send_C12
+                                  ffe0916c        25   func ,g         * 
+  _R_PG_SCI_I2CMode_SendWithoutStop_C12
+                                  ffe09191        26   func ,g         * 
+  _R_PG_SCI_I2CMode_GenerateStopCondition_C12
+                                  ffe091b7         9   func ,g         * 
+  _R_PG_SCI_GetSentDataCount_C12
+                                  ffe091c0        1f   func ,g         * 
+  _R_PG_SCI_I2CMode_Receive_C12
+                                  ffe091df        25   func ,g         * 
+  _R_PG_SCI_I2CMode_RestartReceive_C12
+                                  ffe09204        26   func ,g         * 
+  _R_PG_SCI_GetReceivedDataCount_C12
+                                  ffe0922a        1f   func ,g         * 
+  _R_PG_SCI_I2CMode_GetEvent_C12
+                                  ffe09249        29   func ,g         * 
+  _R_PG_SCI_StopModule_C12
+                                  ffe09272         6   func ,g         * 
+FILE=atan
+                                  ffe09278  ffe097cc       555
+  _poly_atand
+                                  ffe09278       191   func ,l         * 
+  _atand_special_case
+                                  ffe09409        3e   func ,l         * 
+  _atanl
+                                  ffe09447         2   func ,g         * 
+  _atan
+                                  ffe09449       384   func ,g         * 
+FILE=cos
+                                  ffe097cd  ffe098bd        f1
+  _cos_special
+                                  ffe097cd        2e   func ,l         * 
+  _cosl
+                                  ffe097fb         2   func ,g         * 
+  _cos
+                                  ffe097fd        c1   func ,g         * 
+FILE=sin
+                                  ffe098be  ffe099c0       103
+  _sin_special
+                                  ffe098be        2e   func ,l         * 
+  _sinl
+                                  ffe098ec         2   func ,g         * 
+  _sin
+                                  ffe098ee        d3   func ,g         * 
+FILE=_fabs
+                                  ffe099c1  ffe099f0        30
+  _fabsl
+                                  ffe099c1         0   none ,g         * 
+  _fabs
+                                  ffe099c1         0   none ,g         * 
+  set_nan
+                                  ffe099e5         0   none ,l         * 
+  return_val
+                                  ffe099f0         0   none ,l         * 
+FILE=freopen
+                                  ffe099f1  ffe09a1f        2f
+  _freopen
+                                  ffe099f1        2f   func ,g         * 
+FILE=fclose
+                                  ffe09a20  ffe09a73        54
+  _fclose
+                                  ffe09a20        54   func ,g         * 
+FILE=printf
+                                  ffe09a74  ffe09aad        3a
+  _prout
+                                  ffe09a74        1d   func ,l         * 
+  _printf
+                                  ffe09a91        1d   func ,g         * 
+FILE=vsprintf
+                                  ffe09aae  ffe09ae1        34
+  _prout
+                                  ffe09aae         b   func ,l         * 
+  _vsprintf
+                                  ffe09ab9        29   func ,g         * 
+FILE=abs
+                                  ffe09ae2  ffe09ae4         3
+  _abs
+                                  ffe09ae2         3   func ,g         * 
+FILE=__COM_DIVd
+                                  ffe09ae5  ffe09cc1       1dd
+  exception1
+                                  ffe09ae5         0   none ,l         * 
+  exception2
+                                  ffe09af4         0   none ,l         * 
+  exception3
+                                  ffe09afc         0   none ,l         * 
+  normalize1
+                                  ffe09b0f         0   none ,l         * 
+  p1_norm_loop
+                                  ffe09b1a         0   none ,l         * 
+  exception4
+                                  ffe09b50         0   none ,l         * 
+  normalize2
+                                  ffe09b56         0   none ,l         * 
+  p2_norm_loop
+                                  ffe09b61         0   none ,l         * 
+  return_zero
+                                  ffe09b8e         0   none ,l         * 
+  return_inf
+                                  ffe09b99         0   none ,l         * 
+  return_NaN
+                                  ffe09bac         0   none ,l         * 
+  __COM_DIVd
+                                  ffe09bb7         0   none ,g         * 
+  exception_return3
+                                  ffe09beb         0   none ,l         * 
+  exception_return4
+                                  ffe09bf0         0   none ,l         * 
+  div_loop
+                                  ffe09c11         0   none ,l         * 
+  man_sub
+                                  ffe09c24         0   none ,l         * 
+  over_sub
+                                  ffe09c2f         0   none ,l         * 
+  end_man_cal
+                                  ffe09c37         0   none ,l         * 
+  end_sticky_cal
+                                  ffe09c3c         0   none ,l         * 
+  end_norm
+                                  ffe09c4a         0   none ,l         * 
+  denormalize_loop
+                                  ffe09c57         0   none ,l         * 
+  next_loop
+                                  ffe09c5f         0   none ,l         * 
+  round_denormal
+                                  ffe09c67         0   none ,l         * 
+  end_round_d
+                                  ffe09c81         0   none ,l         * 
+  end_denormal
+                                  ffe09c83         0   none ,l         * 
+  end_denormal_0
+                                  ffe09c93         0   none ,l         * 
+  return_value
+                                  ffe09ca1         0   none ,l         * 
+  end_round
+                                  ffe09ca1         0   none ,l         * 
+  return
+                                  ffe09cbb         0   none ,l         * 
+FILE=__COM_ADDd_SUBd
+                                  ffe09cc2  ffe09ea4       1e3
+  __COM_SUBd
+                                  ffe09cc2         0   none ,g         * 
+  __COM_ADDd
+                                  ffe09cc5         0   none ,g         * 
+  swap
+                                  ffe09ce4         0   none ,l         * 
+  swap_end
+                                  ffe09cec         0   none ,l         * 
+  x_normal
+                                  ffe09d07         0   none ,l         * 
+  after_shift
+                                  ffe09d39         0   none ,l         * 
+  round1
+                                  ffe09d47         0   none ,l         * 
+  return_x_asis
+                                  ffe09d64         0   none ,l         * 
+  pack
+                                  ffe09d66         0   none ,l         * 
+  pack_sign
+                                  ffe09d6a         0   none ,l         * 
+  inf_or_nan
+                                  ffe09d73         0   none ,l         * 
+  return_nan
+                                  ffe09d82         0   none ,l         * 
+  zero_or_den
+                                  ffe09d8d         0   none ,l         * 
+  add_ovf
+                                  ffe09da3         0   none ,l         * 
+  return_inf
+                                  ffe09db4         0   none ,l         * 
+  subtract
+                                  ffe09dc2         0   none ,l         * 
+  sub_underflow
+                                  ffe09dd6         0   none ,l         * 
+  normalize1
+                                  ffe09de8         0   none ,l         * 
+  normalize2
+                                  ffe09dfa         0   none ,l         * 
+  normalize3
+                                  ffe09e0d         0   none ,l         * 
+  normalize4
+                                  ffe09e1f         0   none ,l         * 
+  normalize_1bit_shift
+                                  ffe09e26         0   none ,l         * 
+  normalize5
+                                  ffe09e2e         0   none ,l         * 
+  den_shift_more_than_32
+                                  ffe09e55         0   none ,l         * 
+  shift_end
+                                  ffe09e65         0   none ,l         * 
+  sub_underflow1
+                                  ffe09e6a         0   none ,l         * 
+  denormal
+                                  ffe09e80         0   none ,l         * 
+  return
+                                  ffe09e93         0   none ,l         * 
+  x_normal_preparation
+                                  ffe09e96         0   none ,l         * 
+  den_add
+                                  ffe09e9d         0   none ,l         * 
+FILE=__COM_CMPGEd
+                                  ffe09ea5  ffe09f1c        78
+  __COM_CMPGEd
+                                  ffe09ea5         0   none ,g         * 
+  exception_return1
+                                  ffe09ec5         0   none ,l         * 
+  exception_return2
+                                  ffe09ec9         0   none ,l         * 
+  exception_return3
+                                  ffe09ecd         0   none ,l         * 
+  minus
+                                  ffe09ee4         0   none ,l         * 
+  sign_def
+                                  ffe09ef2         0   none ,l         * 
+  exception1
+                                  ffe09efa         0   none ,l         * 
+  exception2
+                                  ffe09f03         0   none ,l         * 
+  exception3
+                                  ffe09f0c         0   none ,l         * 
+FILE=__COM_CMPGTd
+                                  ffe09f1d  ffe09f90        74
+  __COM_CMPGTd
+                                  ffe09f1d         0   none ,g         * 
+  exception_return1
+                                  ffe09f3d         0   none ,l         * 
+  exception_return2
+                                  ffe09f41         0   none ,l         * 
+  exception_return3
+                                  ffe09f45         0   none ,l         * 
+  minus
+                                  ffe09f5b         0   none ,l         * 
+  sign_def
+                                  ffe09f66         0   none ,l         * 
+  exception1
+                                  ffe09f6e         0   none ,l         * 
+  exception2
+                                  ffe09f77         0   none ,l         * 
+  exception3
+                                  ffe09f80         0   none ,l         * 
+FILE=__COM_CMPLEd
+                                  ffe09f91  ffe0a008        78
+  __COM_CMPLEd
+                                  ffe09f91         0   none ,g         * 
+  exception_return1
+                                  ffe09fb1         0   none ,l         * 
+  exception_return2
+                                  ffe09fb5         0   none ,l         * 
+  exception_return3
+                                  ffe09fb9         0   none ,l         * 
+  minus
+                                  ffe09fd0         0   none ,l         * 
+  sign_def
+                                  ffe09fde         0   none ,l         * 
+  return
+                                  ffe09fe3         0   none ,l         * 
+  exception1
+                                  ffe09fe6         0   none ,l         * 
+  exception2
+                                  ffe09fef         0   none ,l         * 
+  exception3
+                                  ffe09ff8         0   none ,l         * 
+FILE=__COM_CMPLTd
+                                  ffe0a009  ffe0a07c        74
+  __COM_CMPLTd
+                                  ffe0a009         0   none ,g         * 
+  exception_return1
+                                  ffe0a029         0   none ,l         * 
+  exception_return2
+                                  ffe0a02d         0   none ,l         * 
+  exception_return3
+                                  ffe0a031         0   none ,l         * 
+  minus
+                                  ffe0a047         0   none ,l         * 
+  sign_def
+                                  ffe0a052         0   none ,l         * 
+  return
+                                  ffe0a057         0   none ,l         * 
+  exception1
+                                  ffe0a05a         0   none ,l         * 
+  exception2
+                                  ffe0a063         0   none ,l         * 
+  exception3
+                                  ffe0a06c         0   none ,l         * 
+FILE=__COM_CONV32sd
+                                  ffe0a07d  ffe0a0bf        43
+  __COM_CONV32sd
+                                  ffe0a07d         0   none ,g         * 
+  exponent_set
+                                  ffe0a082         0   none ,l         * 
+  next_8
+                                  ffe0a08f         0   none ,l         * 
+  next_4
+                                  ffe0a097         0   none ,l         * 
+  next_2
+                                  ffe0a09f         0   none ,l         * 
+  next_1
+                                  ffe0a0a7         0   none ,l         * 
+  next_0
+                                  ffe0a0af         0   none ,l         * 
+  pack
+                                  ffe0a0b1         0   none ,l         * 
+  return
+                                  ffe0a0bf         0   none ,l         * 
+FILE=__COM_CONV32ud
+                                  ffe0a0c0  ffe0a0fd        3e
+  __COM_CONV32ud
+                                  ffe0a0c0         0   none ,g         * 
+  next_8
+                                  ffe0a0d2         0   none ,l         * 
+  next_4
+                                  ffe0a0da         0   none ,l         * 
+  next_2
+                                  ffe0a0e2         0   none ,l         * 
+  next_1
+                                  ffe0a0ea         0   none ,l         * 
+  next_0
+                                  ffe0a0f2         0   none ,l         * 
+  pack
+                                  ffe0a0f4         0   none ,l         * 
+  return
+                                  ffe0a0fd         0   none ,l         * 
+FILE=__COM_CONVd32
+                                  ffe0a0fe  ffe0a150        53
+  __COM_CONVd32u
+                                  ffe0a0fe         0   none ,g         * 
+  __COM_CONVd32s
+                                  ffe0a101         0   none ,g         * 
+  unpack
+                                  ffe0a104         0   none ,l         * 
+  return
+                                  ffe0a129         0   none ,l         * 
+  return_zero
+                                  ffe0a12a         0   none ,l         * 
+  exp_over30
+                                  ffe0a12d         0   none ,l         * 
+  exp_over31
+                                  ffe0a12f         0   none ,l         * 
+  exp_equal31
+                                  ffe0a13e         0   none ,l         * 
+FILE=__COM_MULd
+                                  ffe0a151  ffe0a2de       18e
+  __COM_MULd
+                                  ffe0a151         0   none ,g         * 
+  x_normal
+                                  ffe0a18b         0   none ,l         * 
+  muld_msb_one
+                                  ffe0a1c9         0   none ,l         * 
+  round1
+                                  ffe0a1d8         0   none ,l         * 
+  y_is_inf_or_nan
+                                  ffe0a1f8         0   none ,l         * 
+  x_is_inf_or_nan
+                                  ffe0a200         0   none ,l         * 
+  return_inf
+                                  ffe0a20e         0   none ,l         * 
+  y_is_not_inf_or_nan
+                                  ffe0a21b         0   none ,l         * 
+  return_nan
+                                  ffe0a221         0   none ,l         * 
+  x_is_zero_or_den
+                                  ffe0a22c         0   none ,l         * 
+  y_is_zero_or_den
+                                  ffe0a235         0   none ,l         * 
+  return_zero
+                                  ffe0a239         0   none ,l         * 
+  denormal
+                                  ffe0a240         0   none ,l         * 
+  normalize2
+                                  ffe0a257         0   none ,l         * 
+  normalize3
+                                  ffe0a269         0   none ,l         * 
+  normalize4
+                                  ffe0a27b         0   none ,l         * 
+  normalize5
+                                  ffe0a28e         0   none ,l         * 
+  normalize6
+                                  ffe0a2a0         0   none ,l         * 
+  return_denormal
+                                  ffe0a2b2         0   none ,l         * 
+  den_minus32_or_more
+                                  ffe0a2da         0   none ,l         * 
+FILE=__initsct
+                                  ffe0a2df  ffe0a328        4a
+  __INITSCT
+                                  ffe0a2df         0   none ,g         * 
+  loop1
+                                  ffe0a2f1         0   none ,l         * 
+  next_loop1
+                                  ffe0a2ff         0   none ,l         * 
+  loop3
+                                  ffe0a311         0   none ,l         * 
+  next_loop3
+                                  ffe0a322         0   none ,l         * 
+FILE=R_ADC_12_ControlAll
+                                  ffe0a329  ffe0a37c        54
+  _R_ADC_12_ControlAll
+                                  ffe0a329        54   func ,g         * 
+FILE=R_ADC_12_CreateAll
+                                  ffe0a37d  ffe0aaf0       774
+  _R_ADC_12_CreateAll
+                                  ffe0a37d       774   func ,g         * 
+FILE=R_ADC_12_DestroyAll
+                                  ffe0aaf1  ffe0ab3f        4f
+  _R_ADC_12_DestroyAll
+                                  ffe0aaf1        4f   func ,g         * 
+FILE=R_ADC_12_ReadAll
+                                  ffe0ab40  ffe0abc6        87
+  _R_ADC_12_ReadAll
+                                  ffe0ab40        87   func ,g         * 
+FILE=R_CGC_ControlAll
+                                  ffe0abc7  ffe0b12f       569
+  _R_CGC_ControlAll
+                                  ffe0abc7       569   func ,g         * 
+FILE=R_CGC_GetStatusAll
+                                  ffe0b130  ffe0b17c        4d
+  _R_CGC_GetStatusAll
+                                  ffe0b130        4d   func ,g         * 
+FILE=R_CGC_SetAll
+                                  ffe0b17d  ffe0ba70       8f4
+  _R_CGC_SetAll
+                                  ffe0b17d       755   func ,g         * 
+  _Find_Divider_Setting
+                                  ffe0b8d2        77   func ,l         * 
+  _Select_Sub_Waiting_Time
+                                  ffe0b949        c0   func ,l         * 
+  _rpdl_CGC_RTC_ColdStartInit
+                                  ffe0ba09        68   func ,l         * 
+FILE=R_CMT_ControlAll
+                                  ffe0ba71  ffe0bc21       1b1
+  _R_CMT_ControlAll
+                                  ffe0ba71       1b1   func ,g         * 
+FILE=R_CMT_CreateAll
+                                  ffe0bc22  ffe0be07       1e6
+  _R_CMT_CreateAll
+                                  ffe0bc22       1e6   func ,g         * 
+FILE=R_CMT_DestroyAll
+                                  ffe0be08  ffe0be7c        75
+  _R_CMT_DestroyAll
+                                  ffe0be08        75   func ,g         * 
+FILE=R_CMT_ReadAll
+                                  ffe0be7d  ffe0bec1        45
+  _R_CMT_ReadAll
+                                  ffe0be7d        45   func ,g         * 
+FILE=R_IO_PORT_NotAvailableAll
+                                  ffe0bec2  ffe0c02a       169
+  _R_IO_PORT_NotAvailableAll
+                                  ffe0bec2       169   func ,g         * 
+FILE=R_IO_PORT_ReadDataAll
+                                  ffe0c02b  ffe0c059        2f
+  _R_IO_PORT_ReadDataAll
+                                  ffe0c02b        2f   func ,g         * 
+FILE=R_IO_PORT_ReadDataRegisterAll
+                                  ffe0c05a  ffe0c075        1c
+  _R_IO_PORT_ReadDataRegisterAll
+                                  ffe0c05a        1c   func ,g         * 
+FILE=R_IO_PORT_SetAll
+                                  ffe0c076  ffe0c3af       33a
+  _R_IO_PORT_SetAll
+                                  ffe0c076       33a   func ,g         * 
+FILE=R_IO_PORT_WriteAll
+                                  ffe0c3b0  ffe0c3eb        3c
+  _R_IO_PORT_WriteAll
+                                  ffe0c3b0        3c   func ,g         * 
+FILE=R_IO_PORT_WriteRegisterAll
+                                  ffe0c3ec  ffe0c413        28
+  _R_IO_PORT_WriteRegisterAll
+                                  ffe0c3ec        28   func ,g         * 
+FILE=R_MTU2_ControlChannelAll
+                                  ffe0c414  ffe0c6f7       2e4
+  _R_MTU2_ControlChannelAll
+                                  ffe0c414       2e4   func ,g         * 
+FILE=R_MTU2_ControlUnitAll
+                                  ffe0c6f8  ffe0cfe1       8ea
+  _R_MTU2_ControlUnitAll
+                                  ffe0c6f8       8ea   func ,g         * 
+FILE=R_MTU2_CreateAll
+                                  ffe0cfe2  ffe0ed9a      1db9
+  _R_MTU2_CreateAll
+                                  ffe0cfe2      1db9   func ,g         * 
+FILE=R_MTU2_DestroyAll
+                                  ffe0ed9b  ffe0edef        55
+  _R_MTU2_DestroyAll
+                                  ffe0ed9b        55   func ,g         * 
+FILE=R_MTU2_ReadChannelAll
+                                  ffe0edf0  ffe0f1e4       3f5
+  _R_MTU2_ReadChannelAll
+                                  ffe0edf0       3f5   func ,g         * 
+FILE=R_MTU2_SetAll
+                                  ffe0f1e5  ffe100f3       f0f
+  _R_MTU2_SetAll
+                                  ffe0f1e5       f0f   func ,g         * 
+FILE=R_SCI_ControlAll
+                                  ffe100f4  ffe10260       16d
+  _R_SCI_ControlAll
+                                  ffe100f4       16d   func ,g         * 
+FILE=R_SCI_CreateAll
+                                  ffe10261  ffe1159c      133c
+  _R_SCI_CreateAll
+                                  ffe10261        5c   func ,g         * 
+  _R_SCI_CreateAsyncAll
+                                  ffe102bd       17c   func ,g         * 
+  _R_SCI_CreateSyncAll
+                                  ffe10439       136   func ,g         * 
+  _Create_SPI
+                                  ffe1056f        4f   func ,l         * 
+  _Create_IIC
+                                  ffe105be       296   func ,l         * 
+  _R_SCI_CreateSmartAll
+                                  ffe10854       1b7   func ,g         * 
+  _R_SCI_CreateCommon
+                                  ffe10a0b       2df   func ,l         * 
+  _CreateAsync_Pins
+                                  ffe10cea        5e   func ,l         * 
+  _CreateSync_Pins
+                                  ffe10d48        55   func ,l         * 
+  _CreateSPI_Pins
+                                  ffe10d9d        3f   func ,l         * 
+  _CreateIIC_Pins
+                                  ffe10ddc       253   func ,l         * 
+  _CreateSmart_Pins
+                                  ffe1102f        28   func ,l         * 
+  _Create_Pins_SCK
+                                  ffe11057       154   func ,l         * 
+  _Create_Pins_CTS_RTS_SS
+                                  ffe111ab       13b   func ,l         * 
+  _Create_Pins_RXD
+                                  ffe112e6       163   func ,l         * 
+  _Create_Pins_TXD
+                                  ffe11449       154   func ,l         * 
+FILE=R_SCI_DestroyAll
+                                  ffe1159d  ffe117d3       237
+  _R_SCI_DestroyAll
+                                  ffe1159d       237   func ,g         * 
+FILE=R_SCI_GetStatusAll
+                                  ffe117d4  ffe1189f        cc
+  _R_SCI_GetStatusAll
+                                  ffe117d4        cc   func ,g         * 
+FILE=R_SCI_IIC
+                                  ffe118a0  ffe1200f       770
+  _R_SCI_IIC_WriteAll
+                                  ffe118a0       177   func ,g         * 
+  _R_SCI_IIC_ReadAll
+                                  ffe11a17       1fe   func ,g         * 
+  _Transfer_Common
+                                  ffe11c15        8d   func ,l         * 
+  _R_SCI_IIC_ReadLastByteAll
+                                  ffe11ca2        9c   func ,g         * 
+  _rpdl_SCI_IIC_Stop
+                                  ffe11d3e        15   func ,g         * 
+  _R_SCI_IIC_Handler_RXI
+                                  ffe11d53        ae   func ,g         * 
+  _R_SCI_IIC_Handler_TXI
+                                  ffe11e01        b2   func ,g         * 
+  _StartConditionWait
+                                  ffe11eb3        4c   func ,l         * 
+  _StopConditionWait
+                                  ffe11eff        64   func ,l         * 
+  _SlaveAddressWait
+                                  ffe11f63        ad   func ,l         * 
+FILE=R_SCI_SetAll
+                                  ffe12010  ffe12a2c       a1d
+  _R_SCI_SetAll
+                                  ffe12010       a1d   func ,g         * 
+FILE=R_SCI_SPI_TransferAll
+                                  ffe12a2d  ffe12dfc       3d0
+  _R_SCI_SPI_TransferAll
+                                  ffe12a2d       1d4   func ,g         * 
+  _Polling_Transfer
+                                  ffe12c01       198   func ,l         * 
+  _EnableTransfer
+                                  ffe12d99        64   func ,l         * 
+FILE=utilities_ADC_10
+                                  ffe12dfd  ffe12e2d        31
+  _rpdl_ADC_10_Start
+                                  ffe12dfd        10   func ,g         * 
+  _rpdl_ADC_10_ModifyIEN
+                                  ffe12e0d        21   func ,g         * 
+FILE=utilities_common
+                                  ffe12e2e  ffe131e6       3b9
+  _rpdl_common_BCD8_check
+                                  ffe12e2e        19   func ,g         * 
+  _rpdl_common_BCD16_check
+                                  ffe12e47        19   func ,g         * 
+  _rpdl_common_BCD32_check
+                                  ffe12e60        13   func ,g         * 
+  _rpdl_BCD8_to_dec
+                                  ffe12e73        12   func ,g         * 
+  _rpdl_BCD16_to_dec
+                                  ffe12e85        2e   func ,g         * 
+  _rpdl_register_protection
+                                  ffe12eb3        2d   func ,g         * 
+  _rpdl_modify_protection
+                                  ffe12ee0       10e   func ,g         * 
+  _rpdl_bit_number
+                                  ffe12fee        15   func ,g         * 
+  _rpdl_pin_function_prepare
+                                  ffe13003        3e   func ,g         * 
+  _rpdl_pin_function_disable
+                                  ffe13041        3c   func ,g         * 
+  _rpdl_pin_analog_enable
+                                  ffe1307d        35   func ,g         * 
+  _rpdl_pin_analog_disable
+                                  ffe130b2        32   func ,g         * 
+  _rpdl_wait_source_clock
+                                  ffe130e4        46   func ,g         * 
+  _rpdl_wait_time
+                                  ffe1312a        a8   func ,g         * 
+  _rpdl_In_ROM_Program_Erase_Mode
+                                  ffe131d2        15   func ,g         * 
+FILE=utilities_MTU2
+                                  ffe131e7  ffe136b2       4cc
+  _R_MTU2_Create_load_defaults
+                                  ffe131e7        3b   func ,g         * 
+  _rpdl_MTU2_DisableIER
+                                  ffe13222       15a   func ,g         * 
+  _rpdl_MTU2_EnableTGRAIER
+                                  ffe1337c        86   func ,g         * 
+  _rpdl_MTU2_EnableTGRBIER
+                                  ffe13402        86   func ,g         * 
+  _rpdl_MTU2_EnableTGRCIER
+                                  ffe13488        52   func ,g         * 
+  _rpdl_MTU2_EnableTGRDIER
+                                  ffe134da        52   func ,g         * 
+  _rpdl_MTU2_EnableTGREIER
+                                  ffe1352c        1c   func ,g         * 
+  _rpdl_MTU2_EnableTGRFIER
+                                  ffe13548        1c   func ,g         * 
+  _rpdl_MTU2_EnableTGRUIER
+                                  ffe13564        1c   func ,g         * 
+  _rpdl_MTU2_EnableTGRVIER
+                                  ffe13580        1c   func ,g         * 
+  _rpdl_MTU2_EnableTGRWIER
+                                  ffe1359c        1c   func ,g         * 
+  _rpdl_MTU2_EnableTCIVIER
+                                  ffe135b8        b0   func ,g         * 
+  _rpdl_MTU2_EnableTCIUIER
+                                  ffe13668        4b   func ,g         * 
+FILE=fmod
+                                  ffe136b3  ffe136ed        3b
+  _fmodl
+                                  ffe136b3         2   func ,g         * 
+  _fmod
+                                  ffe136b5        39   func ,g         * 
+FILE=nandval
+                                  ffe136ee  ffe136f6         9
+  ___nand_value
+                                  ffe136ee         9   func ,g         * 
+FILE=sincosdsub
+                                  ffe136f7  ffe13869       173
+  ___poly_cosd
+                                  ffe136f7        bb   func ,g         * 
+  ___poly_cosdn
+                                  ffe137b2         7   func ,g         * 
+  ___poly_sind
+                                  ffe137b9        b1   func ,g         * 
+FILE=fwrite
+                                  ffe1386a  ffe1393a        d1
+  _fwrite
+                                  ffe1386a        d1   func ,g         * 
+FILE=fflush
+                                  ffe1393b  ffe139bc        82
+  _fflush
+                                  ffe1393b        82   func ,g         * 
+FILE=xfoprep
+                                  ffe139bd  ffe13a90        d4
+  __Foprep
+                                  ffe139bd        d4   func ,g         * 
+FILE=xfofind
+                                  ffe13a91  ffe13b1d        8d
+  __Fofind
+                                  ffe13a91        44   func ,g         * 
+  __Fofree
+                                  ffe13ad5        49   func ,g         * 
+FILE=xprintf
+                                  ffe13b1e  ffe13d7f       262
+  __Printf
+                                  ffe13b1e       262   func ,g         * 
+FILE=__COM_CMPNEd
+                                  ffe13d80  ffe13dda        5b
+  __COM_CMPNEd
+                                  ffe13d80         0   none ,g         * 
+  exception_return1
+                                  ffe13da0         0   none ,l         * 
+  exception_return2
+                                  ffe13da4         0   none ,l         * 
+  exception_return3
+                                  ffe13da8         0   none ,l         * 
+  true
+                                  ffe13dae         0   none ,l         * 
+  false
+                                  ffe13db3         0   none ,l         * 
+  exception1
+                                  ffe13db8         0   none ,l         * 
+  exception2
+                                  ffe13dc1         0   none ,l         * 
+  exception3
+                                  ffe13dca         0   none ,l         * 
+FILE=free
+                                  ffe13ddb  ffe13e5c        82
+  _free
+                                  ffe13ddb        82   func ,g         * 
+FILE=utilities_ADC_12
+                                  ffe13e5d  ffe13e7d        21
+  _rpdl_ADC_12_ModifyIEN
+                                  ffe13e5d        21   func ,g         * 
+FILE=utilities_CGC
+                                  ffe13e7e  ffe13e9d        20
+  _rpdl_CGC_MinimumDivision
+                                  ffe13e7e        20   func ,g         * 
+FILE=utilities_CMT
+                                  ffe13e9e  ffe13f17        7a
+  _rpdl_CMT_ModifyIEN
+                                  ffe13e9e        7a   func ,g         * 
+FILE=utilities_IO_PORT
+                                  ffe13f18  ffe13f61        4a
+  _rpdl_IO_PORT_Port_Exists
+                                  ffe13f18        17   func ,g         * 
+  _rpdl_IO_PORT_OpenDrain_Exists
+                                  ffe13f2f         4   func ,g         * 
+  _rpdl_IO_PORT_PullUp_Exists
+                                  ffe13f33         4   func ,g         * 
+  _rpdl_IO_PORT_Drive_Exists
+                                  ffe13f37        2b   func ,g         * 
+FILE=utilities_SCI
+                                  ffe13f62  ffe14b49       be8
+  _rpdl_SCI_SetIdleOutputState
+                                  ffe13f62       1da   func ,g         * 
+  _rpdl_SCI_SetTxPinGeneralIO
+                                  ffe1413c       205   func ,g         * 
+  _rpdl_SCI_ReadRXD
+                                  ffe14341       1dd   func ,g         * 
+  _rpdl_SCI_ModifyTx_IER
+                                  ffe1451e       117   func ,g         * 
+  _rpdl_SCI_ModifyTxEnd_IER
+                                  ffe14635       117   func ,g         * 
+  _rpdl_SCI_ModifyRxIER
+                                  ffe1474c       220   func ,g         * 
+  _rpdl_SCI_EnableReception
+                                  ffe1496c        b4   func ,g         * 
+  _rpdl_SCI_EnableTransmission
+                                  ffe14a20        78   func ,g         * 
+  _rpdl_SCI_Initialise_Smart
+                                  ffe14a98        b2   func ,g         * 
+FILE=_i_fmdd
+                                  ffe14b4a  ffe14cd2       189
+  __in_fmodd
+                                  ffe14b4a       189   func ,g         * 
+FILE=xfwprep
+                                  ffe14cd3  ffe14d6a        98
+  __Fwprep
+                                  ffe14cd3        98   func ,g         * 
+FILE=xputfld
+                                  ffe14d6b  ffe151d5       46b
+  __Putfld
+                                  ffe14d6b       46b   func ,g         * 
+FILE=xfopen
+                                  ffe151d6  ffe15205        30
+  __Fopen
+                                  ffe151d6        30   func ,g         * 
+FILE=xvacopy
+                                  ffe15206  ffe15208         3
+  __Vacopy
+                                  ffe15206         3   func ,g         * 
+FILE=xputtxt
+                                  ffe15209  ffe15460       258
+  __Puttxt
+                                  ffe15209       258   func ,g         * 
+FILE=strchr
+                                  ffe15461  ffe15473        13
+  _strchr
+                                  ffe15461        13   func ,g         * 
+FILE=xctype
+                                  ffe15474  ffe15489        16
+  __Getpctype
+                                  ffe15474        16   func ,g         * 
+FILE=malloc
+                                  ffe1548a  ffe15567        de
+  _findmem
+                                  ffe1548a        7b   func ,l         * 
+  _malloc
+                                  ffe15505        63   func ,g         * 
+FILE=xldtob
+                                  ffe15568  ffe159f3       48c
+  __Ldtob
+                                  ffe15568       48c   func ,g         * 
+FILE=xputstr
+                                  ffe159f4  ffe15ad1        de
+  __Putstr
+                                  ffe159f4        de   func ,g         * 
+FILE=xlitob
+                                  ffe15ad2  ffe15bde       10d
+  __Litob
+                                  ffe15ad2       10d   func ,g         * 
+FILE=__COM_CMPEQd
+                                  ffe15bdf  ffe15c39        5b
+  __COM_CMPEQd
+                                  ffe15bdf         0   none ,g         * 
+  exception_return1
+                                  ffe15bff         0   none ,l         * 
+  exception_return2
+                                  ffe15c03         0   none ,l         * 
+  exception_return3
+                                  ffe15c07         0   none ,l         * 
+  false
+                                  ffe15c0d         0   none ,l         * 
+  true
+                                  ffe15c12         0   none ,l         * 
+  exception1
+                                  ffe15c17         0   none ,l         * 
+  exception2
+                                  ffe15c20         0   none ,l         * 
+  exception3
+                                  ffe15c29         0   none ,l         * 
+FILE=xgetmem
+                                  ffe15c3a  ffe15c54        1b
+  __Getmem
+                                  ffe15c3a        1b   func ,g         * 
+FILE=xgenld
+                                  ffe15c55  ffe15f05       2b1
+  __Genld
+                                  ffe15c55       2b1   func ,g         * 
+FILE=xwctomb
+                                  ffe15f06  ffe1604d       148
+  __Wctombx
+                                  ffe15f06       102   func ,g         * 
+  __Wctomb
+                                  ffe16008        46   func ,g         * 
+FILE=xstate
+                                  ffe1604e  ffe1607f        32
+  __Getmbcurmax
+                                  ffe1604e        16   func ,g         * 
+  __Getpmbstate
+                                  ffe16064        1c   func ,g         * 
+FILE=xldscale
+                                  ffe16080  ffe16083         4
+  __LDscale
+                                  ffe16080         4   func ,g         * 
+FILE=xldunsca
+                                  ffe16084  ffe16087         4
+  __LDunscale
+                                  ffe16084         4   func ,g         * 
+FILE=__COM_DIV64u
+                                  ffe16088  ffe16120        99
+  __COM_DIV64u
+                                  ffe16088         0   none ,g         * 
+  _Loop_Init
+                                  ffe16092         0   none ,l         * 
+  _Loop
+                                  ffe1609a         0   none ,l         * 
+  _DivStart
+                                  ffe160a6         0   none ,l         * 
+  _Success
+                                  ffe160b4         0   none ,l         * 
+  _DivEnd
+                                  ffe160c0         0   none ,l         * 
+  IXI6DIV
+                                  ffe160c5         0   none ,l         * 
+  IXI4DIV
+                                  ffe160d7         0   none ,l         * 
+  IXI2DIV
+                                  ffe160e7         0   none ,l         * 
+  I8I2DIV
+                                  ffe160ef         0   none ,l         * 
+  I4I2DIV
+                                  ffe1611d         0   none ,l         * 
+  _i8divU_End
+                                  ffe16120         0   none ,l         * 
+FILE=__COM_MOD64u
+                                  ffe16121  ffe161a7        87
+  __COM_MOD64u
+                                  ffe16121         0   none ,g         * 
+  _Loop_Init
+                                  ffe1612b         0   none ,l         * 
+  _Loop
+                                  ffe1612f         0   none ,l         * 
+  _DivStart
+                                  ffe1613b         0   none ,l         * 
+  _Success
+                                  ffe16149         0   none ,l         * 
+  _DivEnd
+                                  ffe16151         0   none ,l         * 
+  IXI6DIV
+                                  ffe16152         0   none ,l         * 
+  IXI4DIV
+                                  ffe16164         0   none ,l         * 
+  IXI2DIV
+                                  ffe16174         0   none ,l         * 
+  I8I2DIV
+                                  ffe1617c         0   none ,l         * 
+  I4I2DIV
+                                  ffe1619c         0   none ,l         * 
+FILE=_div
+                                  ffe161a8  ffe161b3         c
+  _ldiv
+                                  ffe161a8         0   none ,g         * 
+  _div
+                                  ffe161a8         0   none ,g         * 
+FILE=localeco
+                                  ffe161b4  ffe161ba         7
+  _localeconv
+                                  ffe161b4         7   func ,g         * 
+FILE=xwcstate
+                                  ffe161bb  ffe161d6        1c
+  __Getpwcstate
+                                  ffe161bb        1c   func ,g         * 
+FILE=xdscale
+                                  ffe161d7  ffe16366       190
+  __Dscale
+                                  ffe161d7       190   func ,g         * 
+FILE=xdunscal
+                                  ffe16367  ffe163cf        69
+  __Dunscale
+                                  ffe16367        69   func ,g         * 
+FILE=xdnorm
+                                  ffe163d0  ffe1647f        b0
+  __Dnorm
+                                  ffe163d0        b0   func ,g         * 
+
+SECTION=W_1
+FILE=utilities_IO_PORT
+                                  ffe16480  ffe164a3        24
+
+SECTION=W_2
+FILE=DefaultBuild\main.obj
+                                  ffe164a4  ffe16579        d6
+FILE=DefaultBuild\setup.obj
+                                  ffe1657a  ffe165ad        34
+FILE=DefaultBuild\Interrupt_INTC.obj
+                                  ffe165ae  ffe165c3        16
+
+SECTION=L
+FILE=DefaultBuild\lowsrc.obj
+                                  ffe165c4  ffe16605        42
+FILE=DefaultBuild\E2dataFlash.obj
+                                  ffe16608  ffe1699d       396
+FILE=DefaultBuild\control.obj
+                                  ffe169a0  ffe16ce3       344
+FILE=DefaultBuild\main.obj
+                                  ffe16ce4  ffe16d32        4f
+FILE=DefaultBuild\memorrytrace.obj
+                                  ffe16d34  ffe16d8b        58
+FILE=DefaultBuild\microSD.obj
+                                  ffe16d8c  ffe1705e       2d3
+FILE=DefaultBuild\setup.obj
+                                  ffe17060  ffe172f2       293
+FILE=xprintf
+                                  ffe172f4  ffe172fa         7
+FILE=xldtob
+                                  ffe172fc  ffe1731d        22
+FILE=xgenld
+                                  ffe17320  ffe17321         2
+FILE=localeco
+                                  ffe17324  ffe17330         d
+
+SECTION=$ADDR_C_FFFFFF80
+FILE=DefaultBuild\Interrupt_INTC.obj
+                                  ffffff80  ffffff83         4
+  _MDES_register
+                                  ffffff80         4   data ,g         * 
+
+SECTION=$ADDR_C_FFFFFFA0
+FILE=DefaultBuild\hwsetup.obj
+                                  ffffffa0  ffffffaf        10
+  _id_code
+                                  ffffffa0        10   data ,g         * 
+
+SECTION=FIXEDVECT
+FILE=DefaultBuild\Interrupt_INTC.obj
+                                  ffffffd0  ffffffff        30
+  _Fixed_Vectors
+                                  ffffffd0        30   data ,g         * 
+
+*** Unfilled Areas ***
+
+AREA                                START    END
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO
