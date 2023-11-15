@@ -204,9 +204,25 @@ void getPichAngleIMU( void )
 {
 	double angularVelocity_xg;
 	int intxg;
+	int i , n;
+	double xg_before;
+	
+
+		
+	
+	//coefficient = 0.3;				//ローパスフィルタの係数
 	
 	angularVelocity_xg = (double)(xg) / GYROLSB;	// IMUのデータを角速度[deg/s]に変換
+	//angularVelocity_xg = coefficient * xg_before + (1 - coefficient) * angularVelocity_xg;//ro-pasu
+	n += angularVelocity_xg;
+	i++;
+	if(i == 3){
+		angularVelocity_xg = n / 3;	
+		PichAngleIMU -= angularVelocity_xg * DELTATIMU;
+		i = 0;
+	}
 	
-	PichAngleIMU -= angularVelocity_xg * DELTATIMU;
+
+
 	
 }

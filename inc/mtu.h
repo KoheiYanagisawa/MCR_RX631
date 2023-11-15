@@ -8,7 +8,7 @@
 // シンボル定義
 //====================================//
 #define SERVO_CENTER		2056		// サーボセンターのAD値
-#define SERVO_LIMIT		    480		// サーボリミットAD値±
+#define SERVO_LIMIT		    600		// サーボリミットAD値±
 #define TGR_MOTOR			1582		// ジェネラルレジスタ初期値(駆動モータ) TGRA初期値-1
 #define TGR_SERVO			1582		// ジェネラルレジスタ初期値(サーボ)	 TGRA初期値-1
 #define PALSE_METER		6150   	    // 1mのパルス
@@ -32,29 +32,38 @@
 #define START_MTU	R_PG_Timer_SynchronouslyStartCount_MTU_U0( 1, 1, 1, 1, 1);
 
 // 左前輪
-#define DIR_FL_FOR		R_PG_IO_PORT_Write_PE3( 1 );		// モータ回転方向(正転)
-#define DIR_FL_REV		R_PG_IO_PORT_Write_PE3( 0 );		// モータ回転方向(逆転）
+#define DIR_FL_FOR		R_PG_IO_PORT_Write_PE3( 0 );		// モータ回転方向(正転)
+#define DIR_FL_REV		R_PG_IO_PORT_Write_PE3( 1 );		// モータ回転方向(逆転）
 #define PWM_FL_OUT	    R_PG_Timer_SetTGR_B_MTU_U0_C4( abs(pwmfl) );	// PWM出力
+#define SR_FL_ON		R_PG_IO_PORT_Write_PE4( 1 );
+#define SR_FL_OFF		R_PG_IO_PORT_Write_PE4( 0 );
 // 右前輪
-#define DIR_FR_FOR		R_PG_IO_PORT_Write_PA6( 1 );
-#define DIR_FR_REV		R_PG_IO_PORT_Write_PA6( 0 );
+#define DIR_FR_FOR		R_PG_IO_PORT_Write_PA6( 0 );
+#define DIR_FR_REV		R_PG_IO_PORT_Write_PA6( 1 );
 #define PWM_FR_OUT	    R_PG_Timer_SetTGR_B_MTU_U0_C0( abs(pwmfr) );
+#define SR_FR_ON		R_PG_IO_PORT_Write_PA7( 1 );
+#define SR_FR_OFF		R_PG_IO_PORT_Write_PA7( 0 );
 // 左後輪
-#define DIR_RL_FOR		R_PG_IO_PORT_Write_PC4( 1 );
-#define DIR_RL_REV		R_PG_IO_PORT_Write_PC4( 0 );
+#define DIR_RL_FOR		R_PG_IO_PORT_Write_PC4( 0 );
+#define DIR_RL_REV		R_PG_IO_PORT_Write_PC4( 1 );
 #define PWM_RL_OUT	    R_PG_Timer_SetTGR_B_MTU_U0_C3( abs(pwmrl) );
+#define SR_RL_ON		R_PG_IO_PORT_Write_PC5( 1 );
+#define SR_RL_OFF		R_PG_IO_PORT_Write_PC5( 0 );
 // 右後輪
-#define DIR_RR_FOR		R_PG_IO_PORT_Write_PB6( 1 );
-#define DIR_RR_REV		R_PG_IO_PORT_Write_PB6( 0 );
+#define DIR_RR_FOR		R_PG_IO_PORT_Write_PB6( 0 );
+#define DIR_RR_REV		R_PG_IO_PORT_Write_PB6( 1 );
 #define PWM_RR_OUT	    R_PG_Timer_SetTGR_B_MTU_U0_C2( abs(pwmrr) );
+#define SR_RR_ON		R_PG_IO_PORT_Write_PB7( 1 );
+#define SR_RR_OFF		R_PG_IO_PORT_Write_PB7( 0 );
 // サーボ1
-#define DIR_SERVO_FOR	R_PG_IO_PORT_Write_PE6( 0 );
-#define DIR_SERVO_REV	R_PG_IO_PORT_Write_PE6( 1 );
+#define DIR_SERVO_FOR	R_PG_IO_PORT_Write_PE6( 1 );
+#define DIR_SERVO_REV	R_PG_IO_PORT_Write_PE6( 0 );
 #define PWM_SERVO_OUT	R_PG_Timer_SetTGR_D_MTU_U0_C0( abs(pwm) );
 // サーボ2
 #define DIR_LANCER_FOR	R_PG_IO_PORT_Write_PC2( 0 );
 #define DIR_LANCER_REV	R_PG_IO_PORT_Write_PC2( 1 );
 #define PWM_LANCER_OUT	R_PG_Timer_SetTGR_D_MTU_U0_C3( abs(pwml) );
+
 
 /******************************************************************************************/
 
@@ -64,8 +73,10 @@
 // エンコーダ関連
 extern unsigned int	EncoderTotal;	// 総走行距離
 extern signed short	Encoder;		// 1msごとのパルス
+extern signed short	speed_enc;
 extern unsigned int	enc1;		// 走行用距離カウント
 extern unsigned int	enc_slope;		// 坂上距離カウント
+extern short		currentSpeed;		//実測速度
 
 // モーター関連
 extern signed char	accele_fR;		// 右前モーターPWM値
@@ -82,6 +93,16 @@ void getEncoder (void);
 
 // モーター関連
 void motorPwmOut( signed char accelefL, signed char accelefR, signed char accelerL, signed char accelerR );
+
+void motor2_r( signed char accelerL, signed char accelerR );
+void motor2_f( signed char accelefL, signed char accelefR );
+void motor3_f( int setsp, signed char accelefL, signed char accelefR );
+void motor3_r( int setsp, signed char accelerL, signed char accelerR );
+void motor6_f( int setsp, signed char accelefL, signed char accelefR );
+void motor6_r( int setsp, signed char accelerL, signed char accelerR );
+void motor_mode_r( int mode_l, int mode_r );
+void motor_mode_f( int mode_l, int mode_r );
+
 // サーボ関連
 void servoPwmOut( signed char pwm );
 

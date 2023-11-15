@@ -1037,6 +1037,10 @@ void msd_sendToPC ( void )
 				printf(	"Time[ms],"		);
 				printf(	"pattern,"			);
 				printf(	"MotorPwm,"		);
+				printf(	"accelefL,"		);
+				printf(	"accelefR,"		);
+				printf(	"accelerL,"		);
+				printf(	"accelerR,"		);
 				printf(	"sensor_inp(),"		);
 				printf(	"modeSlope,"		);
 				printf(	"Encoder,"			);
@@ -1044,19 +1048,21 @@ void msd_sendToPC ( void )
 				printf(	"PichAngleIMU,"		);
 				printf(	"RollAngleIMU,"		);
 				
-				printf(	"TurningAngleIMU,"	);
-				printf(	"xg[degrees/sec],"	);
-				printf(	"yg[degrees/sec],"	);
-				printf(	"zg[degrees/sec],"	);
+				//printf(	"TurningAngleIMU,"	);
+				//printf(	"xg[degrees/sec],"	);
+				//printf(	"yg[degrees/sec],"	);
+				//printf(	"zg[degrees/sec],"	);
 				printf(	"getServoAngle,"	);
 				printf(	"SetAngle,"		);
 				printf(	"getAnalogSensor,"	);
-				printf(	"Voltage,"	);
+				//printf(	"Voltage,"	);
 				printf(	"targetSpeed,"	);
-
+				printf( "currentSpeed,"  );
+				printf( "iAngle,"  );
+				
 				printf(	"EncoderTotal,"		);
-				printf(	"enc1,"			);
-				printf(	"cnt_log[ms]"		);
+				//printf(	"enc1,"			);
+				//printf(	"cnt_log[ms]"		);
 				printf("\n");
 				
 				msdEndaddress = msdWorkaddress2;	// 読み込み終了アドレス
@@ -1094,26 +1100,32 @@ void msd_sendToPC ( void )
 				printf("%5d,", i);
 				printf("%5d,", msdBuff[ msdBuffaddress + 0 ]);	// pattern
 				printf("%5d,", msdBuff[ msdBuffaddress + 1 ]);	// motorPwm
-				printf("%5d,", msdBuff[ msdBuffaddress + 2 ]);	// sensor_inp()
-				printf("%5d,", msdBuff[ msdBuffaddress + 3 ]);	// modeSlope
-				printf("%5d,", msdBuff[ msdBuffaddress + 4 ]);	// Encoder
-				printf("%5d,", msdBuff[ msdBuffaddress + 5 ]);	// targetSpeed
-				printf("%5d,", msdBuff[ msdBuffaddress + 6 ] / 10 );	// PichAngleIMU
-				printf("%5d,", msdBuff[ msdBuffaddress + 7 ] / 10 );	// RollAngleIMU
+				printf("%5d,", msdBuff[ msdBuffaddress + 2 ]);	// accele_fL
+				printf("%5d,", msdBuff[ msdBuffaddress + 3 ]);	// accele_fR
+				printf("%5d,", msdBuff[ msdBuffaddress + 4 ]);	// accele_rL
+				printf("%5d,", msdBuff[ msdBuffaddress + 5 ]);	// accele_rR
+				printf("%5d,", msdBuff[ msdBuffaddress + 6 ]);	// sensor_inp()
+				printf("%5d,", msdBuff[ msdBuffaddress + 7 ]);	// modeSlope
+				printf("%5d,", msdBuff[ msdBuffaddress + 8 ]);	// Encoder
+				printf("%5d,", msdBuff[ msdBuffaddress + 9 ]);	// sPWM
+				printf("%5d,", msdBuff[ msdBuffaddress + 10 ] / 10 );	// PichAngleIMU
+				printf("%5d,", msdBuff[ msdBuffaddress + 11 ] / 10 );	// RollAngleIMU
 				
-				printf("%4.2f,", (double)CharToShort(8) / 10 );	// TurningAngleIMU
-				printf("%4.4f,", (double)CharToShort(10) / GYROLSB );// xg
-				printf("%4.4f,", (double)CharToShort(12) / GYROLSB );// yg
-				printf("%4.4f,", (double)CharToShort(14) / GYROLSB );// zg
-				printf("%5d,", CharToShort(16) );				// getServoAngle()
-				printf("%5d,", CharToShort(18) );				// SetAngle
-				printf("%5d,", CharToShort(20) );				// getAnalogSensor()
-				printf("%2.2f,", (double)CharToShort(22) / 100);
-				printf("%4d,", CharToShort(24));
+				//printf("%4.2f,", (double)CharToShort(8) / 10 );	// TurningAngleIMU
+				//printf("%4.4f,", (double)CharToShort(10) / GYROLSB );// xg
+				//printf("%4.4f,", (double)CharToShort(12) / GYROLSB );// yg
+				//printf("%4.4f,", (double)CharToShort(14) / GYROLSB );// zg
+				printf("%5d,", CharToShort(12) );				// getServoAngle()
+				printf("%5d,", CharToShort(14) );				// SetAngle
+				printf("%5d,", CharToShort(16) );				// getAnalogSensor()
+				//printf("%2.2f,", (double)CharToShort(22) / 100);		//volt
+				printf("%4d,", CharToShort(18));				//targetSpeed
+				printf("%4d,", CharToShort(20));				//currentSpeed
+				printf("%4d,", CharToShort(22));
 				
-				printf("%6d,", CharTouInt (26) );		// EncoderTotal
-				printf("%6d,", CharTouInt (30) );		// enc1
-				printf("%6d", CharTouInt (34) );		// cnt_log
+				printf("%6d,", CharTouInt (24) );		// EncoderTotal
+				//printf("%6d,", CharTouInt (24) );		// enc1
+				//printf("%6d", CharTouInt (28) );		// cnt_log
 				printf("\n");
 				i += WRITINGTIME;
 				msdBuffaddress += DATA_BYTE;

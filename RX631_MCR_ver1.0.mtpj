@@ -1622,7 +1622,7 @@ D_2=R_2
 </LinkOptionCommandLine-DefaultValue>
       <LinkOptionSplitVect-DefaultValue>False</LinkOptionSplitVect-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585478727159590705</TimeTagModified--0>
+      <TimeTagModified--0>-8585106063240583257</TimeTagModified--0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionForm-0>Absolute</LinkOptionForm-0>
       <LinkOptionFormConvert-0>Stype</LinkOptionFormConvert-0>
@@ -1630,7 +1630,7 @@ D_2=R_2
       <LinkOptionListShow-0>List</LinkOptionListShow-0>
       <LinkOptionOptimize-0>None</LinkOptionOptimize-0>
       <LinkOptionStack-0>False</LinkOptionStack-0>
-      <LinkOptionStart-0>B_1,R_1,B_2,R_2,B,R,SU,SI/04,PResetPRG/0FFE00000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/0FFE00100,FIXEDVECT/0FFFFFFD0</LinkOptionStart-0>
+      <LinkOptionStart-0>B_1,R_1,B_2,R_2,B,R,SU,SI/00000004,PResetPRG/0FFE00000,C_1,C_2,C,C$DSEC,C$BSEC,C$INIT,C$VTBL,C$VECT,D_1,D_2,D,P,PIntPRG,W_1,W_2,W,L/0FFE00100,FIXEDVECT/0FFFFFFD0</LinkOptionStart-0>
       <LinkOptionCompress-0>False</LinkOptionCompress-0>
       <LinkOptionCpuInformation-0 />
       <LinkOptionDebug-0>Debug</LinkOptionDebug-0>
@@ -3523,8 +3523,8 @@ D_2=R_2
       <DebuggerProperty-EssentialProperty-TargetConnect-TargetSuppliedVoltage>Use3_3V</DebuggerProperty-EssentialProperty-TargetConnect-TargetSuppliedVoltage>
       <DebuggerProperty-EssentialProperty-TargetConnect-UserVCC>2147483647</DebuggerProperty-EssentialProperty-TargetConnect-UserVCC>
       <DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethod>Jtag</DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethod>
-      <DebuggerProperty-EssentialProperty-TargetConnect-JtagClock>Jtag_06_000</DebuggerProperty-EssentialProperty-TargetConnect-JtagClock>
-      <DebuggerProperty-EssentialProperty-TargetConnect-FineBaudRate>Fine_1500000</DebuggerProperty-EssentialProperty-TargetConnect-FineBaudRate>
+      <DebuggerProperty-EssentialProperty-TargetConnect-JtagClock>Jtag_16_500</DebuggerProperty-EssentialProperty-TargetConnect-JtagClock>
+      <DebuggerProperty-EssentialProperty-TargetConnect-FineBaudRate>Fine_2000000</DebuggerProperty-EssentialProperty-TargetConnect-FineBaudRate>
       <DebuggerProperty-EssentialProperty-TargetConnect-BaudRate>115200</DebuggerProperty-EssentialProperty-TargetConnect-BaudRate>
       <DebuggerProperty-EssentialProperty-Flash-SecurityIdMode>Hex</DebuggerProperty-EssentialProperty-Flash-SecurityIdMode>
       <DebuggerProperty-EssentialProperty-Flash-WorkRamStartAddress>4096</DebuggerProperty-EssentialProperty-Flash-WorkRamStartAddress>
@@ -3547,7 +3547,7 @@ D_2=R_2
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DebuggerGuid />
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>d5919fa7-d93b-491b-a42e-a57f5ba93bbc</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>
-      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileName>DefaultBuild\Klic_trace_v15.abs</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileName>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileName>DefaultBuild\RX631_MCR_ver1.0.abs</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileName>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileType>LoadModuleFile</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-FileType>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-CompilerType>Auto</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-CompilerType>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-Offset>0</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-Offset>
@@ -3853,6 +3853,10 @@ D_2=R_2
       <DebuggerProperty-HookProperty-HookTransaction-Connected-Length>0</DebuggerProperty-HookProperty-HookTransaction-Connected-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
       <DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethodForE2Lite>Jtag</DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethodForE2Lite>
+      <DebuggerProperty-EssentialProperty-TargetConnect-TargetSuppliedVoltageForLinear>33</DebuggerProperty-EssentialProperty-TargetConnect-TargetSuppliedVoltageForLinear>
+      <DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPowerInterface>UserInterface</DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPowerInterface>
+      <DebuggerProperty-EssentialProperty-ExpansionInterface-UseExpansionInterface>NotUse</DebuggerProperty-EssentialProperty-ExpansionInterface-UseExpansionInterface>
+      <DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethodForE2>Jtag</DebuggerProperty-EssentialProperty-TargetConnect-CommunicationMethodForE2>
     </Instance>
   </Class>
   <Class Guid="100f3761-3d7e-4559-b1d8-375a0c7bf682">

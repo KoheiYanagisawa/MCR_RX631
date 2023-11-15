@@ -381,10 +381,10 @@ void setup( void )
 			
 			data_select( &servo_test2, SW_PUSH );
 			modeAngle = 1;
-			if ( servo_test == 1 ) servoPwmOut( ServoPwm2 );
-			else servoPwmOut( 0 );
-			if ( servo_test2 == 1 ) SetAngle = 700;
-			else SetAngle = -700;
+			/*if ( servo_test == 1 ) servoPwmOut( ServoPwm2 );
+			else servoPwmOut( 0 );*/
+			if ( servo_test2 == 1 ) SetAngle = 500;
+			else SetAngle = -500;
 			
 			data_tuningLR( &pattern_gain2, 1 );
 			if ( pattern_gain2 == 4 ) pattern_gain2 = 1;
@@ -435,6 +435,14 @@ void setup( void )
 			data_tuningLR( &pattern_gain3, 1 );
 			if ( pattern_gain3 == 4 ) pattern_gain3 = 1;
 			else if ( pattern_gain3 == 0 ) pattern_gain3 = 3;
+			
+			
+			targetSpeed  = 0;
+			
+			data_select ( &demo, 0xf );		//変えた20190319
+			if ( demo == 1 ) {
+				motorPwmOut(motorPwm, motorPwm, motorPwm, motorPwm);
+			}
 			
 			switch( pattern_gain3 ) {
 				case 1:
@@ -535,7 +543,8 @@ void setup( void )
 		//------------------------------------------------------------------
 		case 0x9:
 			data_tuningLR( &pattern_sensor, 1 );
-			modeAngle = 0;
+			modeAngle = 1;
+			
 			
 			if ( pattern_sensor == 14 ) pattern_sensor = 1;
 			else if ( pattern_sensor == 0 ) pattern_sensor = 13;
@@ -575,7 +584,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						// lcdRowPrintf(LOWROW, "   %4.1f",(double)EncoderTotal/PALSE_MILLIMETER);
-						//lcdRowPrintf(LOWROW, "   %5d",EncoderTotal);
+						//lcdRowPrintf(LOWROW, "   %5d",speed_enc);
 						lcdRowPrintf(LOWROW, "   %5d",Encoder);
 					}
 					break;
@@ -593,8 +602,8 @@ void setup( void )
 					// アナログセンサ
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
-						lcdRowPrintf(UPROW, "R   %4d",sensorR);
-						lcdRowPrintf(LOWROW, "L   %4d",sensorL);
+						lcdRowPrintf(UPROW, "RR  %4d",sensorRR);
+						lcdRowPrintf(LOWROW, "LL  %4d",sensorLL);
 					}
 					break;
 					
@@ -605,8 +614,8 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						startbar_get();
-						lcdRowPrintf(UPROW, "G   %4d", sensorG);
-						lcdRowPrintf(LOWROW, "D    0x%x", sensor_inp());
+						lcdRowPrintf(UPROW, "C   %4d",sensorC );
+						lcdRowPrintf(LOWROW, "D   %4d", sensorG);
 					}
 					break;
 					
@@ -619,11 +628,15 @@ void setup( void )
 					if ( motor_test == 1 ) {
 						// if ( cntSetup1 >= 500 ) {
 							// cntSetup1 = 0;
-							diff( motorTestPwm );
+							//diff( motorTestPwm );
 						// }
-						// motorPwmOut(motorTestPwm, motorTestPwm, motorTestPwm, motorTestPwm);
+						motor_mode_r( F, F );
+						motor_mode_f( F, F );
+						 motorPwmOut(motorTestPwm, motorTestPwm, motorTestPwm, motorTestPwm);
 					} else {
-						motorPwmOut(0, 0, 0, 0);
+						//motorPwmOut(0, 0, 0, 0);
+						motor_mode_r( B, B );
+						motor_mode_f( B, B );
 					}
 					
 					data_select( &motor_test, SW_PUSH );
@@ -631,9 +644,14 @@ void setup( void )
 				case 8:
 					// サーボテスト
 					lcdRowPrintf(UPROW, "Servo   ");
-					lcdRowPrintf(LOWROW, "        ");
-					if ( motor_test == 1 ) servoPwmOut( 20 );
+					lcdRowPrintf(LOWROW," %d      ", motor_test);
+					
+					if ( motor_test == 1 ){
+						SetAngle = 0;
+						servoPwmOut( ServoPwm2 );
+					}
 					else				servoPwmOut( 0 );
+					
 					
 					data_select( &motor_test, SW_PUSH );
 					break;
@@ -717,11 +735,17 @@ void setup( void )
 			
 			data_select ( &demo, 1 );
 			if ( demo == 1 ) {
+				targetSpeed = 0;
+				if (taswGet() == SW_DOWN) targetSpeed = 10;
+				printf("%d %d %d   %d\n",kp3,ki3,kd3,targetSpeed);
 				motorPwmOut(motorPwm, motorPwm, motorPwm, motorPwm);
 				lcdRowPrintf(LOWROW, "   Start");
+				
+				 
 			} else {
 				lcdRowPrintf(LOWROW, "    Stop");
 			}
+			
 			break;
 		//------------------------------------------------------------------
 		// MicroSD
@@ -874,6 +898,68 @@ void setup( void )
 						break;
 					}
 					break;
+			}
+			break;
+		//------------------------------------------------------------------
+		// センサーキャリブレーション
+		//------------------------------------------------------------------
+		case 0xf:
+			data_tuningLR( &pattern_sensor, 1 );			
+			if ( pattern_sensor == 7 ) pattern_sensor = 1;
+			else if ( pattern_sensor == 0 ) pattern_sensor = 6;
+			
+			switch( pattern_sensor ) {
+
+				case 1:
+					// アナログセンサ
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "RR %4.3f",RR_tatio);
+						lcdRowPrintf(LOWROW, "RR  %4d",sensorRR);
+					}
+					break;	
+				case 2:
+					// アナログセンサ
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "LL %4.3f",LL_tatio);
+						lcdRowPrintf(LOWROW, "LL  %4d",sensorLL);
+					}
+					break;
+				case 3:
+					// アナログセンサ
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "C  %4.3f",C_tatio);
+						lcdRowPrintf(LOWROW, "C   %4d",sensorC);
+					}
+					break;
+				case 4:
+					// アナログセンサ
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "R  %4.3f",R_tatio);
+						lcdRowPrintf(LOWROW, "R   %4d",sensorR);
+					}
+					break;
+				case 5:
+					// アナログセンサ
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "L  %4.3f",L_tatio);
+						lcdRowPrintf(LOWROW, "L   %4d",sensorL);
+					}
+					break;	
+				case 6:
+					// ラインセンサ16進数表示
+					if ( cntSetup1 >= 100 ) {
+						cntSetup1 = 0;
+						lcdRowPrintf(UPROW, "sensHexa");
+						lcdRowPrintf(LOWROW, "    0x%2x",sensor_inp(MASK11111));
+						
+					
+					}
+					break;			
 			}
 			break;
 

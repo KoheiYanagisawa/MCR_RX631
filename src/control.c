@@ -88,17 +88,78 @@ char 	demo;
 char	kp_buff, ki_buff, kd_buff;
 char	kp2_buff, ki2_buff, kd2_buff;
 char 	kp3_buff, ki3_buff, kd3_buff;
+char 	kp4_buff, ki4_buff, kd4_buff;
+char kp3, ki3, kd3;
+//basicRunPower
+float   r450fin_buff,r450fout_buff;
+float   r450rin_buff,r450rout_buff;
+float   r600fin_buff,r600fout_buff;
+float   r600rin_buff,r600rout_buff;
 
+// ライン検知
+volatile unsigned char cnt_crossline;
+volatile unsigned char cnt_rightline;
+volatile unsigned char cnt_leftline;
+volatile int line;
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 checkLine
+// 処理概要     ライン検知
+// 引数         なし
+// 戻り値       0:ラインなし 1:クロスライン 2:右ハーフライン 3:左ハーフライン
+///////////////////////////////////////////////////////////////////////////
+int checkLine( void ){
+	line = 0;
+
+	if( check_crossline() ) {       	/* クロスラインチェック     */
+		cnt_crossline++;
+		
+		if( cnt_crossline >= 2 ){
+			cnt_crossline = 0;
+			line = 1;
+		}
+		
+	}else{
+		cnt_crossline = 0;
+	}
+		
+		
+	if( check_rightline() ) {  		    /* 右ハーフラインチェック   */
+		cnt_rightline++;
+			
+		if( cnt_rightline >= 2 ){
+			cnt_rightline = 0;
+			line = 2;
+		}
+		
+	}else{
+		cnt_rightline = 0;
+	}
+		
+	if( check_leftline() ) {        	/* 左ハーフラインチェック   */
+		cnt_leftline++;
+			
+		if( cnt_leftline >= 2 ){
+			cnt_leftline = 0;
+			line = 3;
+		}
+		
+	}else{
+		cnt_leftline = 0;
+	}
+	
+    return line;
+}
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 checkCrossLine
 // 処理概要     クロスライン検知
 // 引数         なし
 // 戻り値       0:クロスラインなし 1:あり
 ///////////////////////////////////////////////////////////////////////////
-bool checkCrossLine( void )
+bool check_crossline( void )
 {
-	if ( sensor_inp() == 0x7 ) return true;
-	else return false;
+	if ( sensor_inp(MASK11111) == 0x1f || sensor_inp(MASK11111) == 0x15 || sensor_inp(MASK11111) == 0x17 ){
+		return true;
+	}else 	return false;
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 checkRightLine
@@ -106,10 +167,12 @@ bool checkCrossLine( void )
 // 引数         なし
 // 戻り値       0:右ハーフラインなし 1:あり
 ///////////////////////////////////////////////////////////////////////////
-bool checkRightLine( void )
+bool check_rightline( void )
 {
-	if ( sensor_inp() == 0x3 ) return true;
-	else return false;
+	
+	if ( sensor_inp(MASK11111) == 0x7 || sensor_inp(MASK11111) == 0x3 ){
+		return true;
+	}else 	return false;
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 checkLeftLine
@@ -117,11 +180,72 @@ bool checkRightLine( void )
 // 引数         なし
 // 戻り値       0:左ハーフラインなし 1:あり
 ///////////////////////////////////////////////////////////////////////////
-bool checkLeftLine( void )
-{
-	if ( sensor_inp() == 0x6 ) return true;
-	else return false;
+bool check_leftline( void )
+{	
+	if ( sensor_inp(MASK11111) == 0x1C || sensor_inp(MASK11111) == 0x18 ){
+		return true;
+	}else 	return false;
 }
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 checkCrossLine
+// 処理概要     クロスライン検知
+// 引数         なし
+// 戻り値       0:クロスラインなし 1:あり
+///////////////////////////////////////////////////////////////////////////
+/*int checkCrossLine( void )
+{
+    volatile unsigned char b;
+    volatile int ret;
+
+    ret = 0;
+    b = sensor_inp(MASK10101);
+    if( b==0x15 ) {
+        ret = 1;
+    }
+	b = sensor_inp(MASK11111);
+    if( b==0x1f ) {
+        ret = 1;
+    }
+    return ret;
+}
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 checkRightLine
+// 処理概要     右ハーフライン検出処理
+// 引数         なし
+// 戻り値       0:右ハーフラインなし 1:あり
+///////////////////////////////////////////////////////////////////////////
+int checkRightLine( void )
+{
+    volatile unsigned char b;
+    volatile int ret;
+    	
+    ret = 0;
+    b = sensor_inp( MASK00101 );
+    if( b == 0x05 ) {
+	//servoPwmOut(0);
+        ret = 1;
+    }
+    return ret;
+}
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 checkLeftLine
+// 処理概要     左ハーフライン検出処理
+// 引数         なし
+// 戻り値       0:左ハーフラインなし 1:あり
+///////////////////////////////////////////////////////////////////////////
+int checkLeftLine( void )
+{
+    volatile unsigned char b;
+    volatile int ret;
+    
+    ret = 0;
+    b = sensor_inp( MASK10100 );
+    if( b==0x14 ) {
+	//servoPwmOut(0);
+        ret = 1;
+    }
+    return ret;
+}*/
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 checkSlope
 // 処理概要     ジャイロセンサの値から坂道検出
@@ -182,7 +306,7 @@ void servoControlTrace( void )
 
 	iP = (int)kp_buff * Dev;		// 比例
 	iI = (double)ki_buff * Int;		// 積分
-	iD = (int)kd_buff * Dif;		// 微分
+	iD = ((int)kd_buff * 10 ) * Dif;		// 微分
 	iRet = iP + iI + iD;
 	iRet = iRet >> 10;				// PWMを0～100近傍に収める
 
@@ -259,15 +383,52 @@ void servoControlAngle( void )
 void diff ( signed char pwm )
 {
 	const char rev_difference_D[] = {       // 角度から内輪、外輪回転差計算
-		100,100,100,99,100,99,99,100,99,98,100,98,97,100,97,
-		96,100,97,95,99,96,95,99,95,94,99,95,93,99,94,
-		92,98,93,91,98,93,90,98,92,89,97,91,88,97,91,
-		87,96,90,86,96,90,85,95,89,83,95,88,82,94,88,
-		81,93,87,80,92,86,79,92,86,77,91,85,76,90,85,
-		75,89,84,73,88,83,72,87,83,71,86,82,69,85,82,
-		68,84,81,66,82,80,65,81,80,63,80,79,62,78,79,
-		60,77,78,58,75,78,57,73,77,55,72,76,53,70,76,
-		51,68,75,49,65,75,47,63,74,44,61,73,
+			100,100,100,
+			98,99,100,
+			97,97,100,
+			95,96,100,
+			94,94,100,
+			92,93,100,
+			91,92,99,
+			89,90,99,
+			88,89,99,
+			86,88,99,
+			84,87,99,
+			83,85,98,
+			81,84,98,
+			80,83,98,
+			78,82,97,
+			76,81,97,
+			75,80,97,
+			73,79,96,
+			72,77,96,
+			70,76,95,
+			69,75,95,
+			67,74,94,
+			65,73,94,
+			64,72,93,
+			62,71,93,
+			61,70,92,
+			59,69,92,
+			58,69,91,
+			56,68,90,
+			54,67,90,
+			53,66,89,
+			51,65,88,
+			50,64,88,
+			48,63,87,
+			47,63,86,
+			45,62,86,
+			44,61,85,
+			42,60,84,
+			41,60,83,
+			39,59,83,
+			38,58,82,
+			36,57,81,
+			35,57,80,
+			33,56,79,
+			32,56,79,
+			30,55,78,
 		};
 
 	signed char R1, R2, R3, R4;
@@ -287,10 +448,41 @@ void diff ( signed char pwm )
 		R3 = r3 * pwm / 100;
 		R4 = pwm;
 		
-		if ( angle >= 0 ) {
-			motorPwmOut(R1, R3, R2, R4);
-		} else {
-			motorPwmOut(R3, R1, R4, R2);
+		if ( angle >= 28/*85*/ && angle <= 45) {
+			//motorPwmOut(R1, R3, R2, R4);//左カーブ
+			motorPwmOut(R3 * 0.6, R4 * 0.8,
+				    0, R2 * 0.8);
+			
+		}else if ( angle >= 18/*55*/ && angle <= 27) {
+			//motorPwmOut(R1, R3, R2, R4);//左カーブ
+			motorPwmOut(R3 , R4 ,
+				    R1 * 0.9, R2 );
+		}else if ( angle >= 5/*15*/ && angle <= 17 ) {
+			//motorPwmOut(R1, R3, R2, R4);//左カーブ
+			motorPwmOut(R3 , R4,
+				    R1, R2);
+		}else if( angle >= 0/*15*/ && angle <= 4 ){
+			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+			motorPwmOut(R4, R4,
+				    R4, R4);
+		}
+		
+		if ( angle <= -28 && angle >= -45) {
+			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+			motorPwmOut(R3 * 0.6, R4 * 0.8,
+				    0, R2 * 0.8);
+		}else if ( angle <= -18 && angle >= -27) {
+			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+			motorPwmOut(R3 , R4 ,
+				    R1 * 0.9, R2 );
+		}else if ( angle <= -5 && angle >= -17) {
+			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+			motorPwmOut(R4, R3,
+				    R2, R1);
+		}else if ( angle <= 0 && angle >= -4){
+			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+			motorPwmOut(R4, R4,
+				    R4, R4);
 		}
 	} else {
 		r1 = rev_difference_D[ angle2 ];
@@ -303,9 +495,11 @@ void diff ( signed char pwm )
 		R4 = pwm;
 		
 		if ( angle >= 0 ) {
-			motorPwmOut(R3, R4, R1, R2);
+			motorPwmOut(R4, R2,
+				    R3, R1);
 		} else {
-			motorPwmOut(R4, R3, R2, R1);
+			motorPwmOut(R2, R4, 
+				    R1, R3);
 		}
 	}
 }
@@ -318,17 +512,17 @@ void diff ( signed char pwm )
 void motorControl( void )
 {
 	int i, j, iRet, Dif, iP, iI, iD, Dev, maxpwm;
-	char kp3, ki3, kd3;
+	//char kp3, ki3, kd3;
 	
 	i = targetSpeed;		// 目標値
-	j = Encoder * 10;		// 現在値 targetSpeedはエンコーダのパルス数*10のため
+	j = Encoder *10;		// 現在値 targetSpeedはエンコーダのパルス数*10のため
 							// 現在位置も10倍する
 
 	// デモモードのときゲイン変更
-	if ( demo ) {
-		kp3 = kp3_buff;
-		ki3 = ki3_buff;
-		kd3 = kd3_buff;
+	if ( targetSpeed < targetSpeedBefore ) {
+		kp3 = 10;
+		ki3 = 4;
+		kd3 = 0;
 	} else {
 		kp3 = kp3_buff;
 		ki3 = ki3_buff;
@@ -337,30 +531,44 @@ void motorControl( void )
 	
 	// 駆動モーター用PWM値計算
 	Dev = i - j;	// 偏差
+		
 	// 目標値を変更したらI成分リセット
-	if ( i != targetSpeedBefore ) Int3 = 0;
+	if ( Dev >= 0 && AccelefBefore == 1 ) {
+		Int3 = 0;
+	} else if ( Dev < 0 && AccelefBefore == 0 ) {
+		Int3 = 0;
+	}
+	//if ( i != targetSpeedBefore ) Int3 = 0;
 	
 	Int3 += (double)Dev * 0.001;	// 時間積分
 	Dif = Dev - EncoderBefore;		// 微分　dゲイン1/1000倍
 	
-	iP = (int)kp3 * Dev;			// 比例
+	iP = (int)kp3 * Dev;			// 比例 
+	
 	iI = (double)ki3 * Int3;		// 積分
+	if(iI > 5 ) iI = 5;			// 追加20190319
+	if(iI < -5 ) iI = -5;			// 追加20190319
+	
 	iD = (int)kd3 * Dif;			// 微分
 	iRet = iP + iI + iD;
 	iRet = iRet >> 4;
 	
 	// PWMの上限の設定
 	// 出力電圧がVOLTAGELIMとなるDuty比を計算
-	maxpwm = (int8_t)(VOLTAGELIM / Voltage *100);
+	//maxpwm = (int8_t)(VOLTAGELIM / Voltage *100);
 
 	// if ( iRet > maxpwm ) iRet =  maxpwm;
 	// if ( iRet < -maxpwm ) iRet = -maxpwm;
 	if ( iRet >  100 ) iRet = 100;
 	if ( iRet <  -100 ) iRet = -100;
 	
-	motorPwm = iRet;
+	if ( Dev > 0 )	AccelefBefore = 0;
+	else		AccelefBefore = 1;
+	
+	motorPwm = iRet*0.6;
 	EncoderBefore = Dev;
 	targetSpeedBefore = i;
+	
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 getLinePositionNow
@@ -435,3 +643,37 @@ short getReturnAngle( double angleIMU, double y1) {
 		}
 	}
 }
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 acceleControl
+// 処理概要     指定加速度への追従制御
+// 引数         指定加速度
+// 戻り値       なし
+///////////////////////////////////////////////////////////////////////////
+/*int  acceleControl( int targetAccele) {
+
+	int target,speedBefor,accceleBefor,iRet,Dev,KP,KI,KD,Int;
+	short nowspeed;
+	float dt,P,I,D;
+	
+	target = targetAccele;				// 目標値
+	nowspeed = currentSpeed;			// 現在速度
+	dt = 0.001;					// 速度取得周期（1ms）
+	
+	KP = 0;
+	KI = 0;
+	KD = 0;
+	
+	nowaccele = (nowspeed - speedBefor) / dt;	//現在加速度
+	
+	Dev = targetAccele - nowaccele;		//偏差
+	Int += ( Dev + accceleBefor ) / dt;		//加速度時間積分値
+		
+	P = KP * Dev;			 	// 比例 
+	I = KI * Int;				// 積分
+	D = KD * (Dev - accceleBefor)/dt;	// 微分
+	iRet = P + I + D;
+	
+
+	speedBefor = nowspeed;
+	accceleBefor = nowaccele;
+}*/
