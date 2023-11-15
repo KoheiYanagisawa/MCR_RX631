@@ -64,6 +64,7 @@ static char			Timer10;	// 1msカウント用
 
 int correct_angle;
 int Angle_fixed;			//マーカー読み飛ばし用固定角度
+int sens_error;
 //====================================//
 // プロトタイプ宣言
 //====================================//
@@ -677,7 +678,6 @@ void main(void){
 			if(sensor_inp(MASK10000) == 0x10) {
 				enc1 = 0;
 				Int = 0;			// 積分リセット
-				
 				pattern = 56;
 				break;
 			}
@@ -685,30 +685,35 @@ void main(void){
 			
 		case 56:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-
-			
 			if(  sensor_inp(MASK10000) == 0x00 ) {
 				enc1 = 0;
-				SetAngle = -(angle_rightchange);
+				//SetAngle = -(angle_rightchange);
 				pattern = 57;
 				break;
 			}
 			break;
 		case 57:
-			
-			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-			if(  sensor_inp(MASK00100) == 0x04 && 10 >= abs(getAnalogSensor()) ) {
+			if(  sensor_inp(MASK00001) == 0x01) {
 				modeAngle = 0;
+				pattern = 58;
+				break;
+			}
+			break;
+		case 58:
+			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
+			servoPwmOut( -90 );
+			if(  sensor_inp(MASK00100) == 0x04 /*&& 30 >= abs(sens_error)*/ ) {
+				servoPwmOut( 0 );
 				enc1 = 0;
 				modeMotor = 1;
-				pattern = 58;
+				pattern = 59;
 				break;
 				
 
 			}
 			break;
 			
-		case 58:
+		case 59:
 			targetSpeed = speed_rightchange_escape * SPEED_CURRENT;
 
 			if( enc1 >= encMM( 50 ) ) {
@@ -1088,7 +1093,7 @@ void Timer (void) {
 	}
 	cnt1++;
 	cntGyro++;
-			
+	sens_error = getAnalogSensor();
 	// LCD表示
 	if ( modeLCD ) lcdShowProcess();
 	// エンコーダカウント取得

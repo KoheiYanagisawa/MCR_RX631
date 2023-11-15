@@ -82,7 +82,7 @@ void ADconverter ( void )
 	sensor_calc[sensorLL_max] = 1437;
 	sensor_calc[sensorLL_min] = 175;
 	
-	ADTimer10++;
+	/*ADTimer10++;
 	if ( ADTimer10 == 10 ) {
 		ADTimer10 = 0;
 		
@@ -106,7 +106,27 @@ void ADconverter ( void )
 		
 		VolC = 0;
 		pot = 0;
-	}
+	}*/
+		Angle = pot;
+		sensorR = senL;
+		sensorL = senR;	
+		sensorG = senG;
+		sensorC = senC;
+		sensorLL = senLL;
+		sensorRR = senRR;
+		VoltageC = VolC;
+		sensor_saka = sen_saka;
+		
+		senR = 0;
+		senL = 0;
+		senG = 0;
+		senC = 0;
+		senLL = 0;
+		senRR = 0;
+		sen_saka = 0;
+		
+		VolC = 0;
+		pot = 0;
 	
 	// AD変換値をバッファに格納
 	pot += result[3];
@@ -195,6 +215,7 @@ void getsens_ratio ( void )
 short getAnalogSensor(void) 
 {
 	return sensorL_reg - sensorR_reg;
+	//return sensorL - sensorR;
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 RRget
