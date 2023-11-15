@@ -16,6 +16,7 @@
         "r_smc_entry.h": "c",
         "r_cg_macrodriver.h": "c",
         "platform.h": "c",
-        "r_bsp.h": "c"
+        "r_bsp.h": "c",
+        "complex": "c"
     },
 }

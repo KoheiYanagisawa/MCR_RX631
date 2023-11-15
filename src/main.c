@@ -689,7 +689,7 @@ void main(void){
 			
 			if(  sensor_inp(MASK10000) == 0x00 ) {
 				enc1 = 0;
-				SetAngle = -(angle_rightchange/2);
+				SetAngle = -(angle_rightchange);
 				pattern = 57;
 				break;
 			}
@@ -697,13 +697,14 @@ void main(void){
 		case 57:
 			
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-			
-			if(  sensor_inp(MASK00100) == 0x4 && 30 >= abs(getAnalogSensor())  ) {
-				enc1 = 0;
+			if(  sensor_inp(MASK00100) == 0x04 && 10 >= abs(getAnalogSensor()) ) {
 				modeAngle = 0;
+				enc1 = 0;
 				modeMotor = 1;
 				pattern = 58;
 				break;
+				
+
 			}
 			break;
 			

@@ -83,8 +83,8 @@
 // 角度
 #define ANGLE_RIGHTCLANK		550	// 右クランク旋回角度480
 #define ANGLE_LEFTCLANK		        -510	// 左クランク旋回角度480
-#define ANGLE_RIGHTCHANGE		250	// 右レーンチェンジ旋回角度
-#define ANGLE_LEFTCHANGE	        -250	    // 左レーンチェンジ旋回角度
+#define ANGLE_RIGHTCHANGE		200	// 右レーンチェンジ旋回角度
+#define ANGLE_LEFTCHANGE	        -200	    // 左レーンチェンジ旋回角度
 
 
 

@@ -10,10 +10,7 @@
                 "DefaultBuild",
                 "${workspaceFolder}\\RX631_MCR_ver1.0.mtpj"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": []
         },
         {
@@ -24,7 +21,10 @@
                 "${workspaceFolder}\\Flash Programmer\\RX631_MCR\\aa.rpj"
             ],
             "problemMatcher": [],
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "type": "cppbuild",
