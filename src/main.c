@@ -687,7 +687,6 @@ void main(void){
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
 			if(  sensor_inp(MASK10000) == 0x00 ) {
 				enc1 = 0;
-				//SetAngle = -(angle_rightchange);
 				pattern = 57;
 				break;
 			}
@@ -702,14 +701,12 @@ void main(void){
 		case 58:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
 			servoPwmOut( -90 );
-			if(  sensor_inp(MASK00100) == 0x04 /*&& 30 >= abs(sens_error)*/ ) {
+			if(  sensor_inp(MASK00100) == 0x04 ) {
 				servoPwmOut( 0 );
 				enc1 = 0;
 				modeMotor = 1;
 				pattern = 59;
 				break;
-				
-
 			}
 			break;
 			
@@ -793,26 +790,33 @@ void main(void){
 			
 			if(  sensor_inp(MASK00001) == 0x00 ) {
 				enc1 = 0;
-				SetAngle = -(angle_leftchange/2);
 				pattern = 67;
 				break;
 			}
 			break;
 		case 67:
 			
-			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
-			
-			if(  sensor_inp(MASK00100) == 0x4 && 30 >= abs(getAnalogSensor()) ) {
-				enc1 = 0;
-				modeAngle = 0;
-				modeMotor = 1;
+			if(  sensor_inp(MASK10000) == 0x10 ) {
+				
 				pattern = 68;
+				break;
+			}
+			break;
+		case 68:
+			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
+			servoPwmOut( 90 );
+			if(  sensor_inp(MASK00100) == 0x04 ) {
+				//servoPwmOut( 0 );
+				modeAngle = 0;
+				enc1 = 0;
+				modeMotor = 1;
+				pattern = 69;
 				break;
 			}
 			break;
 			
 			
-		case 68:
+		case 69:
 			targetSpeed = speed_leftchange_escape * SPEED_CURRENT;
 
 			if( enc1 >= encMM( 50 ) ) {
