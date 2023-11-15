@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <RfpProject>
   <FileVersion>V1.04.00</FileVersion>
-  <ProductVersion>V3.08.03</ProductVersion>
+  <ProductVersion>V3.08.02</ProductVersion>
   <ParameterFile>RX600 Series.fcf</ParameterFile>
   <Device>RX630</Device>
   <OperationTab>
     <Endian>RFLG_ENDIAN_LITTLE</Endian>
-    <ProgramFile>C:\Users\Natsuki\Dropbox\Document\MCR\RX631_MCR_ver1.0\DefaultBuild\RX631_MCR_ver1.0.mot</ProgramFile>
+    <ProgramFile>C:\Users\yanah\RX631_MCR_Default\DefaultBuild\RX631_MCR_ver1.0.mot</ProgramFile>
   </OperationTab>
   <OperationSettingTab>
     <FillCode>False</FillCode>
@@ -64,20 +64,20 @@
     <ExtraOptionProtect>False</ExtraOptionProtect>
   </DeviceOptionTab>
   <ConnectOptionTab>
-    <Tool>COMMTYPE_USB</Tool>
-    <ToolNum>Tool_AutoSelect</ToolNum>
+    <Tool>COMMTYPE_COMPORT</Tool>
+    <ToolNum>COM6</ToolNum>
     <ToolPower>0</ToolPower>
     <ToolConnectMode>RFPSet</ToolConnectMode>
     <ToolConnectPinOut>0</ToolConnectPinOut>
     <ToolConnectPinLvl>0</ToolConnectPinLvl>
     <ToolDisconnectReset>Low</ToolDisconnectReset>
     <ToolResetSignalFlag>09000000</ToolResetSignalFlag>
-    <ToolInterface>IFTYPE_USB</ToolInterface>
-    <ToolSpeed>0</ToolSpeed>
+    <ToolInterface>IFTYPE_UART2</ToolInterface>
+    <ToolSpeed>57600</ToolSpeed>
     <ToolWideVoltage>False</ToolWideVoltage>
     <MainClock>12000000</MainClock>
-    <AutoAuthen>False</AutoAuthen>
-    <IdCodeAuthen>FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</IdCodeAuthen>
+    <AutoAuthen>True</AutoAuthen>
+    <IdCodeAuthen>45FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</IdCodeAuthen>
     <CodeFlashPWDAuthen>
     </CodeFlashPWDAuthen>
     <DataFlashPWDAuthen>
