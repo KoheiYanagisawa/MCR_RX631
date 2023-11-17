@@ -700,9 +700,9 @@ void main(void){
 			break;
 		case 58:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-			servoPwmOut( -90 );
+			servoPwmOut( -50 );
 			if(  sensor_inp(MASK00100) == 0x04 ) {
-				servoPwmOut( 0 );
+				servoPwmOut( 30 );
 				enc1 = 0;
 				modeMotor = 1;
 				pattern = 59;
@@ -806,7 +806,7 @@ void main(void){
 			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
 			servoPwmOut( 90 );
 			if(  sensor_inp(MASK00100) == 0x04 ) {
-				//servoPwmOut( 0 );
+				servoPwmOut( 0 );
 				modeAngle = 0;
 				enc1 = 0;
 				modeMotor = 1;
@@ -1108,6 +1108,7 @@ void Timer (void) {
 	// PID制御値算出
 	if ( modeAngle ) servoControlAngle();	// 角度
 	else servoControlTrace();		// 白線
+	//モーターモード切換え（フリー・駆動）
 	if ( modeMotor )motorControl();		// モータ
 	else {
 		motor_mode_f( F, F );
