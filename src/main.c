@@ -430,16 +430,27 @@ void main(void){
 			
 			targetSpeed = speed_crossline* SPEED_CURRENT;
 			
-			ledOut( LED_G );
-			
-			if( enc1 > encMM( 90 ) ) {		// 60mm進む
+			modeAngle = 1;
+			SetAngle = Angle_fixed;
+			//白線読み飛ばし処理
+			if( enc1 > encMM( 25 ) ) {		// 60mm進む
+				modeAngle = 0;
 				enc1 = 0;
 				pattern = 22;
 				break;
 			}
 			break;
+		case 22:		
+			targetSpeed = speed_crossline* SPEED_CURRENT;
+			//線切れ読み飛ばし処理
+			if( enc1 > encMM( 300 ) ) {		// 60mm進む
+				enc1 = 0;
+				pattern = 23;
+				break;
+			}
+			break;
 			
-		case 22:
+		case 23:
 			targetSpeed = speed_ckank_trace * SPEED_CURRENT;
 			
 			// 右クランクチェック
