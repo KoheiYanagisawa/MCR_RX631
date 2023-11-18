@@ -170,6 +170,8 @@ void main(void){
 
 				lcdRowPrintf(UPROW, "now  %3d", pattern);
 				lcdRowPrintf(LOWROW, "D   0x%2x", sensor_inp(MASK11111));
+				
+				
 			}
 			// スイッチで停止
 			if ( cnt1 >= 1000 && taswGet() == SW_PUSH ) {
@@ -675,7 +677,7 @@ void main(void){
 			SetAngle = 0;
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
 
-			if(sensor_inp(MASK10000) == 0x10) {
+			if(sensor_inp(MASK01000) == 0x08) {
 				enc1 = 0;
 				Int = 0;			// 積分リセット
 				pattern = 56;
@@ -685,8 +687,8 @@ void main(void){
 			
 		case 56:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-			if(  sensor_inp(MASK10000) == 0x00 ) {
-				enc1 = 0;
+			if(  sensor_inp(MASK01000) == 0x00 ) {
+				modeAngle = 0;
 				pattern = 58;
 				break;
 			}
@@ -701,9 +703,10 @@ void main(void){
 		case 58:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
 			servoPwmOut( -90 );
-			if(  sensor_inp(MASK00100) == 0x04 ) {
-				//servoPwmOut( 30 );
+			if(  sensor_inp(MASK01000) == 0x08 /*&& getAnalogSensor() >= -300 && getAnalogSensor() <= 300*/) {
+				servoPwmOut( 0 );
 				enc1 = 0;
+				//modeAngle = 0;
 				modeMotor = 1;
 				pattern = 59;
 				break;
@@ -777,7 +780,7 @@ void main(void){
 			SetAngle = 0;
 			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
 
-			if( sensor_inp(MASK00001) == 0x1 ) {
+			if( sensor_inp(MASK00010) == 0x02 ) {
 				enc1 = 0;
 				Int = 0;			// 積分リセット
 				
@@ -788,27 +791,27 @@ void main(void){
 		case 66:
 			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
 			
-			if(  sensor_inp(MASK00001) == 0x00 ) {
-				enc1 = 0;
-				pattern = 67;
+			if(  sensor_inp(MASK00010) == 0x00 ) {
+				modeAngle = 0;
+				pattern = 68;
 				break;
 			}
 			break;
-		case 67:
+		/*case 67:
 			
 			if(  sensor_inp(MASK10000) == 0x10 ) {
 				
 				pattern = 68;
 				break;
 			}
-			break;
+			break;*/
 		case 68:
 			//targetSpeed = speed_leftchange_curve * SPEED_CURRENT;
 			servoPwmOut( 90 );
-			if(  sensor_inp(MASK00100) == 0x04 ) {
+			if(  sensor_inp(MASK00010) == 0x02 ) {
 				servoPwmOut( 0 );
-				modeAngle = 0;
 				enc1 = 0;
+				//modeAngle = 0;
 				modeMotor = 1;
 				pattern = 69;
 				break;
@@ -1097,7 +1100,6 @@ void Timer (void) {
 	}
 	cnt1++;
 	cntGyro++;
-	sens_error = getAnalogSensor();
 	// LCD表示
 	if ( modeLCD ) lcdShowProcess();
 	// エンコーダカウント取得
@@ -1127,7 +1129,7 @@ void Timer (void) {
 
 	
 	// MicroSD書き込み
-	microSDProcess();
+	/*microSDProcess();
 	if ( msdFlag ) sendLog( 12,6, 1
 					// char
 					, (char)pattern
@@ -1158,7 +1160,7 @@ void Timer (void) {
 					, (unsigned int)(EncoderTotal / 6.150)
 					//, encStable
 					//, cnt_log
-					);
+					);*/
 	Timer10++;
 	
 	// 通信
