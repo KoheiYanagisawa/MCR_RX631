@@ -102,7 +102,7 @@
 #define VOLTAGELIM 10.5 // 出力最大電圧
 #define VOLTAGELIMTRACE 7.0 // 出力最大電圧
 //白線トレース
-#define KP		25
+#define KP		40
 #define KI		10
 #define KD		10
 

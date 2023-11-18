@@ -687,22 +687,22 @@ void main(void){
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
 			if(  sensor_inp(MASK10000) == 0x00 ) {
 				enc1 = 0;
-				pattern = 57;
+				pattern = 58;
 				break;
 			}
 			break;
-		case 57:
+		/*case 57:
 			if(  sensor_inp(MASK00001) == 0x01) {
 				modeAngle = 0;
 				pattern = 58;
 				break;
 			}
-			break;
+			break;*/
 		case 58:
 			//targetSpeed = speed_rightchange_curve * SPEED_CURRENT;
-			servoPwmOut( -50 );
+			servoPwmOut( -90 );
 			if(  sensor_inp(MASK00100) == 0x04 ) {
-				servoPwmOut( 30 );
+				//servoPwmOut( 30 );
 				enc1 = 0;
 				modeMotor = 1;
 				pattern = 59;
