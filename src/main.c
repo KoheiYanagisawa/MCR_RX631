@@ -1234,7 +1234,7 @@ void Timer (void) {
 
 	
 	// MicroSD‘‚«‚İ
-	/*microSDProcess();
+	microSDProcess();
 	if ( msdFlag ) sendLog( 12,6, 1
 					// char
 					, (char)pattern
@@ -1265,7 +1265,7 @@ void Timer (void) {
 					, (unsigned int)(EncoderTotal / 6.150)
 					//, encStable
 					//, cnt_log
-					);*/
+					);
 	Timer10++;
 	
 	// ’ÊM
