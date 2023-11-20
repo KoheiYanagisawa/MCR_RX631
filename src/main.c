@@ -457,6 +457,7 @@ void main(void){
 			if( sensor_inp(MASK00001) ==  0x01 ) {
 				enc1 = 0;
 				modeAngle = 1;
+				SetAngle = 200;
 				TurningAngleEnc = 0;
 				TurningAngleIMU = 0;
 				pattern = 30;
@@ -466,6 +467,7 @@ void main(void){
 			if( sensor_inp(MASK11100) ==  0x1c) {
 				enc1 = 0;
 				modeAngle = 1;
+				SetAngle = -200;
 				TurningAngleEnc = 0;
 				TurningAngleIMU = 0;
 				pattern = 40;
@@ -476,7 +478,7 @@ void main(void){
 		//-------------------------------------------------------------------
 		//【030】右クランク処理
 		//-------------------------------------------------------------------
-		case 30:// 設定角度まで切り少し待つ
+		/*case 30:// 設定角度まで切り少し待つ
 			SetAngle = angle_rightclank;
 			if( getServoAngle() > (ANGLE_RIGHTCLANK) ){
 				y1 = getLinePositionNow( getServoAngle(), TurningAngleIMU);
@@ -550,11 +552,53 @@ void main(void){
 				pattern = 11;
 				break;
 			}
+			break;*/
+
+
+		case 30:// 設定角度まで切り少し待つ
+			modeMotor = 0;
+			//targetSpeed = speed_leftclank_curve * SPEED_CURRENT;
+			if(sensor_inp(MASK11111) == 0x00){
+				SetAngle = angle_rightclank;
+				pattern = 33;
+				break;
+			}
+			break;
+		/*case 31:// 設定角度まで切り少し待つ
+			if(sensor_inp(MASK11111) == 0x00){
+				pattern = 33;
+				break;
+			}
+			break;
+		case 32:// 設定角度まで切り少し待つ
+			if(sensor_inp(MASK00001) == 0x01){
+
+				pattern = 33;
+				break;
+			}
+			break;*/
+		case 33:
+			//targetSpeed = speed_leftclank_curve * SPEED_CURRENT;
+			if(sensor_inp(MASK00100) == 0x04){
+				modeAngle = 0;
+				pattern = 34;
+				break;
+			}
+			break;
+		case 34://復帰
+			modeMotor = 1;
+			targetSpeed = speed_leftclank_escape * SPEED_CURRENT;
+			if( enc1 >= encMM( 600 ) ) {		// 安定するまで待つ(600mm)
+				enc1 = 0;
+				ledOut( 0x0 );
+				pattern = 11;
+				break;
+			}
 			break;
 		//-------------------------------------------------------------------
 		//【040】左クランク処理
 		//-------------------------------------------------------------------
-		case 40:// 設定角度まで切り少し待つ
+		/*case 40:// 設定角度まで切り少し待つ
 			SetAngle = angle_leftclank;
 			if( getServoAngle() < ANGLE_LEFTCLANK ){
 				y1 = getLinePositionNow( getServoAngle(), TurningAngleIMU);
@@ -627,7 +671,53 @@ void main(void){
 				pattern = 11;
 				break;
 			}
+			break;*/
+
+		case 40:// 設定角度まで切り少し待つ
+			modeMotor = 0;
+			//targetSpeed = speed_leftclank_curve * SPEED_CURRENT;
+			if(sensor_inp(MASK11111) == 0x00){
+				SetAngle = angle_leftclank;
+				pattern = 43;
+				break;
+			}
 			break;
+		/*case 41:// 設定角度まで切り少し待つ
+			if(sensor_inp(MASK11111) == 0x00){
+				pattern = 43;
+				break;
+			}
+			break;
+		case 42:// 設定角度まで切り少し待つ
+			if(sensor_inp(MASK00001) == 0x01){
+
+				pattern = 43;
+				break;
+			}
+			break;*/
+		case 43:
+			
+			
+			//targetSpeed = speed_leftclank_curve * SPEED_CURRENT;
+
+			if(sensor_inp(MASK00100) == 0x04){
+				modeAngle = 0;
+				pattern = 44;
+				break;
+			}
+			break;
+		case 44://復帰
+			modeMotor = 1;
+			targetSpeed = speed_leftclank_escape * SPEED_CURRENT;
+			if( enc1 >= encMM( 600 ) ) {		// 安定するまで待つ(600mm)
+				enc1 = 0;
+				ledOut( 0x0 );
+				pattern = 11;
+				break;
+			}
+			break;
+
+
 		
 		//-------------------------------------------------------------------
 		//【050】右レーンチェンジ処理
@@ -983,11 +1073,13 @@ void main(void){
 		//-------------------------------------------------------------------
 		case 101:
 			// 減速処理
-			modeAngle = 0;
-			targetSpeed = 10;
+			//modeAngle = 0;
+			//modeMotor = 0;
+			//targetSpeed = 10;
 			motor_mode_f( F, F );
 			motor_mode_r( F, F );
-			if( enc1 >= encMM( 100 ) ) {
+			servoPwmOut( ServoPwm );
+			if( enc1 >= encMM( 20 ) ) {
 				enc1 = 0;
 				pattern = 102;
 				break;
@@ -996,10 +1088,9 @@ void main(void){
 			
 		case 102:
 			// 車体停止処理
-			modeAngle = 0;
 			motor_mode_f( B, B );
 			motor_mode_r( B, B );
-			
+			servoPwmOut( ServoPwm );
 			if( Encoder <= 5 && Encoder >= -1 ) {
 				//servoPwmOut( 0 );
 				//R_PG_IO_PORT_Write_PE6( 0 );	//サーボモータ freeモード
@@ -1122,10 +1213,13 @@ void Timer (void) {
 	if ( modeAngle ) servoControlAngle();	// 角度
 	else servoControlTrace();		// 白線
 	//モーターモード切換え（フリー・駆動）
-	if ( modeMotor )motorControl();		// モータ
-	else {
+	if ( modeMotor == 1 )motorControl();		// モータ
+	else if(modeMotor == 0) {
 		motor_mode_f( F, F );
 		motor_mode_r( F, F );
+	}else if(modeMotor == 2) {
+		motor_mode_f( B, B );
+		motor_mode_r( B, B );
 	}
 
 	// 走行中のPWM出力
