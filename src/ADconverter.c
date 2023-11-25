@@ -162,6 +162,7 @@ void getVoltage ( void )
 short getServoAngle(void) 
 {	
 	return  ( Angle0 - Angle );
+	// return  ( Angle );
 }
 
 /////////////////////////////////////////////////////////////////////

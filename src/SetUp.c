@@ -383,8 +383,7 @@ void setup( void )
 			modeAngle = 1;
 			/*if ( servo_test == 1 ) servoPwmOut( ServoPwm2 );
 			else servoPwmOut( 0 );*/
-			if ( servo_test2 == 1 ) SetAngle = 500;
-			else SetAngle = -500;
+
 			
 			data_tuningLR( &pattern_gain2, 1 );
 			if ( pattern_gain2 == 4 ) pattern_gain2 = 1;
@@ -595,6 +594,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(LOWROW, "   %5d",getServoAngle());
+						//lcdRowPrintf(LOWROW, "   %5d",Angle);
 					}
 					break;
 					

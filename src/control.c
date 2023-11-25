@@ -69,6 +69,7 @@ short		SetAngleBefore;	// 1ms前の目標角度
 short 		AngleBefore2;	// 1ms前の角度
 char		AngleBefore3;	// I成分リセット用
 double		Int2;			// I成分積算値(角度制御)
+int 		Angle_fixed;	//マーカー読み飛ばし用固定角度
 
 // モーター関連
 signed char 	motorPwm;			// モーター制御PWM
@@ -115,6 +116,9 @@ int checkLine( void ){
 		
 		if( cnt_crossline >= 2 ){
 			cnt_crossline = 0;
+			Angle_fixed = getServoAngle(); //直前の進入角度を記録
+			modeAngle = 1;
+			SetAngle = Angle_fixed;
 			line = 1;
 		}
 		
@@ -128,6 +132,9 @@ int checkLine( void ){
 			
 		if( cnt_rightline >= 2 ){
 			cnt_rightline = 0;
+			Angle_fixed = getServoAngle(); //直前の進入角度を記録
+			modeAngle = 1;
+			SetAngle = Angle_fixed;
 			line = 2;
 		}
 		
@@ -140,6 +147,9 @@ int checkLine( void ){
 			
 		if( cnt_leftline >= 2 ){
 			cnt_leftline = 0;
+			Angle_fixed = getServoAngle(); //直前の進入角度を記録
+			modeAngle = 1;
+			SetAngle = Angle_fixed;
 			line = 3;
 		}
 		
@@ -260,6 +270,19 @@ signed char checkSlope( void )
 	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ) ret = -1;
 	
 	return ret;
+}
+///////////////////////////////////////////////////////////////////////////
+// モジュール名 Slope_Observer
+// 処理概要     ジャイロセンサの値から坂道検出
+// 引数         なし
+// 戻り値       0:坂道なし 1:上り坂　-1:下り坂
+///////////////////////////////////////////////////////////////////////////
+void Slope_Observer ( void )
+{
+
+	if ( PichAngleIMU <= SLOPE_UPPERLINE_IMU ) ret = 1;
+	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ) ret = -1;
+	
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 encMM

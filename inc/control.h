@@ -94,8 +94,8 @@
 #define CURVE_R450_START		250		// R450開始AD値
 
 // ジャイロ関連
-#define SLOPE_UPPERLINE_IMU		-5		// 上り坂検出角度
-#define SLOPE_LOWERLINE_IMU	    	5		// 下り坂検出角度
+#define SLOPE_UPPERLINE_IMU		-2		// 上り坂検出角度
+#define SLOPE_LOWERLINE_IMU	    	2		// 下り坂検出角度
 #define INTEGRAL_LIMIT			200		// 角速度積算時間
 
 // PIDゲイン関連
@@ -186,6 +186,7 @@ extern short	cntGyro;			// 角度計算用カウンタ
 // 角度関連
 extern double 	TurningAngleEnc;	// エンコーダから求めた旋回角度
 extern double	PichAngleAD;		// アナログジャイロから求めたピッチ角度
+extern int 		Angle_fixed;
 
 // モーター関連
 extern signed char 	motorPwm;	    // モーター制御PWM

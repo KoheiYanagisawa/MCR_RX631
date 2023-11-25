@@ -63,7 +63,7 @@ unsigned short	 	cntOut4;	// コースアウト判定用タイマ4
 static char			Timer10;	// 1msカウント用
 
 int correct_angle;
-int Angle_fixed;			//マーカー読み飛ばし用固定角度
+
 int sens_error;
 //====================================//
 // プロトタイプ宣言
@@ -194,21 +194,18 @@ void main(void){
 			case 1:					/* クロスライン検出時の分岐 */
 				line = 0;
 				enc1 = 0;
-				Angle_fixed = getServoAngle(); //直前の進入角度を記録
 				pattern = 21;											
 				break;												
 																		
 			case 2:					/* 右ハーフライン検出時の分岐 */	
 				line = 0;
 				enc1 = 0;
-				Angle_fixed = getServoAngle(); //直前の進入角度を記録
 				pattern = 51;											
 				break;												
 																	
 			case 3:					/* 左ハーフライン検出時の分岐 */
 				line = 0;
 				enc1 = 0;
-				Angle_fixed = getServoAngle(); //直前の進入角度を記録
 				pattern = 61;										
 				break;												
 																	
@@ -725,8 +722,8 @@ void main(void){
 		case 51://マーカー誤トレース処理
 			check_line  = 0;
 			targetSpeed = speed_halfine * SPEED_CURRENT;
-			modeAngle = 1;
-			SetAngle = Angle_fixed; //直前進入角度で固定
+			//modeAngle = 1;
+			//SetAngle = Angle_fixed; //直前進入角度で固定
 			if( enc1 > encMM( 20 ) ) {
 				enc1 = 0;
 				modeAngle = 0;
@@ -857,7 +854,7 @@ void main(void){
 		case 63:
 			targetSpeed = speed_leftchange_trace * SPEED_CURRENT;
 			
-			if( sensor_inp(MASK11111) == 0x0 ) {
+			if( sensor_inp(MASK11111) == 0x00 ) {
 				enc1 = 0;
 				modeAngle = 1;
 				modeMotor = 0;
@@ -942,12 +939,13 @@ void main(void){
 					// 上り始め
 					modeSlope = 1;
 					enc1 = 0;
-					ledOut( LED_R | LED_B );
+					//ledOut( LED_R | LED_B );
 					pattern = 72;
 					break;
 				} else if ( modeSlope == 2 && enc_slope >= encMM( 600 ) ) {
 					// 下り終わり
 					modeSlope = 3;
+					modeMotor = 0;
 					pattern = 74;
 					break;
 				} else {
@@ -981,6 +979,8 @@ void main(void){
 			
 			if( enc1 >= encMM( 1200 ) ) {
 				enc1 = 0;
+				modeMotor = 0;
+				targetSpeed = 0;
 				pattern = 73;
 				break;
 			}
@@ -999,7 +999,7 @@ void main(void){
 			
 		case 74:
 			// 下り坂終点ブレーキ
-			targetSpeed = speed_slope_brake * SPEED_CURRENT;
+			targetSpeed = 0;
 			if( enc1 >= encMM( 40 ) ) {
 				enc1 = 0;
 				pattern = 75;
@@ -1009,11 +1009,11 @@ void main(void){
 			
 		case 75:
 			// ジャイロセンサが安定するまで読み飛ばし
-			targetSpeed = speed_slope_trace * SPEED_CURRENT;
-			//motorPwmOut(0, 0,
-				   // 0, 0);
+			//targetSpeed = speed_slope_trace * SPEED_CURRENT;
+			targetSpeed = 0;
 			if( enc1 >= encMM( 150 ) ) {
 				enc1 = 0;
+				modeMotor = 1;
 				pattern = 76;
 				break;
 			}
@@ -1056,6 +1056,7 @@ void main(void){
 				if( enc1 >= encMM( 500 ) ) {
 					enc1 = 0;
 					enc_slope = 0;
+					modeSlope = 0;
 					pattern = 11;
 					break;
 				}
@@ -1187,7 +1188,7 @@ void Timer (void) {
 					cntOut1 = 0;
 				}
 			}
-			if ( sensor_inp(MASK11111) == 0x0 && pattern != 53 && pattern != 63 ) cntOut2++;	// センサ全消灯
+			if ( sensor_inp(MASK11111) == 0x00 && pattern != 53 && pattern != 63 ) cntOut2++;	// センサ全消灯
 			else cntOut2 = 0;
 			if ( Encoder <= 1 && Encoder >= -1 ) cntOut3++;		// エンコーダ停止(ひっくり返った？)
 			else cntOut3 = 0;
@@ -1213,15 +1214,13 @@ void Timer (void) {
 	if ( modeAngle ) servoControlAngle();	// 角度
 	else servoControlTrace();		// 白線
 	//モーターモード切換え（フリー・駆動）
-	if ( modeMotor == 1 )motorControl();		// モータ
-	else if(modeMotor == 0) {
+	if ( modeMotor == 1 ){
+		motorControl();		// モータ
+	}
+	else{
 		motor_mode_f( F, F );
 		motor_mode_r( F, F );
-	}else if(modeMotor == 2) {
-		motor_mode_f( B, B );
-		motor_mode_r( B, B );
 	}
-
 	// 走行中のPWM出力
 	if ( modeAutoMotor ) {
 		if ( modeAngle ) servoPwmOut( ServoPwm2 );	// 角度
@@ -1233,7 +1232,7 @@ void Timer (void) {
 	
 
 	
-	// MicroSD書き込み
+	//MicroSD書き込み
 	microSDProcess();
 	if ( msdFlag ) sendLog( 12,6, 1
 					// char
@@ -1256,7 +1255,7 @@ void Timer (void) {
 					//, zg
 					, (short)getServoAngle()
 					, (short)SetAngle
-					, (short)getAnalogSensor()
+					, (short)modeAngle//getAnalogSensor()
 					//, (short)(Voltage*100)
 					, (short)(targetSpeed/SPEED_CURRENT)
 					, (short)currentSpeed
