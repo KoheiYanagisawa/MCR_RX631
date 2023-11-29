@@ -1229,7 +1229,6 @@ void Timer (void) {
 			diff( motorPwm ); // ‹ì“®—Öƒ‚[ƒ^PWMo—Í
 		}
 	}
-	//Slope_Observer();
 	
 	
 
@@ -1302,7 +1301,6 @@ void Timer (void) {
 		}
 		break;
 	case 3:
-
 		break;
 	case 5:
 		break;

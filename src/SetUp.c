@@ -10,7 +10,8 @@ char 	start;		// 0:セットアップ中	1:セットアップ完了
 // タイマ関連
 unsigned short 		cntSetup1;		// セットアップで使用
 unsigned short 		cntSetup2;		// セットアップで使用
-unsigned short 		cntSetup3;		// セットアップで使用
+unsigned short 		cntSetup3;		// セットアップで使用	
+unsigned short		cntCalibration; //10msことにカウント
 short				cntSwitchUD;	// スイッチ長押し判定用右
 short				cntSwitchLR;	// スイッチ長押し判定用左
 
@@ -43,6 +44,7 @@ char servo_test = 0;
 char servo_test2 = 0;
 char fixSpeed = 0;
 char str[8];
+char sensAutoCalibration_flg = 0;
 
 // パラメータ関連
 char motorTestPwm = 10;
@@ -67,7 +69,7 @@ void setup( void )
 	char cnt_led;
 	short i, j, k;
 	uint8_t sd_sw;
-	
+	int Calibration_i,Calibration_j,wait_flg;
 	// ディップスイッチで項目選択
 	switch ( dipswGet() ) {
 		//------------------------------------------------------------------
@@ -905,8 +907,8 @@ void setup( void )
 		//------------------------------------------------------------------
 		case 0xf:
 			data_tuningLR( &pattern_sensor, 1 );			
-			if ( pattern_sensor == 7 ) pattern_sensor = 1;
-			else if ( pattern_sensor == 0 ) pattern_sensor = 6;
+			if ( pattern_sensor == 8 ) pattern_sensor = 1;
+			else if ( pattern_sensor == 0 ) pattern_sensor = 7;
 			
 			switch( pattern_sensor ) {
 
@@ -959,6 +961,16 @@ void setup( void )
 						
 					
 					}
+					break;			
+				case 7:
+					// sensAutoCalibration
+					lcdRowPrintf(UPROW, "Calibrat");
+					lcdRowPrintf(LOWROW, "        ");
+					data_select ( &sensAutoCalibration_flg, SW_DOWN );
+					if ( sensAutoCalibration_flg ){
+						
+					}
+
 					break;			
 			}
 			break;
