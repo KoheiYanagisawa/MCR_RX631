@@ -1229,12 +1229,14 @@ void Timer (void) {
 			diff( motorPwm ); // ‹ì“®—Öƒ‚[ƒ^PWMo—Í
 		}
 	}
+	//Slope_Observer();
+	
 	
 
 	
 	//MicroSD‘‚«ž‚Ý
 	microSDProcess();
-	if ( msdFlag ) sendLog( 12,6, 1
+	if ( msdFlag ) sendLog( 11,10, 1
 					// char
 					, (char)pattern
 					, (char)motorPwm
@@ -1244,15 +1246,15 @@ void Timer (void) {
 					, (char)accele_rR
 					, (char)sensor_inp()
 					, (char)modeSlope
-					, (char)Encoder
+					//, (char)Encoder
 					, (char)sPwm
 					, (char)(PichAngleIMU*10)
 					, (char)(RollAngleIMU*10)
 					//short
-					//, (short)(TurningAngleIMU*10)
-					//, xg
-					//, yg
-					//, zg
+					, (short)(TurningAngleIMU*10)
+					, (short)angularVelocity_xg//xg
+					, (short)yg
+					, zg
 					, (short)getServoAngle()
 					, (short)SetAngle
 					, (short)modeAngle//getAnalogSensor()
@@ -1284,12 +1286,16 @@ void Timer (void) {
 		
 		break;
 	case 2:
+		
 		readGyroData();
 		readAccelData();
 		getTurningAngleIMU();
+
 		getPichAngleIMU();
+		getPichAngleacceleration();
+
 		getRollAngleIMU();
-		if (cntGyro > 200) {
+		if (cntGyro > 300) {
 			RollAngleIMU = 0;
 			PichAngleIMU = 0;
 			cntGyro  = 0;

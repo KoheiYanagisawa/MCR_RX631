@@ -94,15 +94,15 @@
 #define CURVE_R450_START		250		// R450開始AD値
 
 // ジャイロ関連
-#define SLOPE_UPPERLINE_IMU		-2		// 上り坂検出角度
-#define SLOPE_LOWERLINE_IMU	    	2		// 下り坂検出角度
+#define SLOPE_UPPERLINE_IMU		-12		// 上り坂検出角度
+#define SLOPE_LOWERLINE_IMU	    	5		// 下り坂検出角度
 #define INTEGRAL_LIMIT			200		// 角速度積算時間
 
 // PIDゲイン関連
 #define VOLTAGELIM 10.5 // 出力最大電圧
 #define VOLTAGELIMTRACE 7.0 // 出力最大電圧
 //白線トレース
-#define KP		40
+#define KP		30
 #define KI		10
 #define KD		10
 
@@ -144,6 +144,8 @@ extern char	modeAngle;		// サーボPWM変更	0:白線トレース	1:角度制御
 extern char	modePushcart;	// 手押しモード可否	0:自動走行	1:手押し
 extern char	msdset;			// MicroSDが初期化されたか	0:初期化失敗	1:初期化成功
 extern char	IMUSet;			// IMUが初期化されたか	0: 初期化失敗	1:初期化成功
+
+extern int pich_flg;
 
 // パラメータ関連
 // 距離
@@ -251,5 +253,7 @@ short getReturnAngle( double angleIMU, double y1);
 // サーボ関連
 void servoControlTrace( void );
 void servoControlAngle( void );
+
+void Slope_Observer ( void );
 
 #endif // LINECHASE_H_

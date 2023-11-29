@@ -14,6 +14,9 @@ volatile char 	caribration;
 double 		TurningAngleIMU;	// yaw軸角度
 double		RollAngleIMU;		// Roll角度
 double 		PichAngleIMU;		// Pich角度
+
+double angularVelocity_xg;
+short Angleacceleration;
 /////////////////////////////////////////////////////////////////////
 // モジュール名 readByte
 // 処理概要     クロスライン検知
@@ -201,28 +204,53 @@ void getRollAngleIMU(void)
 // 戻り値       なし
 /////////////////////////////////////////////////////////////////////
 void getPichAngleIMU( void )
-{
-	double angularVelocity_xg;
-	int intxg;
-	int i , n;
-	double xg_before;
+// {
+// 	//double angularVelocity_xg;
+// 	int intxg;
+// 	int i , n;
+// 	double xg_before;
 	
 
 		
 	
-	//coefficient = 0.3;				//ローパスフィルタの係数
+// 	//coefficient = 0.3;				//ローパスフィルタの係数
+	
+// 	angularVelocity_xg = (double)(xg) / GYROLSB;	// IMUのデータを角速度[deg/s]に変換
+// 	//angularVelocity_xg = coefficient * xg_before + (1 - coefficient) * angularVelocity_xg;//ro-pasu
+// 	n += angularVelocity_xg;
+// 	i++;
+// 	if(i == 5){
+// 		angularVelocity_xg = n / 5;	
+// 		PichAngleIMU -= angularVelocity_xg * DELTATIMU;
+// 		n = 0;
+// 		i = 0;
+// 	}
+// }
+{
+	double angularVelocity_xg;
+	int intxg;
 	
 	angularVelocity_xg = (double)(xg) / GYROLSB;	// IMUのデータを角速度[deg/s]に変換
-	//angularVelocity_xg = coefficient * xg_before + (1 - coefficient) * angularVelocity_xg;//ro-pasu
-	n += angularVelocity_xg;
-	i++;
-	if(i == 3){
-		angularVelocity_xg = n / 3;	
-		PichAngleIMU -= angularVelocity_xg * DELTATIMU;
-		i = 0;
-	}
 	
-
-
+	PichAngleIMU -= angularVelocity_xg * DELTATIMU;
 	
 }
+/////////////////////////////////////////////////////////////////////
+// モジュール名 getPichAngleIMU
+// 処理概要     IMUからピッチ角度の計算
+// 引数         なし
+// 戻り値       なし
+/////////////////////////////////////////////////////////////////////
+void getPichAngleacceleration( void )
+{
+	int i , n;
+	double before;
+
+	Angleacceleration = before - angularVelocity_xg;
+	before = angularVelocity_xg;
+}
+
+	
+
+
+	

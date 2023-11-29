@@ -13,6 +13,8 @@ char	modePushcart;		// 手押しモード可否	0:自動走行	1:手押し
 char	msdset;				// MicroSDが初期化されたか	0:初期化失敗	1:初期化成功
 char	IMUSet = 0;			// IMUが初期化されたか		0: 初期化失敗	1:初期化成功
 
+int pich_flg = 0;
+
 // パラメータ関連
 // 距離
 short	stopping_meter;			// 停止距離
@@ -265,9 +267,22 @@ int checkLeftLine( void )
 signed char checkSlope( void )
 {
 	signed char ret = 0;
+	int U,D;
 
-	if ( PichAngleIMU <= SLOPE_UPPERLINE_IMU ) ret = 1;
-	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ) ret = -1;
+	if (  PichAngleIMU <= SLOPE_UPPERLINE_IMU ){
+		U++;
+		if(U == 15){
+			ret = 1;
+			U = 0;
+		}
+	}else U = 0;
+	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ){
+		D++;
+		if(D == 15){
+			ret = -1;
+			D = 0;
+		}
+	} else D = 0;
 	
 	return ret;
 }
@@ -278,11 +293,25 @@ signed char checkSlope( void )
 // 戻り値       0:坂道なし 1:上り坂　-1:下り坂
 ///////////////////////////////////////////////////////////////////////////
 void Slope_Observer ( void )
-{
+// {
+// 	int cnt_pich = 0;
+// 	if ( PichAngleIMU <= SLOPE_UPPERLINE_IMU ) cnt_pich ++;
+// 	else cnt_pich = 0;
 
-	if ( PichAngleIMU <= SLOPE_UPPERLINE_IMU ) ret = 1;
-	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ) ret = -1;
-	
+// 	if (cnt_pich == 5) {
+// 		cnt_pich = 0;
+// 		pich_flg = 1;
+// 	}
+// }
+{
+	int cnt_pich = 0;
+	if ( angularVelocity_xg >= SLOPE_UPPERLINE_IMU ) cnt_pich ++;
+	else cnt_pich = 0;
+
+	if (cnt_pich == 3) {
+		cnt_pich = 0;
+		pich_flg = 1;
+	}
 }
 ///////////////////////////////////////////////////////////////////////////
 // モジュール名 encMM

@@ -128,6 +128,9 @@ extern volatile char 		caribration;
 extern double 		TurningAngleIMU;	// yaw軸角度
 extern double		RollAngleIMU;		// Roll角度
 extern double 		PichAngleIMU;		// Pich角度
+
+extern double angularVelocity_xg;
+extern short Angleacceleration;
 //==========================//
 // プロトタイプ宣言
 //==========================//
@@ -141,5 +144,6 @@ void readAccelData(void);
 void getTurningAngleIMU(void);
 void getRollAngleIMU(void);
 void getPichAngleIMU( void );
+void getPichAngleacceleration( void );
 
 #endif // SPI_ICM20648_H_
