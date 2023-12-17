@@ -11,11 +11,11 @@
 #define DEG2AD              41          // 1度あたりのAD値 サーボ最大切れ角時のAD値[]/サーボ最大切れ角[°]
 #define AD2DEG              0.082F     // 1ADあたりの角度 サーボ最大切れ角[°]/サーボ最大切れ角時のAD値[]
 #define LOWVOLTAGE          10.5        // 最低動作電圧
-#define DsensRR		100
-#define DsensR		100
-#define DsensC		100
-#define DsensL		100
-#define DsensLL		100
+#define DsensRR		300
+#define DsensR		300
+#define DsensC		300
+#define DsensL		300
+#define DsensLL		300
 #define sensorRR_reg	0
 #define sensorRR_max	1
 #define sensorRR_min	2

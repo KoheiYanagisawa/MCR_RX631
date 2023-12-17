@@ -15,6 +15,8 @@ char	IMUSet = 0;			// IMUが初期化されたか		0: 初期化失敗	1:初期化成功
 
 int pich_flg = 0;
 
+char motor_Gain = 0;
+
 // パラメータ関連
 // 距離
 short	stopping_meter;			// 停止距離
@@ -182,7 +184,7 @@ bool check_crossline( void )
 bool check_rightline( void )
 {
 	
-	if ( sensor_inp(MASK11111) == 0x7 || sensor_inp(MASK11111) == 0x3 ){
+	if ( sensor_inp(MASK11111) == 0x07 || sensor_inp(MASK11111) == 0x03 || sensor_inp(MASK00001) == 0x01){
 		return true;
 	}else 	return false;
 }
@@ -194,7 +196,7 @@ bool check_rightline( void )
 ///////////////////////////////////////////////////////////////////////////
 bool check_leftline( void )
 {	
-	if ( sensor_inp(MASK11111) == 0x1C || sensor_inp(MASK11111) == 0x18 ){
+	if ( sensor_inp(MASK11111) == 0x1C || sensor_inp(MASK11111) == 0x18 || sensor_inp(MASK10000) == 0x10 ){
 		return true;
 	}else 	return false;
 }
@@ -269,16 +271,31 @@ signed char checkSlope( void )
 	signed char ret = 0;
 	int U,D;
 
-	if (  PichAngleIMU <= SLOPE_UPPERLINE_IMU ){
+	// if (  PichAngleIMU <= SLOPE_UPPERLINE_IMU ){
+	// 	U++;
+	// 	if(U == 30){
+	// 		ret = 1;
+	// 		U = 0;
+	// 	}
+	// }else U = 0;
+	// if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ){
+	// 	D++;
+	// 	if(D == 15){
+	// 		ret = -1;
+	// 		D = 0;
+	// 	}
+	// } else D = 0;
+
+	if (  sensor_saka >= 1500 ){
 		U++;
-		if(U == 15){
+		if(U == 10){
 			ret = 1;
 			U = 0;
 		}
 	}else U = 0;
-	if ( PichAngleIMU >= SLOPE_LOWERLINE_IMU ){
+	if (  sensor_saka <= 200 ){
 		D++;
-		if(D == 15){
+		if(D == 10){
 			ret = -1;
 			D = 0;
 		}
@@ -499,42 +516,42 @@ void diff ( signed char pwm )
 		R2 = r2 * pwm / 100;
 		R3 = r3 * pwm / 100;
 		R4 = pwm;
-		
+		//右カーブ
 		if ( angle >= 28/*85*/ && angle <= 45) {
-			//motorPwmOut(R1, R3, R2, R4);//左カーブ
-			motorPwmOut(R3 * 0.6, R4 * 0.8,
-				    0, R2 * 0.8);
+
+			motorPwmOut(R4 * 0.8, R2 * 0.6,
+				    	R3 * 0.8, R1 * 0);
 			
 		}else if ( angle >= 18/*55*/ && angle <= 27) {
-			//motorPwmOut(R1, R3, R2, R4);//左カーブ
-			motorPwmOut(R3 , R4 ,
-				    R1 * 0.9, R2 );
+
+			motorPwmOut(R4, R2,
+				    	R3, R1 * 0.9);
 		}else if ( angle >= 5/*15*/ && angle <= 17 ) {
-			//motorPwmOut(R1, R3, R2, R4);//左カーブ
-			motorPwmOut(R3 , R4,
-				    R1, R2);
+
+			motorPwmOut(R4 , R2,
+				    	R3 , R1);
 		}else if( angle >= 0/*15*/ && angle <= 4 ){
-			//motorPwmOut(R3, R1, R4, R2);//右カーブ
-			motorPwmOut(R4, R4,
-				    R4, R4);
+
+			motorPwmOut(R4 , R4,
+				   	 	R4 , R4);
 		}
-		
+		//左カーブ
 		if ( angle <= -28 && angle >= -45) {
-			//motorPwmOut(R3, R1, R4, R2);//右カーブ
-			motorPwmOut(R3 * 0.6, R4 * 0.8,
-				    0, R2 * 0.8);
+
+			motorPwmOut(R2 * 0.6, R4 * 0.8,
+				        R1 * 0  , R3 * 0.8);
 		}else if ( angle <= -18 && angle >= -27) {
-			//motorPwmOut(R3, R1, R4, R2);//右カーブ
-			motorPwmOut(R3 , R4 ,
-				    R1 * 0.9, R2 );
+
+			motorPwmOut(R2      ,  R4,
+				   		R1 * 0.9,  R3);
 		}else if ( angle <= -5 && angle >= -17) {
-			//motorPwmOut(R3, R1, R4, R2);//右カーブ
-			motorPwmOut(R4, R3,
-				    R2, R1);
+
+			motorPwmOut(R2, R4,
+				    	R1, R3);
 		}else if ( angle <= 0 && angle >= -4){
-			//motorPwmOut(R3, R1, R4, R2);//右カーブ
+
 			motorPwmOut(R4, R4,
-				    R4, R4);
+				     	R4, R4);
 		}
 	} else {
 		r1 = rev_difference_D[ angle2 ];
@@ -572,8 +589,8 @@ void motorControl( void )
 
 	// デモモードのときゲイン変更
 	if ( targetSpeed < targetSpeedBefore ) {
-		kp3 = 10;
-		ki3 = 4;
+		kp3 = 60;
+		ki3 = 10;
 		kd3 = 0;
 	} else {
 		kp3 = kp3_buff;
@@ -617,7 +634,7 @@ void motorControl( void )
 	if ( Dev > 0 )	AccelefBefore = 0;
 	else		AccelefBefore = 1;
 	
-	motorPwm = iRet*0.6;
+	motorPwm = iRet*(motor_Gain*0.01);
 	EncoderBefore = Dev;
 	targetSpeedBefore = i;
 	

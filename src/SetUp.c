@@ -15,6 +15,10 @@ unsigned short		cntCalibration; //10msことにカウント
 short				cntSwitchUD;	// スイッチ長押し判定用右
 short				cntSwitchLR;	// スイッチ長押し判定用左
 
+unsigned short sens_max[5];
+unsigned short sens_min[5];
+unsigned short sens_Buff[5];
+
 // スイッチ関連
 signed char pushLR = 0;
 signed char pushUD = 0;
@@ -45,7 +49,11 @@ char servo_test2 = 0;
 char fixSpeed = 0;
 char str[8];
 char sensAutoCalibration_flg = 0;
-
+char sensAutoCalibration_flg2 = 0;
+char sensAutoCalibration_flg3 = 0;
+char sensAutoCalibration_flg4 = 0;
+char sensAutoCalibration_flg5 = 0;
+int Calibration_j = 0;
 // パラメータ関連
 char motorTestPwm = 10;
 
@@ -69,7 +77,9 @@ void setup( void )
 	char cnt_led;
 	short i, j, k;
 	uint8_t sd_sw;
-	int Calibration_i,Calibration_j,wait_flg;
+	int Calibration_i;
+	
+
 	// ディップスイッチで項目選択
 	switch ( dipswGet() ) {
 		//------------------------------------------------------------------
@@ -907,8 +917,8 @@ void setup( void )
 		//------------------------------------------------------------------
 		case 0xf:
 			data_tuningLR( &pattern_sensor, 1 );			
-			if ( pattern_sensor == 8 ) pattern_sensor = 1;
-			else if ( pattern_sensor == 0 ) pattern_sensor = 7;
+			if ( pattern_sensor == 11 ) pattern_sensor = 1;
+			else if ( pattern_sensor == 0 ) pattern_sensor = 10;
 			
 			switch( pattern_sensor ) {
 
@@ -917,7 +927,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "RR %4.3f",RR_tatio);
-						lcdRowPrintf(LOWROW, "RR  %4d",sensorRR);
+						lcdRowPrintf(LOWROW, "RR  %4d",sensor_calc[sensorRR_reg]);
 					}
 					break;	
 				case 2:
@@ -925,7 +935,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "LL %4.3f",LL_tatio);
-						lcdRowPrintf(LOWROW, "LL  %4d",sensorLL);
+						lcdRowPrintf(LOWROW, "LL  %4d",sensor_calc[sensorLL_reg]);
 					}
 					break;
 				case 3:
@@ -933,7 +943,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "C  %4.3f",C_tatio);
-						lcdRowPrintf(LOWROW, "C   %4d",sensorC);
+						lcdRowPrintf(LOWROW, "C   %4d",sensor_calc[sensorC_reg]);
 					}
 					break;
 				case 4:
@@ -941,7 +951,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "R  %4.3f",R_tatio);
-						lcdRowPrintf(LOWROW, "R   %4d",sensorR);
+						lcdRowPrintf(LOWROW, "R   %4d",sensorR_reg);
 					}
 					break;
 				case 5:
@@ -949,7 +959,7 @@ void setup( void )
 					if ( cntSetup1 >= 100 ) {
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "L  %4.3f",L_tatio);
-						lcdRowPrintf(LOWROW, "L   %4d",sensorL);
+						lcdRowPrintf(LOWROW, "L   %4d",sensorL_reg);
 					}
 					break;	
 				case 6:
@@ -958,20 +968,96 @@ void setup( void )
 						cntSetup1 = 0;
 						lcdRowPrintf(UPROW, "sensHexa");
 						lcdRowPrintf(LOWROW, "    0x%2x",sensor_inp(MASK11111));
+						printf("	sens_saka= %d\n",sensor_saka);
 						
 					
 					}
 					break;			
 				case 7:
 					// sensAutoCalibration
-					lcdRowPrintf(UPROW, "Calibrat");
+					lcdRowPrintf(UPROW, "    init");
 					lcdRowPrintf(LOWROW, "        ");
 					data_select ( &sensAutoCalibration_flg, SW_DOWN );
 					if ( sensAutoCalibration_flg ){
-						
+						sens_Buff[0] = sensorRR;
+						sens_Buff[1] = sensorR;
+						sens_Buff[2] = sensorC;
+						sens_Buff[3] = sensorL;
+						sens_Buff[4] = sensorLL;
+						for(Calibration_i = 0; Calibration_i <= 4; Calibration_i++){
+							sens_max[Calibration_i] = sens_Buff[Calibration_i];
+							sens_min[Calibration_i] = sens_Buff[Calibration_i];
+							printf("sens_max[%d] = %d",Calibration_i,sens_max[Calibration_i]);
+							printf("	sens_min[%d] = %d\n",Calibration_i,sens_min[Calibration_i]);
+						}
+						printf("\n");
+						sensAutoCalibration_flg = 0;
 					}
+					break;	
+				case 8:
+					data_select ( &sensAutoCalibration_flg2, SW_DOWN );
+					if(sensAutoCalibration_flg2)lcdRowPrintf(UPROW, "loading*");
+					else lcdRowPrintf(UPROW, "loading ");
+					if(Calibration_j > 500) lcdRowPrintf(LOWROW, "      OK");
+					else lcdRowPrintf(LOWROW, "        ");					
+					if ( sensAutoCalibration_flg2 ){
+						sens_Buff[0] = sensorRR;
+						sens_Buff[1] = sensorR;
+						sens_Buff[2] = sensorC;
+						sens_Buff[3] = sensorL;
+						sens_Buff[4] = sensorLL;
+						for(Calibration_i = 0; Calibration_i <= 4; Calibration_i++){
+							if(sens_max[Calibration_i] < sens_Buff[Calibration_i] ){
+								sens_max[Calibration_i] = sens_Buff[Calibration_i];
+								Calibration_j = 0;
+								printf("sens_max update! \n");
+							}
+							else if(sens_min[Calibration_i] > sens_Buff[Calibration_i] ){
+								sens_min[Calibration_i] = sens_Buff[Calibration_i];
+								Calibration_j = 0;
+								printf("sens_min update! \n");
+							}else{
+								Calibration_j++;
+								printf("NO update \n");
+							}
+						}
 
-					break;			
+					}
+					break;
+				case 9:
+					lcdRowPrintf(UPROW, " confirm");
+					lcdRowPrintf(LOWROW, "        ");
+					data_select ( &sensAutoCalibration_flg3, SW_DOWN );
+					if ( sensAutoCalibration_flg3 ){
+						for(Calibration_i = 0; Calibration_i <= 4; Calibration_i++){
+							printf("sens_max[%d] = %d",Calibration_i,sens_max[Calibration_i]);
+							printf("	sens_min[%d] = %d\n",Calibration_i,sens_min[Calibration_i]);
+						}
+						printf("\n");
+						sensAutoCalibration_flg3 = 0;
+					}
+					break;	
+				case 10:
+					lcdRowPrintf(UPROW, " Upgrade");
+					if(sensAutoCalibration_flg5) lcdRowPrintf(LOWROW, "   end!!");
+					else lcdRowPrintf(LOWROW, "        ");
+					data_select ( &sensAutoCalibration_flg4, SW_DOWN );
+					if ( sensAutoCalibration_flg4 ){
+						sensor_calc[sensorRR_max] = sens_max[0];
+						sensor_calc[sensorRR_min] = sens_min[0];
+						sensorR_max = sens_max[1];
+						sensorR_min = sens_min[1];;
+						sensor_calc[sensorC_max] = sens_max[2];
+						sensor_calc[sensorC_min] = sens_min[2];;
+						sensorL_max = sens_max[3];
+						sensorL_min = sens_min[3];;
+						sensor_calc[sensorLL_max] = sens_max[4];
+						sensor_calc[sensorLL_min] = sens_min[4];;
+						printf("Upgrade!!\n");
+						sensAutoCalibration_flg5 = 1;
+						sensAutoCalibration_flg4 = 0;
+					}
+					break;	
 			}
 			break;
 

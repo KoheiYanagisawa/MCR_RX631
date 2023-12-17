@@ -43,7 +43,11 @@ extern short		cntSwitchLR;	// スイッチ長押し判定用左
 // パラメータ関連
 extern char fixSpeed;
 extern char sensAutoCalibration_flg;
-
+extern char sensAutoCalibration_flg2;
+extern char sensAutoCalibration_flg3;
+extern char sensAutoCalibration_flg4;
+extern char sensAutoCalibration_flg5;
+extern int Calibration_j;
 //======================================//
 // プロトタイプ宣言
 //======================================//

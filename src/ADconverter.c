@@ -67,20 +67,20 @@ void ADconverter ( void )
 {
 	__setpsw_i();
 	GET_ADC
-	sensor_calc[sensorRR_max] =  1715;
-	sensor_calc[sensorRR_min] = 180;
+	// sensor_calc[sensorRR_max] =  1715;
+	// sensor_calc[sensorRR_min] = 180;
 	
-	sensorR_max = 1473;
-	sensorR_min = 169;
+	// sensorR_max = 1473;
+	// sensorR_min = 169;
 	
-	sensor_calc[sensorC_max] = 1315;
-	sensor_calc[sensorC_min] = 167;
+	// sensor_calc[sensorC_max] = 1315;
+	// sensor_calc[sensorC_min] = 167;
 	
-	sensorL_max = 1184;
-	sensorL_min = 163;
+	// sensorL_max = 1184;
+	// sensorL_min = 163;
 	
-	sensor_calc[sensorLL_max] = 1437;
-	sensor_calc[sensorLL_min] = 175;
+	// sensor_calc[sensorLL_max] = 1437;
+	// sensor_calc[sensorLL_min] = 175;
 	
 	/*ADTimer10++;
 	if ( ADTimer10 == 10 ) {
@@ -129,6 +129,7 @@ void ADconverter ( void )
 		pot = 0;
 	
 	// AD変換値をバッファに格納
+
 	pot += result[3];
 	senG += result[4];
 	senLL += result[5];
@@ -136,7 +137,7 @@ void ADconverter ( void )
 	senC += result[7];
 	senRR += result[8];
 	senR += result[6];//9
-	sen_saka += result[10];
+	sen_saka += result[2];
 	VolC += result[11];
 	
 	

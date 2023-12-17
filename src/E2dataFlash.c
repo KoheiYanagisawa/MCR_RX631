@@ -782,16 +782,38 @@ void readFlashSetup ( bool speed, bool C_angle, bool msd, bool pid_line, bool pi
 		// 全ブロックイレーズされているか確認する
 		if ( checkBlank( ( PID_STARTAREA *32 ) + FLASHSTARTADDR ) ) {
 			readbeforeAddr( PID_STARTAREA, PID_ENDAREA );	// 前回保存時のアドレス読み込み
-			readFlashArray( beforeAddr, flashDataBuff, 3 );		// flashDataBuffにPIDゲイン読み込み
+			readFlashArray( beforeAddr, flashDataBuff, 13 );		// flashDataBuffにPIDゲイン読み込み
 			// データ取得
 			kp_buff = flashDataBuff[ 0 ];
 			ki_buff = flashDataBuff[ 1 ];
 			kd_buff = flashDataBuff[ 2 ];
+
+			sensor_calc[sensorRR_max] = flashDataBuff[ 3 ];
+			sensor_calc[sensorRR_min] = flashDataBuff[ 4 ];
+			sensorR_max = flashDataBuff[ 5 ];
+			sensorR_min = flashDataBuff[ 6 ];
+			sensor_calc[sensorC_max] = flashDataBuff[ 7 ];
+			sensor_calc[sensorC_min] = flashDataBuff[ 8 ];
+			sensorL_max = flashDataBuff[ 9 ];
+			sensorL_min = flashDataBuff[ 10 ];
+			sensor_calc[sensorLL_max] = flashDataBuff[ 11 ];
+			sensor_calc[sensorLL_min] = flashDataBuff[ 12 ];
 		} else if ( checkBlank( ( PID_STARTAREA *32 ) + FLASHSTARTADDR ) <= 0 ) {
 			// 全ブロックイレーズまたはエラーが発生したら初期値に設定する
 			kp_buff = KP;
 			ki_buff = KI;
 			kd_buff = KD;
+
+			sensor_calc[sensorRR_max] =  1715;
+			sensor_calc[sensorRR_min] = 180;
+			sensorR_max = 1473;
+			sensorR_min = 169;
+			sensor_calc[sensorC_max] = 1315;
+			sensor_calc[sensorC_min] = 167;
+			sensorL_max = 1184;
+			sensorL_min = 163;
+			sensor_calc[sensorLL_max] = 1437;
+			sensor_calc[sensorLL_min] = 175;
 			printf("PIDgain Initialize\n");
 		}
 	}
@@ -901,7 +923,19 @@ void writeFlashBeforeStart ( bool speed, bool C_angle, bool pid_line, bool pid_a
 		flashDataBuff[ 0 ] = kp_buff;
 		flashDataBuff[ 1 ] = ki_buff;
 		flashDataBuff[ 2 ] = kd_buff;
-		writeFlashData( PID_STARTAREA, PID_ENDAREA, PID_DATA, 3 );
+
+		flashDataBuff[ 3 ] = sensor_calc[sensorRR_max];
+		flashDataBuff[ 4 ] = sensor_calc[sensorRR_min];
+		flashDataBuff[ 5 ] = sensorR_max;
+		flashDataBuff[ 6 ] = sensorR_min;
+		flashDataBuff[ 7 ] = sensor_calc[sensorC_max];
+		flashDataBuff[ 8 ] = sensor_calc[sensorC_min];
+		flashDataBuff[ 9 ] = sensorL_max;
+		flashDataBuff[ 10 ] = sensorL_min;
+		flashDataBuff[ 11 ] = sensor_calc[sensorLL_max];
+		flashDataBuff[ 12 ] = sensor_calc[sensorLL_min];
+
+		writeFlashData( PID_STARTAREA, PID_ENDAREA, PID_DATA, 13 );
 	}
 	
 	if ( pid_angle ) {

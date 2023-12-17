@@ -94,9 +94,9 @@
 #define CURVE_R450_START		250		// R450開始AD値
 
 // ジャイロ関連
-#define SLOPE_UPPERLINE_IMU		-12		// 上り坂検出角度
+#define SLOPE_UPPERLINE_IMU		-10		// 上り坂検出角度
 #define SLOPE_LOWERLINE_IMU	    	5		// 下り坂検出角度
-#define INTEGRAL_LIMIT			200		// 角速度積算時間
+#define INTEGRAL_LIMIT			300		// 角速度積算時間
 
 // PIDゲイン関連
 #define VOLTAGELIM 10.5 // 出力最大電圧
@@ -146,6 +146,8 @@ extern char	msdset;			// MicroSDが初期化されたか	0:初期化失敗	1:初期化成功
 extern char	IMUSet;			// IMUが初期化されたか	0: 初期化失敗	1:初期化成功
 
 extern int pich_flg;
+
+extern char motor_Gain;
 
 // パラメータ関連
 // 距離

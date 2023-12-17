@@ -52,6 +52,7 @@ char		modeCurve;		// カーブ判定	0:カーブ以外	1:カーブ走行中
 char		modeError;		// 0: 通常走行 1:距離停止 2:センサ全灯 3:センサ全消灯 4:エンコーダ停止 5:ジャイロ反応
 char 		modeAutoMotor;	// 0: switch文でサーボ、駆動モータのPWM出力を指定する 1: Timer関数内で自動的にPWM出力を実行
 char      	modeMotor = 1; //1通常走行、0モーターフリー
+char		curve_brake_flg = 0;
 volatile unsigned char check_line;
 // タイマ関連
 // 1msタイマ
@@ -292,6 +293,7 @@ void main(void){
 		// 【010】トレース処理
 		//-------------------------------------------------------------------
 		case 11:
+		    motor_Gain = 70;
 			targetSpeed = speed_straight * SPEED_CURRENT;
 			i = getServoAngle();
 			ledOut( 0x00 );
@@ -315,12 +317,14 @@ void main(void){
 			
 		case 12:
 			// カーブブレーキ
+			curve_brake_flg = 1;
 			targetSpeed = speed_curve_brake * SPEED_CURRENT;
 			ledOut( LED_R );
 			i = getServoAngle();
 			
 			if ( enc1 > encMM( 60 ) ) {		// 60mm進む
 				enc1 = 0;
+				curve_brake_flg = 0;
 				TurningAngleEnc = 0;
 				TurningAngleIMU = 0;
 				pattern = 13;
@@ -349,6 +353,7 @@ void main(void){
 			
 		case 13:
 			// R600カーブ走行
+			motor_Gain = 60;
 			targetSpeed = speed_curve_r600 * SPEED_CURRENT;
 			i = getServoAngle();
 			
@@ -375,6 +380,7 @@ void main(void){
 			
 		case 14:
 			// R450カーブ走行
+			motor_Gain = 60;
 			targetSpeed = speed_curve_r450 * SPEED_CURRENT;
 			i = getServoAngle();
 			
@@ -424,7 +430,7 @@ void main(void){
 		//-------------------------------------------------------------------
 		case 21:
 			check_line  = 0;
-			
+			motor_Gain = 60;
 			targetSpeed = speed_crossline* SPEED_CURRENT;
 			
 			modeAngle = 1;
@@ -554,6 +560,7 @@ void main(void){
 
 		case 30:// 設定角度まで切り少し待つ
 			modeMotor = 0;
+			
 			//targetSpeed = speed_leftclank_curve * SPEED_CURRENT;
 			if(sensor_inp(MASK11111) == 0x00){
 				SetAngle = angle_rightclank;
@@ -721,6 +728,7 @@ void main(void){
 		//-------------------------------------------------------------------
 		case 51://マーカー誤トレース処理
 			check_line  = 0;
+			motor_Gain = 60;
 			targetSpeed = speed_halfine * SPEED_CURRENT;
 			//modeAngle = 1;
 			//SetAngle = Angle_fixed; //直前進入角度で固定
@@ -826,6 +834,7 @@ void main(void){
 		//-------------------------------------------------------------------
 		case 61:
 			check_line  = 0;
+			motor_Gain = 60;
 			targetSpeed = speed_halfine * SPEED_CURRENT;
 			modeAngle = 1;
 			SetAngle = Angle_fixed; //直前進入角度で固定
@@ -933,6 +942,7 @@ void main(void){
 		case 71:
 			// 誤検知判断
 			// 目標速度変えない
+			motor_Gain = 60;
 			if( checkSlope() == 1 ) {
 				if( modeSlope == 0 ) {
 					
@@ -1227,7 +1237,12 @@ void Timer (void) {
 		else servoPwmOut( ServoPwm );	// 白線
 		if (!modePushcart) {
 			diff( motorPwm ); // 駆動輪モータPWM出力
+			if(curve_brake_flg){
+				motor_mode_f( B, F );
+				motor_mode_r( F, F );
+			}
 		}
+
 	}
 	
 	
@@ -1235,7 +1250,7 @@ void Timer (void) {
 	
 	//MicroSD書き込み
 	microSDProcess();
-	if ( msdFlag ) sendLog( 11,10, 1
+	if ( msdFlag ) sendLog( 8,5, 1
 					// char
 					, (char)pattern
 					, (char)motorPwm
@@ -1245,26 +1260,14 @@ void Timer (void) {
 					, (char)accele_rR
 					, (char)sensor_inp()
 					, (char)modeSlope
-					//, (char)Encoder
-					, (char)sPwm
-					, (char)(PichAngleIMU*10)
-					, (char)(RollAngleIMU*10)
 					//short
-					, (short)(TurningAngleIMU*10)
-					, (short)angularVelocity_xg//xg
-					, (short)yg
-					, zg
 					, (short)getServoAngle()
 					, (short)SetAngle
-					, (short)modeAngle//getAnalogSensor()
-					//, (short)(Voltage*100)
 					, (short)(targetSpeed/SPEED_CURRENT)
 					, (short)currentSpeed
 					, (short)iAngle
 					// unsigned int
 					, (unsigned int)(EncoderTotal / 6.150)
-					//, encStable
-					//, cnt_log
 					);
 	Timer10++;
 	
